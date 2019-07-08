@@ -1,0 +1,29 @@
+.cardContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cardClass{
+  width: 475px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 767px) {
+  .cardContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .cardClass{
+    width: 350px;
+    margin: auto;
+    margin-right: 0;
+    margin-left: 0;
+    margin: auto;
+  }
+  .projectsContainer{
+    margin-top:20px;
+  }
+}

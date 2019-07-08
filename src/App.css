@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+
+body {
+  margin: 0;
+}
+
 .App {
   text-align: center;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+@media only screen and (min-width: 768px) {
+  .App{
+    height: 100vh;
+  }
 }
 
 .App-logo {
@@ -30,4 +44,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.dark{
+  background-color: #202326;
+  color: #fff;
+  transition: all 0.5s ease 0s;
+}
+
+.light{
+  background-color: #fff;
+  color: #202326;
+  transition: all 0.5s ease 0s;
+}
+
+::-moz-selection { background:transparent; }
+::selection { background:transparent; }
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
 }

@@ -1,0 +1,37 @@
+.sectionText{
+  text-align: left;
+  font-size: 50px;
+  padding: 20px 0 100px 115px;
+}
+
+.sectionContainer{
+  display:flex;
+  justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+  .sectionCanvas{
+    margin-top: 10%;
+  }
+  }
+
+@media only screen and (min-width: 900px) {
+  .sectionCanvas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0%;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .sectionContainer{
+    flex-direction: column;
+  }
+  .sectionText{
+    text-align: center;
+    font-size: 32px;
+    padding: 25px 0 0 0;
+  }
+}

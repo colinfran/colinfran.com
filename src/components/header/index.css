@@ -1,0 +1,171 @@
+.headerContainer{
+  display:flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 767px) {
+  .headerContainer{
+    display: flex !important;
+    flex-direction: column;
+    height: 300px;
+    width: 85px;
+    margin: auto;
+    margin-top: 30px;
+  }
+  .headerContainer:focus{
+    outline: none;
+  }
+}
+
+.imgContainer{
+  padding: 0 0 0 75px;
+}
+
+@media only screen and (min-width: 768px) {
+  .headerLinks{
+    margin-right: 20px;
+  }
+}
+
+.linksAndToggle{
+  padding: 50px;
+  align-self: center;
+  display:flex;
+  justify-content: space-between;
+}
+
+.react-toggle{
+  margin:0 auto;
+}
+
+.react-toggle-track-x{
+  right: 6px !important;
+}
+
+.react-toggle-track-x, .react-toggle-track-check {
+    width: 1em !important;
+    height: 1em !important;
+
+}
+
+.react-toggle--focus .react-toggle-thumb {
+  box-shadow: none !important;
+}
+
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track{
+  background-color: #0041A0 !important;
+}
+
+.react-toggle--checked .react-toggle-track {
+  background-color: #196FD8 !important;
+}
+
+.react-toggle:hover .react-toggle-track {
+    background-color: #7E7E7E !important;
+}
+
+
+.headerLinks{
+  align-self:inherit;
+  text-decoration: none;
+}
+
+.headerLinksMobile:hover {
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+  transform: scale(1.25);
+
+}
+
+.headerLinksLight {
+  color: #000;
+  transition: all 0.5s ease 0s;
+}
+
+.headerLinksDark{
+  color: #fff;
+  transition: all 0.5s ease 0s;
+}
+
+.headerLinksLight:hover {
+  transform: scale(1.25);
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+
+.headerLinksDark:hover {
+  transform: scale(1.25);
+  border-bottom: 2px solid #fff;
+  padding-bottom: 2px;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 36px;
+}
+
+.bm-burger-button:focus{
+  outline: none;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  top: 0 !important;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: lightgrey;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: none !important;
+}
+
+.bm-cross-button{
+  background-color:#000;
+}
