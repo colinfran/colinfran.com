@@ -42,12 +42,12 @@ class Projects extends React.Component {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <a href="https://github.com/colinfran/pigeonapp" style={{textDecoration: 'none', backgroundColor: '#fff'}}>
+              <a href="https://github.com/colinfran/pigeonapp" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
                 <Button size="small" color="primary">
                   Github
                 </Button>
               </a>
-              <a href="https://expo.io/@colinfran/finalproject" style={{textDecoration: 'none', backgroundColor: '#fff'}}>
+              <a href="https://expo.io/@colinfran/finalproject" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
                 <Button size="small" color="primary">
                   Expo
                 </Button>
@@ -76,12 +76,12 @@ class Projects extends React.Component {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <a href="https://github.com/colinfran/whattowatch" style={{textDecoration: 'none', backgroundColor: '#fff'}}>
+              <a href="https://github.com/colinfran/whattowatch" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
                 <Button size="small" color="primary">
                   Github
                 </Button>
               </a>
-              <a href="https://expo.io/@colinfran/whattowatch" style={{textDecoration: 'none', backgroundColor: '#fff'}}>
+              <a href="https://expo.io/@colinfran/whattowatch" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
                 <Button size="small" color="primary">
                   Expo
                 </Button>
