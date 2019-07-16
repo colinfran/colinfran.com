@@ -4,7 +4,7 @@ import './index.css';
 class Footer extends React.Component {
 
   render() {
-    console.log(this.props.location.pathname);
+    
     if (this.props.location.pathname !== "/projects"){
       return (
         <div className="footerContainer" id="footer" >

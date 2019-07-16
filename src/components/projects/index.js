@@ -27,7 +27,7 @@ class Projects extends React.Component {
         <div className="cardContainer">
           <Card className="cardClass" style={styles}>
             <CardActionArea
-              onClick={()=> window.open("https://github.com/colinfran/pigeonapp", "_blank")}
+              onClick={()=> window.open("https://github.com/colinfran/geterdone", "_blank")}
               >
               <CardMedia
                 component="img"
@@ -51,7 +51,7 @@ class Projects extends React.Component {
                   View
                 </Button>
               </Link>
-              <a href="https://github.com/colinfran/pigeonapp" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
+              <a href="https://github.com/colinfran/geterdone" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
                 <Button size="small" color="primary">
                   Github
                 </Button>
