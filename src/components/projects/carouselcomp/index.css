@@ -1,0 +1,37 @@
+.centerCarousel{
+  margin: auto;
+}
+.carousel_Container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.left{
+  width: 70%;
+  margin: 50px;
+}
+
+.right{
+  width:30%;
+  margin: 50px;
+}
+@media only screen and (max-width: 767px) {
+  .carousel_Container{
+    display: flex;
+    flex-direction: column;
+  }
+  .left{
+    width:auto;
+
+  }
+
+  .right{
+    width:auto;
+    margin:10px;
+  }
+}
+.backBtn{
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 15px;
+}

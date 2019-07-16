@@ -1,11 +1,12 @@
 .cardContainer{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .cardClass{
-  width: 475px;
+  width: 765px;
   margin-right: 5px;
   margin-left: 5px;
 }
@@ -25,5 +26,20 @@
   }
   .projectsContainer{
     margin-top:20px;
+  }
+  .hide-at-lg{
+    display:block;
+  }
+}
+
+.MuiTypography-h5 {
+  fony-size: 1.2rem !important;
+}
+.MuiCardMedia-media {
+  height: 400px !important;
+}
+@media only screen and (min-width: 768px) {
+  .hide-at-lg{
+    display:none;
   }
 }

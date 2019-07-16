@@ -1,7 +1,5 @@
 import React from 'react';
 import './index.css';
-import whitelogo from '../../logos/whitelogo.svg'; // Tell Webpack this JS file uses this image
-import blacklogo from '../../logos/blacklogo.svg'; // Tell Webpack this JS file uses this image
 import { FaSun } from 'react-icons/fa';
 import { FaMoon } from 'react-icons/fa';
 import Toggle from 'react-toggle'
@@ -41,9 +39,15 @@ class Header extends React.Component {
 
   }
 
+  changeMenuState = () =>{
+    this.setState({ open: !this.state.open });
+  }
+
   renderFunction = () =>{
     const { width } = this.state;
     const isMobile = width <= 767;
+    var blacklogo = process.env.PUBLIC_URL + '/logos/blacklogo.svg';
+    var whitelogo = process.env.PUBLIC_URL + '/logos/whitelogo.svg';
     var linksStyles = this.props.mode==="light" ? "headerLinks headerLinksLight": "headerLinks headerLinksDark";
     if (isMobile){
       return (

@@ -9,6 +9,13 @@ import Footer from './components/footer';
 import Section from './components/section';
 import Projects from './components/projects';
 
+import CarouselComp from './components/projects/carouselcomp';
+
+import projectInfo from './components/projects/projectInfo';
+
+import {withRouter} from 'react-router-dom';
+
+
 history.listen(location => {
 	ReactGA.set({ page: location.pathname })
 	ReactGA.pageview(location.pathname)
@@ -46,6 +53,7 @@ class App extends React.Component {
   }
 
   render() {
+		const FooterComp = withRouter(props => <Footer mode={this.state.mode} setMode={this.setMode} {...props}/>);
     return (
       <Router history={history}>
         <div className={`App ${this.state.mode === "dark" ? "dark": "light"}`}>
@@ -54,10 +62,15 @@ class App extends React.Component {
           </div>
           <div>
             <Route path="/" exact component={this.home} />
-            <Route path="/projects" render={()=> <Projects  mode={this.state.mode} setMode={this.setMode}/>} />
+            <Route path="/projects" exact render={()=> <Projects  mode={this.state.mode} setMode={this.setMode}/>} />
+						<Route path="/projects/whattowatch" exact render={()=> <CarouselComp project={projectInfo.whattowatch}  mode={this.state.mode} setMode={this.setMode}/>} />
+						<Route path="/projects/pigeon" exact render={()=> <CarouselComp project={projectInfo.pigeon} mode={this.state.mode} setMode={this.setMode}/>} />
+						<Route path="/projects/geterdone" exact render={()=> <CarouselComp project={projectInfo.geterdone} mode={this.state.mode} setMode={this.setMode}/>} />
+						<Route path="/projects/portfolio" exact render={()=> <CarouselComp project={projectInfo.portfolio} mode={this.state.mode} setMode={this.setMode}/>} />
+
           </div>
           <div>
-            <Footer mode={this.state.mode} setMode={this.setMode}/>
+            <FooterComp />
           </div>
         </div>
 
