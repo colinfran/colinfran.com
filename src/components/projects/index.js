@@ -15,6 +15,7 @@ import pigeon from './pigeon.png';
 import colinfran from './colinfran.png';
 import geterdone from './geterdone.png';
 import whattowatch from './whattowatch.png';
+import CalcImage from './calculator.png';
 
 
 class Projects extends React.Component {
@@ -93,6 +94,47 @@ class Projects extends React.Component {
                 </Button>
               </a>
               <a href="https://expo.io/@colinfran/whattowatch" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
+                <Button size="small" color="primary">
+                  Expo
+                </Button>
+              </a>
+            </CardActions>
+          </Card>
+        </div>
+        <div className="cardContainer">
+          <Card className="cardClass" style={styles}>
+            <CardActionArea
+              onClick={()=> window.open("https://github.com/colinfran/calculator", "_blank")}
+
+              >
+              <CardMedia
+                component="img"
+                alt="WhatToWatch App for iOS and Android"
+                height="140"
+                image={CalcImage}
+                title="Calculator Logo"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Minimalistic Calculator App
+                </Typography>
+                <Typography variant="body2" color={color} component="p">
+                  A simple, minimalistic calculator built with 60 lines of logic, 70 lines of markup, and 80 lines of styling.
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Link to="/projects/calculator" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
+                <Button size="small" color="primary">
+                  View
+                </Button>
+              </Link>
+              <a href="https://github.com/colinfran/calculator" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
+                <Button size="small" color="primary">
+                  Github
+                </Button>
+              </a>
+              <a href="https://expo.io/@colinfran/calculator" style={{textDecoration: 'none', backgroundColor: '#fff', borderRadius: 4}}>
                 <Button size="small" color="primary">
                   Expo
                 </Button>

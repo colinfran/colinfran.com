@@ -1,3 +1,5 @@
+import CalcImage from './calculator.png';
+
 const projectInfo = {
   pigeon: {
     title: "Pigeon",
@@ -82,6 +84,25 @@ const projectInfo = {
         src: "https://raw.githubusercontent.com/colinfran/geterdone/master/assets/gifdemo.gif",
         style:{
           width: 350
+        }
+      }
+
+    ]
+  },
+  calculator: {
+    title: "Minimalistic Calculator'",
+    description: "A calculator app built with React Native and Expo. Just practicing my node.js / react.js / react native skills.",
+    img:[
+      {
+        src: CalcImage,
+        style:{
+          width: 600
+        }
+      },
+      {
+        src: "https://raw.githubusercontent.com/colinfran/calculator/master/assets/calculator.gif",
+        style:{
+          width: 215
         }
       }
 

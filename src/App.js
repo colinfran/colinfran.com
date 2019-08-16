@@ -64,6 +64,7 @@ class App extends React.Component {
             <Route path="/" exact component={this.home} />
             <Route path="/projects" exact render={()=> <Projects  mode={this.state.mode} setMode={this.setMode}/>} />
 						<Route path="/projects/whattowatch" exact render={()=> <CarouselComp project={projectInfo.whattowatch}  mode={this.state.mode} setMode={this.setMode}/>} />
+						<Route path="/projects/calculator" exact render={()=> <CarouselComp project={projectInfo.calculator}  mode={this.state.mode} setMode={this.setMode}/>} />
 						<Route path="/projects/pigeon" exact render={()=> <CarouselComp project={projectInfo.pigeon} mode={this.state.mode} setMode={this.setMode}/>} />
 						<Route path="/projects/geterdone" exact render={()=> <CarouselComp project={projectInfo.geterdone} mode={this.state.mode} setMode={this.setMode}/>} />
 						<Route path="/projects/portfolio" exact render={()=> <CarouselComp project={projectInfo.portfolio} mode={this.state.mode} setMode={this.setMode}/>} />
