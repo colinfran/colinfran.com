@@ -1,0 +1,27 @@
+.error-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 100px;
+}
+
+
+@media screen and (max-width: 767px){
+  .error-container{
+    width: 75%;
+  }
+}
+
+.error-text{
+  font-size: 40px;
+  line-height: 1;
+  margin-top: -50px;
+  text-align: center;
+}
+
+.error-button{
+  width: 50%;
+}

@@ -1,0 +1,102 @@
+@font-face {
+  font-family: 'Lausanne';
+  src: url('https://uploads-ssl.webflow.com/636331e96ef8bb56a12a18cb/636748183a6cea520bacf580_TWKLausanne-300.woff2') format('woff2'), url('https://uploads-ssl.webflow.com/636331e96ef8bb56a12a18cb/63674815befaed3d4af08117_TWKLausanne-300.woff') format('woff'), url('https://uploads-ssl.webflow.com/636331e96ef8bb56a12a18cb/6367480dcaac037ddbfe7bd5_TWKLausanne-300.ttf') format('truetype'), url('https://uploads-ssl.webflow.com/636331e96ef8bb56a12a18cb/636748048bef741dcac5f4f4_TWKLausanne-300.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body{
+  font-family: Lausanne,sans-serif;
+  color: #1d1d1d;
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  transition: background-color 1s, color 1s;
+  font-family: Lausanne,sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: .022em;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #fff;
+  transition: background-color 1s, color 1s;
+}
+
+a{
+  -webkit-user-drag: none;
+}
+
+.homepage {
+  padding-right: 4rem;
+  padding-left: 4rem;
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+  max-width: 1500px;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media screen and (max-width: 767px){
+  .homepage {
+    margin-bottom: 50px;
+  }
+}
+
+
+@media screen and (max-width: 767px){
+  .homepage {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+  }
+}
+
+@media screen and (min-width: 1700px){
+  .homepage {
+    padding-right: 8rem;
+    padding-left: 8rem;
+    padding-top: 8vw;
+    padding-bottom: 8vw;
+  }
+}
+
+.page-divider{
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 4vw;
+  grid-row-gap: 4vw;
+  -ms-grid-columns: minmax(200px,430px) 1fr;
+  grid-template-columns: minmax(200px,430px) 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+}
+
+@media screen and (max-width: 1024px){
+  .page-divider{
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+}
+
+.dark-mode-toggle{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.redirect{
+  padding: 20px;
+}

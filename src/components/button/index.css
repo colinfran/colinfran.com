@@ -1,0 +1,188 @@
+.aws-btn {
+  width: 100%;
+  padding: 0.5em 0;
+  text-transform: uppercase !important;
+  font-family: Lausanne, sans-serif !important;
+  font-size:  15px !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  line-height: normal !important;
+  color: #000;
+}
+
+.preload .aws-btn{
+  transition:  none !important;
+}
+
+.preload .aws-btn:before{
+  transition:  none !important;
+}
+
+.preload .aws-btn--primary .aws-btn__wrapper:before{
+  transition:  none !important;
+}
+
+.aws-btn:before{
+  transition:  background-color 1s !important;
+}
+
+.aws-btn--left:before, .aws-btn--right:before{
+  transform: translate3d(0, calc(-1px * var(--button-hover-pressure)), 0) !important;
+}
+
+.aws-btn--left .aws-btn__content{
+  transform: translate3d(0, calc(1px * var(--button-hover-pressure)), 0) !important;
+}
+
+.aws-btn--right .aws-btn__content{
+  transform: translate3d(0, calc(1px * var(--button-hover-pressure)), 0) !important;
+}
+
+.dark .aws-btn {
+  --button-shadow-color: #1a1a1a !important;
+  --button-default-font-size: 14px !important;
+  --button-default-border-radius: .75em !important;
+  --button-default-height: 44px !important;
+  --button-horizontal-padding: 16px !important;
+  --button-raise-level: 8px !important;
+  --button-hover-pressure: 4 !important;
+  --transform-speed: 0.15s !important;
+  --button-primary-color: #e2e4e9 !important;
+  --button-primary-color-dark: #a3a5a8 !important;
+  --button-primary-color-light: #382b22 !important;
+  --button-primary-color-hover: #e2e4e9 !important;
+  --button-primary-color-active: #e2e4e9 !important;
+  --button-primary-border: 2px solid #656669 !important;
+}
+
+.aws-btn--primary .aws-btn__wrapper:before {
+  background: var(--button-primary-color-dark) !important;
+}
+
+.light .aws-btn {
+  --button-shadow-color: #edf0f5 !important;
+  --button-default-font-size: 14px;
+  --button-default-border-radius: .75em !important;
+  --button-default-height: 44px !important;
+  --button-horizontal-padding: 16px !important;
+  --button-raise-level: 8px !important;
+  --button-hover-pressure: 4 !important;
+  --transform-speed: 0.15s !important;
+  --button-primary-color: #e2e4e9 !important;
+  --button-primary-color-dark: #a3a5a8 !important;
+  --button-primary-color-light: #382b22 !important;
+  --button-primary-color-hover: #e2e4e9 !important;
+  --button-primary-color-active: #e2e4e9 !important;
+  --button-primary-border: 2px solid #656669 !important;
+}
+
+.cf-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border: 0;
+  width: 100%;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  color: #382b22;
+  text-align: center;
+  text-transform: uppercase;
+  padding: .5em 0;
+  background: #e2e4e9;
+  border: 2px solid #656669;
+  border-radius: 0.75em;
+  transform-style: preserve-3d;
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background-color 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+@media screen and (max-width: 1024px){
+  .cf-button{
+    padding: .4em 0;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .cf-button{
+    padding: .4em 0;
+  }
+}
+
+@media screen and (max-width: 350px){
+  .cf-button{
+    padding: .3em 0;
+  }
+}
+
+.cf-button-div{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #A3A5A8;
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px #656669, 0 0.625em 0 0 #EDF0F5;
+  transform: translate3d(0, 0.75em, -1em);
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 1s;
+}
+
+.dark .cf-button-div{
+  box-shadow: 0 0 0 2px #656669, 0 0.625em 0 0 #1a1a1a;
+}
+
+/* .cf-button::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #A3A5A8;
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px #656669, 0 0.625em 0 0 #EDF0F5;
+  transform: translate3d(0, 0.75em, -1em);
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 1s;
+}
+
+.dark .cf-button::before{
+  box-shadow: 0 0 0 2px #656669, 0 0.625em 0 0 #1a1a1a;
+} */
+
+.cf-button:hover {
+  background: #e2e4e9;
+  transform: translate(0, 0.25em);
+}
+.cf-button:hover::before {
+  box-shadow: 0 0 0 2px #656669, 0 0.5em 0 0 #EDF0F5;
+  transform: translate3d(0, 0.5em, -1em);
+}
+
+.dark .cf-button:hover::before {
+  box-shadow: 0 0 0 2px #656669, 0 0.5em 0 0 #1a1a1a;
+}
+
+
+.cf-button:active {
+  background: #e2e4e9;
+  transform: translate(0em, 0.75em);
+}
+.cf-button:active::before {
+  box-shadow: 0 0 0 2px #656669, 0 0 #EDF0F5;
+  transform: translate3d(0, 0, -1em);
+}
+
+.dark .cf-button:active::before {
+  box-shadow: 0 0 0 2px #656669, 0 0 #1a1a1a;
+}

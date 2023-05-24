@@ -1,0 +1,8 @@
+/.github/
+/build/
+/node_modules/
+/public/
+
+/src/react-app-env.d.ts
+/src/reportWebVitals.ts
+/src/setupTests.ts
