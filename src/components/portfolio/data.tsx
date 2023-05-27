@@ -11,7 +11,7 @@ const data = [
     description: "A Kaspa wallet app for iOS and Android",
     links: [
       {
-        url: "https://kwallet.app/k/colinfran-website",
+        url: "https://kwallet.app/?utm_source=colinfran-website&utm_medium=colinfran-website",
         title: "Website",
       },
       {
