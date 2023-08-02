@@ -4,6 +4,8 @@ import nhdashboardMockup from "./assets/nhdashboard-mockup.webp"
 import wallpaperqrMockup from "./assets/wallpaperqr-mockup.webp"
 import kwalletMockup from "./assets/kwallet-mockup-light.webp"
 import kwalletMockupDark from "./assets/kwallet-mockup-dark.webp"
+import lrqDark from "./assets/lrq-dark.webp"
+import lrqLight from "./assets/lrq-light.webp"
 
 const data = [
   {
@@ -21,6 +23,23 @@ const data = [
     ],
     imageSrc: kwalletMockup,
     imageSrcDark: kwalletMockupDark,
+  },
+  {
+    title: "Learn React Quick - free course",
+    description:
+      "Master React.js in no time. A free course for anyone interested in learning React.js",
+    links: [
+      {
+        url: "https://colinfran.github.io/learn-react-quick/",
+        title: "Course",
+      },
+      {
+        url: "https://github.com/colinfran/learn-react-quick",
+        title: "GitHub",
+      },
+    ],
+    imageSrc: lrqLight,
+    imageSrcDark: lrqDark,
   },
   {
     title: "NHDashboard",
