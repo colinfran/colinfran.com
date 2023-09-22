@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Linker from "./components/linker"
 import Home from "./components/home"
 import Error404 from "./components/404"
+import Resume from "./components/resume"
 
 const App = (): JSX.Element => {
   return (
@@ -13,6 +14,7 @@ const App = (): JSX.Element => {
         {["/", "/index", "/index.html"].map((path) => (
           <Route element={<Home />} key={path} path={path} />
         ))}
+        <Route element={<Resume />} path="/resume" />
         <Route element={<Linker />} path="/u/:id" />
         <Route element={<Error404 />} path="*" />
       </Routes>

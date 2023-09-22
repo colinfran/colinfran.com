@@ -1,27 +1,37 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react"
 import "./index.css"
+import { useNavigate } from "react-router-dom"
 import Arrow from "./arrow"
 import Button from "../button"
 
 const email = "hello@colinfran.com"
 
 const About = (): JSX.Element => {
+  const navigate = useNavigate()
   return (
     <div className="about-section">
       <div>
         <div className="hello-container">
           <h1>Hello, I&apos;m Colin!</h1>
         </div>
-        <div>
+        <div className="about-me-wrapper">
           <div className="about-me">
-            I am a Full Stack Software Engineer and like to focus on building
+            {`I am a Full Stack Software Engineer and like to focus on building
             dynamic applications using a combination of JavaScript, React.js,
             React Native, Express.js, and TypeScript. Experienced in developing
             Web, iOS, and Android mobile apps with a keen eye for design, user
             experience, and accessibility. Based in San Francisco, I have a
             passion for both coding and technology, as well as for fitness and
-            weightlifting. Check out my page and sites!
+            weightlifting. Check out the links below or take a look at my `}
+            <button
+              className="resume-button"
+              type="button"
+              onClick={() => navigate("/resume")}
+            >
+              resume
+            </button>
+            .
           </div>
         </div>
         <div className="about-links-wrapper">
