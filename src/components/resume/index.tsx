@@ -7,7 +7,7 @@ const Resume = (): JSX.Element => {
   return (
     <embed
       // eslint-disable-next-line max-len
-      src="https://drive.google.com/u/1/uc?id=1F5-wo_R0Q90SmMOnNvikTGgDzr7LWYOg"
+      src="https://drive.google.com/u/1/uc?id=1fqaIsAtg2jKVr8Gm4grTN8zP9o9wsY7b"
       style={{ height: "100vh", width: "100%" }}
       type="application/pdf"
     />
