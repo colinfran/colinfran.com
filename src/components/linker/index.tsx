@@ -3,40 +3,36 @@
 /* eslint-disable consistent-return */
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { encode } from "hex-encode-decode"
 
-const links = {
-  "6d6f6d7370696373":
-    "https://www.dropbox.com/sh/ov4r0ot5c1crw38/AABUE13Z23Ak7BYqjNRVcIERa?dl=0",
-  "6d656d617061706170696373":
-    "https://www.dropbox.com/sh/f4ovebwnlyqgp0u/AABkFYoVed8RdUKahd1oSHgqa?dl=0",
-}
+const keys = process.env.REACT_APP_VALID_KEYS!.split(" ")
+const links = process.env.REACT_APP_VALID_LINKS!.split(" ")
 
 const Linker = (): JSX.Element => {
   const params = useParams()
-
+  const json = {}
+  // const json = JSON.parse(objectVal)
   const [timeLeft, setTimeLeft] = useState(5)
-  const [isValidId] = useState(
-    Object.prototype.hasOwnProperty.call(links, encode(params.id!))
-  )
+  const [link] = useState(() => {
+    const index = keys.indexOf(params.id!)
+    if (index !== -1) {
+      return links[index]
+    }
+    return "/"
+  })
 
   useEffect(() => {
     if (timeLeft === 0) {
       setTimeLeft(0)
-      if (isValidId) {
-        window.location.href = links[encode(params.id!)]
-      } else {
-        window.location.href = "/"
-      }
+      window.location.href = link
     }
     if (!timeLeft) return
     const intervalId = setInterval(() => {
       setTimeLeft(timeLeft - 1)
     }, 1000)
     return () => clearInterval(intervalId)
-  }, [isValidId, params.id, timeLeft])
+  }, [params.id, timeLeft, link])
 
-  if (!isValidId) {
+  if (link === "/") {
     return (
       <div className="redirect">
         <p>Not a valid URL.</p>
@@ -46,7 +42,7 @@ const Linker = (): JSX.Element => {
   }
   return (
     <div className="redirect">
-      <p>{`Link: ${links[encode(params.id!)]}`}</p>
+      <p>{`Link: ${link}`}</p>
       <p>{`Redirecting in ${timeLeft} seconds.`}</p>
     </div>
   )
