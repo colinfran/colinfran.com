@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import ReactGA from "react-ga4"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import App from "./App"
 import { ThemeProvider } from "./theme"
 import reportWebVitals from "./reportWebVitals"
@@ -14,6 +15,7 @@ root.render(
     <ThemeProvider>
       <App />
       <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   </React.StrictMode>
 )
