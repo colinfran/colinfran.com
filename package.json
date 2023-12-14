@@ -12,6 +12,7 @@
     "@types/node": "^16.18.12",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@vercel/analytics": "^1.1.1",
     "botex": "^1.0.0",
     "hex-encode-decode": "^1.0.0",
     "react": "^18.2.0",
@@ -30,8 +31,7 @@
     "eject": "react-scripts eject",
     "lint": "DEBUG=eslint:cli-engine eslint .",
     "lint:fix": "DEBUG=eslint:cli-engine eslint . --fix",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [

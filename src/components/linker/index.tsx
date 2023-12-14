@@ -9,7 +9,6 @@ const links = process.env.REACT_APP_VALID_LINKS!.split(" ")
 
 const Linker = (): JSX.Element => {
   const params = useParams()
-  const json = {}
   // const json = JSON.parse(objectVal)
   const [timeLeft, setTimeLeft] = useState(5)
   const [link] = useState(() => {

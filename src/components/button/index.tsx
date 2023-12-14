@@ -19,7 +19,6 @@ export type ButtonType = {
 const Button = ({
   email,
   href,
-  sameTab = true,
   children,
 }: ButtonType): JSX.Element => {
   const key = "abc123xyz"
