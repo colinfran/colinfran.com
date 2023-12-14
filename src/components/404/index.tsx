@@ -14,9 +14,7 @@ const Error404 = (): JSX.Element => {
         <p>Page not found</p>
       </div>
       <div className="error-button">
-        <Button href="/" sameTab>
-          Go to homepage
-        </Button>
+        <Button href="/">Go to homepage</Button>
       </div>
     </div>
   )

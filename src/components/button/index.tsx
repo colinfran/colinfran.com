@@ -12,15 +12,10 @@ import "react-awesome-button/dist/styles.css"
 export type ButtonType = {
   email?: string
   href?: string
-  sameTab?: boolean
   children: React.ReactNode
 }
 
-const Button = ({
-  email,
-  href,
-  children,
-}: ButtonType): JSX.Element => {
+const Button = ({ email, href, children }: ButtonType): JSX.Element => {
   const key = "abc123xyz"
   const obfuscatedEmail = email ? scramble(email, key) : ""
 
