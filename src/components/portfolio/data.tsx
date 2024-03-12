@@ -12,7 +12,8 @@ import linkChompLight from "./assets/linkchop-light.webp"
 const data = [
   {
     title: "LinkChop",
-    description: "A simple url shortener with free and premium features.",
+    description:
+      "A simple url shortener with free and premium features. Built with Next.js, NextAuth, PostgreSQL, and Stripe.",
     links: [
       {
         url: "https://linkchop.com/",
