@@ -6,8 +6,22 @@ import kwalletMockup from "./assets/kwallet-mockup-light.webp"
 import kwalletMockupDark from "./assets/kwallet-mockup-dark.webp"
 import lrqDark from "./assets/lrq-dark.webp"
 import lrqLight from "./assets/lrq-light.webp"
+import linkChompDark from "./assets/linkchop-dark.webp"
+import linkChompLight from "./assets/linkchop-light.webp"
 
 const data = [
+  {
+    title: "LinkChop",
+    description: "A simple url shortener with free and premium features.",
+    links: [
+      {
+        url: "https://linkchop.com/",
+        title: "Website",
+      },
+    ],
+    imageSrc: linkChompLight,
+    imageSrcDark: linkChompDark,
+  },
   {
     title: "kwallet",
     description: "A Kaspa wallet app for iOS and Android",
