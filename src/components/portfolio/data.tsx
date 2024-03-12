@@ -13,7 +13,7 @@ const data = [
   {
     title: "LinkChop",
     description:
-      "A simple url shortener with free and premium features. Built with Next.js, NextAuth, PostgreSQL, and Stripe.",
+      "A simple url shortener with free and premium features. Built with Next.js, NextAuth, Tailwind, shadcn/ui, PostgreSQL, and Stripe.",
     links: [
       {
         url: "https://linkchop.com/",
