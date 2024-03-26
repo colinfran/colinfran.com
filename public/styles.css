@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Lausanne';
-  src: url('https://uploads-ssl.webflow.com/636331e96ef8bb56a12a18cb/636748183a6cea520bacf580_TWKLausanne-300.woff2') format('woff2'), url('https://uploads-ssl.webflow.com/636331e96ef8bb56a12a18cb/63674815befaed3d4af08117_TWKLausanne-300.woff') format('woff'), url('https://uploads-ssl.webflow.com/636331e96ef8bb56a12a18cb/6367480dcaac037ddbfe7bd5_TWKLausanne-300.ttf') format('truetype'), url('https://uploads-ssl.webflow.com/636331e96ef8bb56a12a18cb/636748048bef741dcac5f4f4_TWKLausanne-300.otf') format('opentype');
+  src: url('../public/font/636748183a6cea520bacf580_TWKLausanne-300.woff2') format('woff2'), url('../public/font/63674815befaed3d4af08117_TWKLausanne-300.woff') format('woff'), url('../public/font/6367480dcaac037ddbfe7bd5_TWKLausanne-300.ttf') format('truetype'), url('../public/font/636748048bef741dcac5f4f4_TWKLausanne-300.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
