@@ -24,8 +24,8 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
   const { resolvedTheme } = useTheme()
 
   return (
-    <div className="container my-10 flex flex-col space-y-6">
-      <Card className="flex flex-col gap-10 p-8 md:flex-row">
+    <div className="my-10 flex flex-col items-center space-y-6">
+      <Card className="flex flex-col gap-10 p-8 md:flex-row max-w-[900px] mx-5 md:mx-10">
         <Image
           alt={title}
           className=" md:w-1/2"
