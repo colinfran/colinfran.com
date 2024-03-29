@@ -25,7 +25,7 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
 
   return (
     <div className="my-10 flex flex-col items-center space-y-6">
-      <Card className="flex flex-col gap-10 p-8 md:flex-row max-w-[900px] mx-5 md:mx-10">
+      <Card className="mx-5 flex max-w-[900px] flex-col gap-10 p-8 md:mx-10 md:flex-row">
         <Image
           alt={title}
           className=" md:w-1/2"
@@ -51,6 +51,9 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
           </div>
         </div>
       </Card>
+      <Button key={v4()} variant="secondary" asChild>
+        <Link href="/">Go Back</Link>
+      </Button>
     </div>
   )
 }

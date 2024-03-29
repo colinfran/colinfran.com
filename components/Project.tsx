@@ -8,7 +8,7 @@ type ProjectPropType = {
   project: ProjectProps
 }
 
-export const Project: React.FC<ProjectPropType> = async ({ project }) => {
+export const Project: React.FC<ProjectPropType> = ({ project }) => {
   const { id, title, description } = project
   return (
     <Link href={`/${id}`}>
