@@ -61,8 +61,8 @@ export const Project: React.FC<ProjectPropType> = ({
       <Image
         alt={title}
         className={open ? "block" : "hidden"}
+        loading="lazy"
         placeholder="blur"
-        priority={true}
         src={resolvedTheme === "light" ? imageSrc : imageSrcDark || imageSrc}
       />
       <h3 className="font-semibold underline underline-offset-4">{title}</h3>
