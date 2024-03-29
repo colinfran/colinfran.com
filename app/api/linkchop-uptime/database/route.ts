@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import postgres from "postgres"
 
 /**
- * Handles GET requests to the '/api/linkchop-db-uptime' endpoints.
+ * Handles GET requests to the '/api/linkchop-uptime/database' endpoints.
  * Checks to see if the LinkChop.com database is running.
  * @returns {Promise<NextResponse>} - Returns a response object.
  */
