@@ -53,10 +53,6 @@ export const siteConfig = {
           url: "https://colinfran.github.io/learn-react-quick/",
           text: "Course",
         },
-        {
-          url: "https://github.com/colinfran/learn-react-quick",
-          text: "GitHub",
-        },
       ],
       imageSrc: lrqLight,
       imageSrcDark: lrqDark,
