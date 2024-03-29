@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback } from "react"
+import React, { MouseEvent, useCallback } from "react"
 
 import Image from "next/image"
 import { Card } from "../../../components/ui/card"
@@ -25,7 +25,7 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
   const router = useRouter()
 
   const onClick = useCallback(
-    (e: React.MouseEvent<HTMLLinkElement>) => {
+    (e: MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault()
       router.back()
     },
