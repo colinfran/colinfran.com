@@ -14,10 +14,7 @@ type PageProps = { params: { id: string } }
 
 const Page: React.FC<PageProps> = async ({ params }) => {
   const link = links[params.id]
-  if (link === "") {
-    return <div />
-  }
-  if (link === undefined || link === "/") {
+  if (link === undefined) {
     return (
       <div className="flex flex-col items-center p-10">
         <h2 className="font-bold sm:text-lg">Not a valid URL</h2>

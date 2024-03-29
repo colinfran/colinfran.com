@@ -4,7 +4,7 @@ import React, { useState } from "react"
 
 const Page = (): JSX.Element => {
   const [isLoaded, setIsLoaded] = useState(false)
-  const Icon = Icons["Loader"] as React.FC
+  const Icon = Icons["Loader"]
 
   return (
     <div className="relative">

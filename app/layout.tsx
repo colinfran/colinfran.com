@@ -42,17 +42,17 @@ export const metadata: Metadata = {
     "postgresql",
     "san francisco",
   ],
-  description: "Colin Franceschini | Portfolio | Software Engineer",
+  description: "Colin Franceschini | Software Engineer",
   openGraph: {
     title: "ColinFran.com | Portfolio",
-    description: "Colin Franceschini | Portfolio | Software Engineer",
+    description: "Colin Franceschini | Software Engineer",
     url: "https://colinfran.com",
     locale: "en-US",
     type: "website",
     siteName: "ColinFran.com",
     images: [
       {
-        url: "https://colinfran-com-new.vercel.app/icons/og.png",
+        url: "https://colinfran.com/icons/og.png",
         width: 1200,
         height: 630,
         alt: "ColinFran.com website",
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: "ColinFran.com | Portfolio",
-    description: "Colin Franceschini | Portfolio | Software Engineer",
+    description: "Colin Franceschini | Software Engineer",
     card: "summary_large_image",
-    images: ["https://colinfran-com-new.vercel.app/icons/og.png"],
+    images: ["https://colinfran.com/icons/og.png"],
     creator: "@colinfran",
   },
   alternates: {
