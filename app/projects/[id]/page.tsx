@@ -24,9 +24,13 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
   const { resolvedTheme } = useTheme()
   const router = useRouter()
 
-  const onClick = useCallback(() => {
-    router.back()
-  }, [router])
+  const onClick = useCallback(
+    (e) => {
+      e.preventDefault()
+      router.back()
+    },
+    [router],
+  )
 
   return (
     <div className="my-10 flex flex-col items-center space-y-6">
@@ -56,8 +60,10 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
           </div>
         </div>
       </Card>
-      <Button variant="secondary" onClick={onClick}>
-        Go Back
+      <Button variant="secondary" asChild>
+        <Link href="/" onClick={onClick}>
+          Go Back
+        </Link>
       </Button>
     </div>
   )
