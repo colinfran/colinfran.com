@@ -1,7 +1,5 @@
-"use client"
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react"
-import { v4 } from "uuid"
+import React from "react"
 import { Project } from "./Project"
 import { StaticImageData } from "next/image"
 
@@ -11,6 +9,7 @@ type LinksProps = {
 }
 
 export type ProjectProps = {
+  id: string
   title: string
   description: string
   links: LinksProps[]
@@ -22,27 +21,11 @@ export type ProjectsProps = {
   projects: ProjectProps[]
 }
 
-export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
-  const [indexOpen, setIndexOpen] = useState<undefined | number>(undefined)
-
-  const handleProjectClick = (index: number): void => {
-    if (index === indexOpen) {
-      setIndexOpen(undefined) // Collapse the currently open project if clicked again
-    } else {
-      setIndexOpen(index) // Expand the clicked project
-    }
-  }
-
+export const Projects: React.FC<ProjectsProps> = async ({ projects }) => {
   return (
     <div className="flex flex-col space-y-4">
-      {projects.map((project: ProjectProps, index: number) => (
-        <Project
-          handleProjectClick={handleProjectClick}
-          index={index}
-          indexOpen={indexOpen}
-          key={v4()}
-          project={project}
-        />
+      {projects.map((project: ProjectProps) => (
+        <Project key={project.id} project={project} />
       ))}
     </div>
   )

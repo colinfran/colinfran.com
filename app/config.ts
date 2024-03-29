@@ -20,6 +20,7 @@ export const siteConfig = {
   },
   projects: [
     {
+      id: "linkchop",
       title: "LinkChop",
       description:
         "A simple url shortener with free and premium features. Built with Next.js, NextAuth, Tailwind, shadcn/ui, PostgreSQL, and Stripe.",
@@ -33,6 +34,7 @@ export const siteConfig = {
       imageSrcDark: linkChompDark,
     },
     {
+      id: "kwallet",
       title: "kwallet",
       description: "A Kaspa wallet app for iOS and Android. Built with React Native.",
       links: [
@@ -45,6 +47,7 @@ export const siteConfig = {
       imageSrcDark: kwalletMockupDark,
     },
     {
+      id: "learn-react-quick",
       title: "Learn React Quick - free course",
       description:
         "Master React.js in no time. A free course for anyone interested in learning React.js",
@@ -58,6 +61,7 @@ export const siteConfig = {
       imageSrcDark: lrqDark,
     },
     {
+      id: "nhdashboard",
       title: "NHDashboard",
       description:
         "NHDashboard is a web app dashboard that displays information about your cryptocurrency mining rigs using NiceHash. Built with Express.js and React.js",
@@ -74,6 +78,7 @@ export const siteConfig = {
       imageSrc: nhdashboardMockup,
     },
     {
+      id: "wallpaperqr",
       title: "WallpaperQR",
       description:
         "WallpaperQR takes the effort out of people having to enter in your information into someone's phone when you are networking. A simplistic wallpaper generator that is easy to use. Built with React Native.",
@@ -90,6 +95,7 @@ export const siteConfig = {
       imageSrc: wallpaperqrMockup,
     },
     {
+      id: "calculator-for-minimalists",
       title: "Calculator for Minimalists",
       description:
         "A basic, minimalistic calculator. Nothing special. Just a plain calculator. Sometimes you just need something simple. Built with React Native.",
