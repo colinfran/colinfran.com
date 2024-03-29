@@ -21,12 +21,10 @@ export type ProjectsProps = {
   projects: ProjectProps[]
 }
 
-export const Projects: React.FC<ProjectsProps> = async ({ projects }) => {
-  return (
-    <div className="flex flex-col space-y-4">
-      {projects.map((project: ProjectProps) => (
-        <Project key={project.id} project={project} />
-      ))}
-    </div>
-  )
-}
+export const Projects: React.FC<ProjectsProps> = async ({ projects }) => (
+  <div className="flex flex-col space-y-4">
+    {projects.map((project: ProjectProps) => (
+      <Project key={project.id} project={project} />
+    ))}
+  </div>
+)

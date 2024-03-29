@@ -1,16 +1,17 @@
 "use client"
+import { redirect } from "next/navigation"
 import React, { useEffect, useState } from "react"
 
-type CountdownTimerProps = {
+type CountdownRedirectProps = {
   link: string
 }
 
-const CountdownTimer: React.FC<CountdownTimerProps> = ({ link }) => {
+const CountdownRedirect: React.FC<CountdownRedirectProps> = ({ link }) => {
   const [seconds, setSeconds] = useState(5)
 
   useEffect(() => {
     if (seconds === 0) {
-      window.location.href = link
+      redirect("/")
     }
   }, [link, seconds])
 
@@ -29,4 +30,4 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ link }) => {
   )
 }
 
-export default CountdownTimer
+export default CountdownRedirect

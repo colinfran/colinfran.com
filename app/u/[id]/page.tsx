@@ -1,5 +1,5 @@
 import React from "react"
-import CountdownTimer from "@/components/CountdownTimer"
+import CountdownRedirect from "@/components/CountdownRedirect"
 
 interface Links {
   [key: string]: string
@@ -19,7 +19,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
       <div className="flex flex-col items-center p-10">
         <h2 className="font-bold sm:text-lg">Not a valid URL</h2>
         <div className="mt-6 ">
-          <CountdownTimer link="/" />
+          <CountdownRedirect link="/" />
         </div>
       </div>
     )
@@ -29,7 +29,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
       <h2 className="font-bold sm:text-lg">Link:</h2>
       <p>{`${link}`}</p>
       <div className="mt-6 ">
-        <CountdownTimer link={link} />
+        <CountdownRedirect link={link} />
       </div>
     </div>
   )
