@@ -37,10 +37,6 @@ export const siteConfig = {
       description: "A Kaspa wallet app for iOS and Android. Built with React Native.",
       links: [
         {
-          url: "https://kwallet.app/?utm_source=colinfran-website&utm_medium=colinfran-website",
-          text: "Website",
-        },
-        {
           url: "https://github.com/colinfran/kwallet",
           text: "GitHub",
         },
