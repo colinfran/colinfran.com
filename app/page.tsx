@@ -11,7 +11,7 @@ const Page: React.FC = async () => {
         <h1 className="mb-8 scroll-m-20 text-4xl font-extrabold tracking-tight">
           Hello, I&apos;m Colin!
         </h1>
-        <p className="text-muted-foreground/75">
+        <p className="text-muted-foreground">
           I am a Full Stack Software Engineer and like to focus on building dynamic applications
           using a combination of React.js, React Native, Express.js, Next.js, and TypeScript.
           Experienced in developing Web, iOS, and Android mobile apps with a keen eye for design,

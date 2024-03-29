@@ -66,7 +66,7 @@ export const Project: React.FC<ProjectPropType> = ({
         src={resolvedTheme === "light" ? imageSrc : imageSrcDark || imageSrc}
       />
       <h3 className="font-semibold underline underline-offset-4">{title}</h3>
-      <p className="text-muted-foreground/75">{description}</p>
+      <p className="text-muted-foreground">{description}</p>
       <div className={open ? "block" : "hidden"}>
         <div className="flex flex-row gap-10">
           {links.map(({ text, url }: { text: string; url: string }) => (
