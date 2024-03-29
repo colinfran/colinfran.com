@@ -26,3 +26,5 @@ googlecredentials.json
 urlshortener-13868-firebase-adminsdk-3nbqz-02db864afc.json
 
 /client2/
+.envold
+.next/

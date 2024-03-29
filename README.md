@@ -1,7 +1,3 @@
-# Personal portfolio website
+# colinfran.com
 
-created with React.js and Typescript
-
-https://colinfran.com
-
-Deployed using vercel
+This website was built with React, Next.js, TailwindCSS, and shadcn/ui.
