@@ -5,10 +5,6 @@ import Header from "@/components/Header"
 import { Analytics } from "@vercel/analytics/react"
 import { Metadata } from "next"
 
-type Props = {
-  children?: React.ReactNode
-}
-
 export const metadata: Metadata = {
   title: {
     template: "%s | ColinFran.com",
@@ -76,7 +72,11 @@ export const metadata: Metadata = {
   },
 }
 
-const RootLayout: React.FC<Props> = ({ children }: Props) => {
+type RootLayoutProps = {
+  children?: React.ReactNode
+}
+
+const RootLayout: React.FC<RootLayoutProps> = async ({ children }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="relative flex min-h-screen flex-col gap-4">

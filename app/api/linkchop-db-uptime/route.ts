@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server"
 import postgres from "postgres"
 
+/**
+ * Handles GET requests to the '/api/linkchop-db-uptime' endpoints.
+ * Checks to see if the LinkChop.com database is running.
+ * @returns {Promise<NextResponse>} - Returns a response object.
+ */
+
 export async function GET(): Promise<NextResponse> {
   try {
     const connectionString = process.env.POSTGRES_URL!
-    console.log(connectionString)
     const sql = postgres(connectionString)
     await sql`select 1`
     return NextResponse.json({ status: 200, message: "Database is running." })

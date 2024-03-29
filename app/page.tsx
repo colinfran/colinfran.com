@@ -4,7 +4,7 @@ import { SocialLink } from "@/components/SocialLink"
 import Link from "next/link"
 import { Projects } from "@/components/Projects"
 
-const Page: React.FC = () => {
+const Page: React.FC = async () => {
   return (
     <div className="container mb-10 flex flex-col space-y-6 divide-y">
       <div className="space-y-2 pt-6">
