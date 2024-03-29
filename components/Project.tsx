@@ -53,6 +53,7 @@ export const Project: React.FC<ProjectPropType> = ({
       aria-expanded={open}
       className="flex cursor-pointer flex-col gap-2 p-8"
       ref={element}
+      role="button"
       tabIndex={0}
       onClick={onClick}
       onKeyDown={onKeyDown}
