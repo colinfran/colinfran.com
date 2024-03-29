@@ -52,7 +52,7 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
         </div>
       </Card>
       <Button key={v4()} variant="secondary" asChild>
-        <Link href="/">Go Back</Link>
+        <Link href={`/#${params.id}`}>Go Back</Link>
       </Button>
     </div>
   )
