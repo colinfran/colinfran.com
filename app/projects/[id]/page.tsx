@@ -25,7 +25,7 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
   const router = useRouter()
 
   const onClick = useCallback(
-    (e) => {
+    (e: React.MouseEvent<HTMLLinkElement>) => {
       e.preventDefault()
       router.back()
     },
