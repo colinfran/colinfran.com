@@ -1,5 +1,5 @@
 "use client"
-import React from "react"
+import React, { useCallback } from "react"
 
 import Image from "next/image"
 import { Card } from "../../../components/ui/card"
@@ -8,7 +8,7 @@ import { Button } from "../../../components/ui/button"
 import { v4 } from "uuid"
 import { useTheme } from "next-themes"
 import { siteConfig } from "../../config"
-import { redirect } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 
 const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
   let project
@@ -22,6 +22,11 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
   }
   const { title, description, links, imageSrc, imageSrcDark } = project!
   const { resolvedTheme } = useTheme()
+  const router = useRouter()
+
+  const onClick = useCallback(() => {
+    router.back()
+  }, [router])
 
   return (
     <div className="my-10 flex flex-col items-center space-y-6">
@@ -51,8 +56,8 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
           </div>
         </div>
       </Card>
-      <Button variant="secondary" asChild>
-        <Link href="/">Go Back</Link>
+      <Button variant="secondary" onClick={onClick}>
+        Go Back
       </Button>
     </div>
   )
