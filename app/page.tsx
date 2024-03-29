@@ -6,7 +6,7 @@ import { Projects } from "@/components/Projects"
 
 const Page: React.FC = () => {
   return (
-    <div className="container flex flex-col space-y-6 divide-y">
+    <div className="container flex flex-col space-y-6 divide-y mb-10">
       <div className="space-y-2 pt-6">
         <h1 className="mb-8 scroll-m-20 text-4xl font-extrabold tracking-tight">
           Hello, I&apos;m Colin!
