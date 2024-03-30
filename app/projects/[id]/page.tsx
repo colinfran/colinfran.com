@@ -24,14 +24,6 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
   const { resolvedTheme } = useTheme()
   const router = useRouter()
 
-  const onClick = useCallback(
-    (e: MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault()
-      router.back()
-    },
-    [router],
-  )
-
   return (
     <div className="my-10 flex flex-col items-center space-y-6">
       <Card className="mx-5 flex max-w-[900px] flex-col gap-10 p-8 md:mx-10 md:flex-row">
@@ -60,10 +52,8 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
           </div>
         </div>
       </Card>
-      <Button variant="secondary" asChild>
-        <Link href="/" onClick={onClick}>
-          Go Back
-        </Link>
+      <Button variant="secondary" onClick={() => router.back()}>
+        Go Back
       </Button>
     </div>
   )

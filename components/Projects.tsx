@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react"
-import { Project } from "./Project"
 import { StaticImageData } from "next/image"
+import { Card } from "./ui/card"
+import Link from "next/link"
 
 type LinksProps = {
   url: string
@@ -23,8 +23,13 @@ export type ProjectsProps = {
 
 export const Projects: React.FC<ProjectsProps> = async ({ projects }) => (
   <div className="flex flex-col space-y-4">
-    {projects.map((project: ProjectProps) => (
-      <Project key={project.id} project={project} />
+    {projects.map(({ id, title, description }: ProjectProps) => (
+      <Link href={`/${id}`} key={id}>
+        <Card className="flex cursor-pointer flex-col gap-2 p-8">
+          <h3 className="font-semibold underline underline-offset-4">{title}</h3>
+          <p className="text-muted-foreground">{description}</p>
+        </Card>
+      </Link>
     ))}
   </div>
 )
