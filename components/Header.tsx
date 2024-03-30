@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import ThemeToggle from "./ThemeToggle"
 
-const Header: React.FC = () => (
+const Header: React.FC = async () => (
   <header className="container">
     <div className="flex items-center justify-between border-b py-4">
       <Link href="/">
