@@ -1,5 +1,5 @@
 "use client"
-import React, { MouseEvent, useCallback } from "react"
+import React from "react"
 
 import Image from "next/image"
 import { Card } from "../../../components/ui/card"
@@ -29,7 +29,7 @@ const Page: React.FC<{ params: { id: string } }> = ({ params }) => {
       <Card className="mx-5 flex max-w-[900px] flex-col gap-10 p-8 md:mx-10 md:flex-row">
         <Image
           alt={title}
-          className=" md:w-1/2"
+          className="rounded-lg md:w-1/2"
           loading="lazy"
           placeholder="blur"
           src={resolvedTheme === "light" ? imageSrc : imageSrcDark || imageSrc}
