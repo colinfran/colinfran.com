@@ -26,7 +26,7 @@ const Page: React.FC = async () => {
       <div className="space-y-2 pt-6">
         <h2 className="font-bold sm:text-lg">Projects</h2>
         <div className="flex flex-col">
-          <Projects projects={siteConfig.projects} />
+          <Projects />
         </div>
       </div>
       <div className="space-y-2 pt-6">
