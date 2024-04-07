@@ -1,8 +1,9 @@
-import React from "react"
-import { StaticImageData } from "next/image"
-import { Card } from "./ui/card"
-import Link from "next/link"
+"use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from "react"
 import { v4 } from "uuid"
+import { Project } from "./Project"
+import { StaticImageData } from "next/image"
 import { siteConfig } from "../app/config"
 
 type LinksProps = {
@@ -11,7 +12,6 @@ type LinksProps = {
 }
 
 export type ProjectProps = {
-  id: string
   title: string
   description: string
   links: LinksProps[]
@@ -19,15 +19,28 @@ export type ProjectProps = {
   imageSrcDark?: StaticImageData
 }
 
-export const Projects: React.FC = async () => (
-  <div className="flex flex-col space-y-4">
-    {siteConfig.projects.map(({ id, title, description }: ProjectProps) => (
-      <Link href={`/${id}`} key={v4()}>
-        <Card className="flex cursor-pointer flex-col gap-2 p-8">
-          <h3 className="font-semibold underline underline-offset-4">{title}</h3>
-          <p className="text-muted-foreground">{description}</p>
-        </Card>
-      </Link>
-    ))}
-  </div>
-)
+export const Projects: React.FC = () => {
+  const [indexOpen, setIndexOpen] = useState<undefined | number>(undefined)
+  const { projects } = siteConfig
+  const handleProjectClick = (index: number): void => {
+    if (index === indexOpen) {
+      setIndexOpen(undefined) // Collapse the currently open project if clicked again
+    } else {
+      setIndexOpen(index) // Expand the clicked project
+    }
+  }
+
+  return (
+    <div className="flex flex-col space-y-4">
+      {projects.map((project: ProjectProps, index: number) => (
+        <Project
+          handleProjectClick={handleProjectClick}
+          index={index}
+          indexOpen={indexOpen}
+          key={v4()}
+          project={project}
+        />
+      ))}
+    </div>
+  )
+}
