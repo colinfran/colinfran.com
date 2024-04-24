@@ -4,16 +4,14 @@ import Link from "next/link"
 import { Icons } from "./Icons"
 import { Button } from "./ui/button"
 
-type IconName = keyof typeof Icons
-
 type SocialLinkProps = {
-  icon: string
+  icon: keyof typeof Icons
   href: string
   title: string
 }
 
 export const SocialLink: React.FC<SocialLinkProps> = ({ icon, href, title }) => {
-  const Icon = Icons[icon as IconName]
+  const Icon = Icons[icon]
   return (
     <Button size="icon" variant="outline" asChild>
       <Link
