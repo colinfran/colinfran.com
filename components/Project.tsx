@@ -68,7 +68,7 @@ export const Project: React.FC<ProjectPropType> = ({
       <h3 className="font-semibold underline underline-offset-4">{title}</h3>
       <p className="text-muted-foreground/75">{description}</p>
       <div className={open ? "block" : "hidden"}>
-        <div className="mb-5 gap-2 flex flex-row">
+        <div className="mb-5 flex flex-row gap-2">
           {tags.map((item: string) => (
             <Badge key={item} variant="outline">
               {item}
