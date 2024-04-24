@@ -8,6 +8,7 @@ import { Button } from "./ui/button"
 import { v4 } from "uuid"
 import { useTheme } from "next-themes"
 import { ProjectProps } from "./Projects"
+import { Badge } from "@/components/ui/badge"
 
 type ProjectPropType = {
   project: ProjectProps
@@ -22,7 +23,7 @@ export const Project: React.FC<ProjectPropType> = ({
   indexOpen,
   handleProjectClick,
 }) => {
-  const { title, description, links, imageSrc, imageSrcDark } = project
+  const { title, description, links, imageSrc, imageSrcDark, tags } = project
   const element = useRef<HTMLDivElement>(null)
 
   const { resolvedTheme } = useTheme()
@@ -67,6 +68,13 @@ export const Project: React.FC<ProjectPropType> = ({
       <h3 className="font-semibold underline underline-offset-4">{title}</h3>
       <p className="text-muted-foreground/75">{description}</p>
       <div className={open ? "block" : "hidden"}>
+        <div className="mb-5 gap-2 flex flex-row">
+          {tags.map((item: string) => (
+            <Badge key={item} variant="outline">
+              {item}
+            </Badge>
+          ))}
+        </div>
         <div className="flex flex-row gap-10">
           {links.map(({ text, url }: { text: string; url: string }) => (
             <Button className="w-full" key={v4()} asChild>

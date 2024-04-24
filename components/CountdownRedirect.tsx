@@ -11,7 +11,7 @@ const CountdownRedirect: React.FC<CountdownRedirectProps> = ({ link }) => {
 
   useEffect(() => {
     if (seconds === 0) {
-      redirect("/")
+      redirect(link)
     }
   }, [link, seconds])
 
