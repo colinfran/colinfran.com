@@ -15,6 +15,7 @@ export type ProjectProps = {
   title: string
   description: string
   links: LinksProps[]
+  tags: string[]
   imageSrc: StaticImageData
   imageSrcDark?: StaticImageData
 }
