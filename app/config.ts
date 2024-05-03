@@ -7,6 +7,8 @@ import lrqDark from "../assets/images/lrq-dark.webp"
 import lrqLight from "../assets/images/lrq-light.webp"
 import linkChompDark from "../assets/images/linkchop-dark.webp"
 import linkChompLight from "../assets/images/linkchop-light.webp"
+import franfoodDark from "../assets/images/franfood-dark.webp"
+import franfoodLight from "../assets/images/franfood-light.webp"
 
 export const siteConfig = {
   name: "Colin Franceschini",
@@ -19,6 +21,32 @@ export const siteConfig = {
     x: "https://x.com/colinfran",
   },
   projects: [
+    {
+      id: "franceschini-food",
+      title: "Franceschini Food",
+      description: "A recipe cookbook website created to showcase family recipes",
+      links: [
+        {
+          url: "https://github.com/colinfran/franceschini-food",
+          text: "GitHub",
+        },
+        {
+          url: "https://franceschini.food/",
+          text: "Website",
+        },
+      ],
+      tags: [
+        "Next.js",
+        "Tailwind CSS",
+        "React.js",
+        "TypeScript",
+        "shadcn/ui",
+        "MongoDB",
+        "ImgBB",
+      ],
+      imageSrc: franfoodLight,
+      imageSrcDark: franfoodDark,
+    },
     {
       id: "linkchop",
       title: "LinkChop",
