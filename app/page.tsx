@@ -12,15 +12,29 @@ const Page: React.FC = async () => {
           Hello, I&apos;m Colin!
         </h1>
         <p className="text-muted-foreground">
-          I am a Full Stack Software Engineer and like to focus on building dynamic applications
+          {`I am a Full Stack Software Engineer and like to focus on building dynamic applications
           using a combination of React.js, React Native, Express.js, Next.js, and TypeScript.
           Experienced in developing Web, iOS, and Android mobile apps with a keen eye for design,
           user experience, and accessibility. Based in San Francisco, I have a passion for both
           coding and technology, as well as for fitness and weightlifting. Check out the links below
-          or take a look at my{" "}
+          or take a look at my `}
           <Link className="underline" href="/resume">
             resume
           </Link>
+          .
+        </p>
+        <p className="py-2 text-muted-foreground">
+          {"Currently @ "}
+          <a className="underline" href="https://www.hp.com/">
+            HP
+          </a>
+          {",  building the "}
+          <a className="underline" href="https://www.hp.com/us-en/workstations/ai-studio.html">
+            Z by HP AI Studio
+          </a>
+          {
+            " product — a centralized data science platform that brings data, people, and compute together."
+          }
         </p>
       </div>
       <div className="space-y-2 pt-6">
