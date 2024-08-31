@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider"
 import Header from "@/components/Header"
 import { Analytics } from "@vercel/analytics/react"
 import { Metadata } from "next"
+import GoogleAnalytics from "@/components/GoogleAnalytics"
 
 export const metadata: Metadata = {
   title: {
@@ -79,6 +80,7 @@ type RootLayoutProps = {
 const RootLayout: React.FC<RootLayoutProps> = async ({ children }) => {
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleAnalytics />
       <body className="relative flex min-h-screen flex-col gap-4">
         <ThemeProvider
           attribute="class"
