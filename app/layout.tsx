@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider"
 import Header from "@/components/Header"
 import { Analytics } from "@vercel/analytics/react"
 import { Metadata } from "next"
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 const gaId = process.env.NEXT_PUBLIC_MEASUREMENT_ID!
 
