@@ -1,5 +1,3 @@
-// GoogleAnalytics.tsx
-
 import React, { FC } from "react"
 import Script from "next/script"
 
@@ -12,14 +10,12 @@ const GoogleAnalytics: FC = () => {
       />
 
       <Script id="" strategy="lazyOnload">
-        {
-         `window.dataLayer = window.dataLayer || [];
+        {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${process.env.NEXT_PUBLIC_MEASUREMENT_ID}', {
           page_path: window.location.pathname,
-          });`
-        }
+          });`}
       </Script>
     </>
   )
