@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { MoonIcon, SunIcon } from "lucide-react"
+import { Skeleton } from "@/components/ui/skeleton"
 
 const ThemeToggle: React.FC = () => {
   const { setTheme, resolvedTheme } = useTheme()
@@ -13,6 +14,9 @@ const ThemeToggle: React.FC = () => {
     setTrueTheme(resolvedTheme)
   }, [resolvedTheme])
 
+  if (trueTheme === undefined) {
+    return <Skeleton className="size-[32px] rounded-full" />
+  }
   return (
     <div>
       <button

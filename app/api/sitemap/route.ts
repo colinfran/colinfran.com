@@ -1,0 +1,31 @@
+import { blogs } from "@/app/blog/data"
+import { getServerSideSitemap } from "next-sitemap"
+
+export async function GET(): Promise<Response> {
+  const arr = [
+    {
+      loc: "https://colinfran.com",
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: "https://colinfran.com/resume",
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: "https://colinfran.com/blog",
+      lastmod: new Date().toISOString(),
+    },
+  ]
+  blogs.forEach((blog) => {
+    arr.push({
+      loc: `https://colinfran.com/blog/${blog.id}`,
+      lastmod: new Date().toISOString(),
+    })
+  })
+  arr.push({
+    loc: "https://colinfran.com/404",
+    lastmod: new Date().toISOString(),
+  })
+
+  return getServerSideSitemap(arr)
+}

@@ -24,14 +24,21 @@ const Page: React.FC = async () => {
           .
         </p>
         <p className="py-2 text-muted-foreground">
+          {"Sometimes I like to write down whats on my mind. Check out my blog posts "}
+          <Link className="underline" href="/blog">
+            here
+          </Link>
+          {"."}
+        </p>
+        <p className="py-2 text-muted-foreground">
           {"Currently @ "}
-          <a className="underline" href="https://www.hp.com/">
+          <Link className="underline" href="https://www.hp.com/">
             HP
-          </a>
+          </Link>
           {",  building the "}
-          <a className="underline" href="https://www.hp.com/us-en/workstations/ai-studio.html">
+          <Link className="underline" href="https://www.hp.com/us-en/workstations/ai-studio.html">
             Z by HP AI Studio
-          </a>
+          </Link>
           {
             " product — a centralized data science platform that brings data, people, and compute together."
           }
