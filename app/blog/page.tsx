@@ -33,7 +33,7 @@ const Page: React.FC = async () => {
                     />
                   </CardHeader>
                   <CardContent className="p-4">
-                    <h3 className="mb-2 text-xl font-semibold">{title}</h3>
+                    <h3 className="mb-2 line-clamp-2 h-[56px] text-xl font-semibold">{title}</h3>
                     <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                       <div>{author}</div>
                       <div>•</div>
