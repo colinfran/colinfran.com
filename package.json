@@ -9,6 +9,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@next/third-parties": "^14.2.7",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@vercel/analytics": "^1.2.2",
