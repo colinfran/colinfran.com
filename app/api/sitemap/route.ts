@@ -1,4 +1,4 @@
-import { blogs } from "@/app/blog/data"
+import { blogs } from "@/lib/blog"
 import { getServerSideSitemap } from "next-sitemap"
 
 export async function GET(): Promise<Response> {

@@ -1,7 +1,7 @@
 import React from "react"
 import { Card, CardHeader, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { blogs, Blog } from "./data"
+import { blogs, Blog } from "@/lib/blog"
 import Image from "next/image"
 
 const Page: React.FC = async () => {
