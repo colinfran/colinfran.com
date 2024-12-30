@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server"
-import postgres from "postgres"
 
 const token = process.env.LOCATION_TOKEN
 /**
@@ -10,12 +9,12 @@ const token = process.env.LOCATION_TOKEN
  */
 
 type RequestProps = {
-  id: string;
-  longitude: string;
-  latitude: string;
-  city: string;
-  state: string;
-  country: string;
+  id: string
+  longitude: string
+  latitude: string
+  city: string
+  state: string
+  country: string
 }
 
 export async function GET(
@@ -23,8 +22,8 @@ export async function GET(
   { params }: { params: RequestProps },
 ): Promise<Response> {
   const id = params.id
-  if (id !== token){
-    return new Response(`Invalid id`, {
+  if (id !== token) {
+    return new Response("Invalid id", {
       status: 400,
     })
   }
