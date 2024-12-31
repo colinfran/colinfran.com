@@ -6,18 +6,10 @@ import { NextResponse, NextRequest } from "next/server"
  * @returns {Promise<Response>} - Returns a response object.
  */
 
-export async function GET(request: NextRequest): Promise<Response> {
-  const searchParams = request.nextUrl.searchParams
+export async function POST(request: NextRequest): Promise<Response>  {
   const token = process.env.LOCATION_TOKEN!
-  const id = searchParams.get("id")
-  const params = {
-    latitude: searchParams.get("latitude"),
-    longitude: searchParams.get("longitude"),
-    city: searchParams.get("city"),
-    state: searchParams.get("state"),
-    country: searchParams.get("country"),
-  }
-  if (id !== token) {
+  const params = await request.json();
+  if (params.id !== token) {
     return NextResponse.json({ error: "Invalid id" }, { status: 400 })
   }
 
