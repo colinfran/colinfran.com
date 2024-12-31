@@ -33,24 +33,25 @@ const Page: React.FC = async () => {
           </Link>
           {"."}
         </p>
-        <p className="py-2 text-muted-foreground flex flex-row">
-          <span className="min-w-[28px] flex self-center">{"💼"}</span>
-          <span>{"Currently @ "}
-          <Link className="underline" href="https://www.hp.com/">
-            HP
-          </Link>
-          {",  building the "}
-          <Link className="underline" href="https://www.hp.com/us-en/workstations/ai-studio.html">
-            Z by HP AI Studio
-          </Link>
-          {
-            " product — a centralized data science platform that brings data, people, and compute together."
-          }
+        <p className="flex flex-row py-2 text-muted-foreground">
+          <span className="flex min-w-[28px] self-center">{"💼"}</span>
+          <span>
+            {"Currently @ "}
+            <Link className="underline" href="https://www.hp.com/">
+              HP
+            </Link>
+            {",  building the "}
+            <Link className="underline" href="https://www.hp.com/us-en/workstations/ai-studio.html">
+              Z by HP AI Studio
+            </Link>
+            {
+              " product — a centralized data science platform that brings data, people, and compute together."
+            }
           </span>
         </p>
         <div className="py-2">
           <Link
-            className="flex flex-row group py-2 text-muted-foreground"
+            className="group flex flex-row py-2 text-muted-foreground"
             href="/blog/tracking-location-with-iphone-shortcut"
           >
             <span className="min-w-[28px]">{"📍"}</span>
