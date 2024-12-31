@@ -93,7 +93,7 @@ const Page: React.FC<Props> = async ({ params }) => {
                 className="group flex items-center space-x-4"
                 href={`/blog/${recentPost.id}`}
                 key={`${recentPost.id} - recent post`}
-                prefetch={false}
+                prefetch
               >
                 <div className="h-12 w-16 shrink-0 overflow-hidden rounded-md">
                   <Image

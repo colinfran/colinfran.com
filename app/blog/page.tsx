@@ -21,7 +21,7 @@ const Page: React.FC = async () => {
         <div className="">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {blogs.map(({ id, title, author, date, image }: Blog) => (
-              <Link href={`/blog/${id}`} key={id} prefetch={false}>
+              <Link href={`/blog/${id}`} key={id} prefetch>
                 <Card>
                   <CardHeader>
                     <Image

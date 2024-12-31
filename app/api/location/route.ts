@@ -19,7 +19,7 @@ export async function POST(request: NextRequest): Promise<Response> {
     const utcNow = new Date().toISOString()
     await sql`INSERT INTO location (date, state, latitude, longitude, city, country)
   VALUES (${utcNow}, ${params.state}, ${params.latitude}, ${params.longitude}, ${params.city}, ${params.country});`
-    return NextResponse.json({ status: 200 }) 
+    return NextResponse.json({ status: 200 })
   } catch (error) {
     return NextResponse.json({ error: "Error inserting into db" }, { status: 400 })
   }

@@ -21,14 +21,14 @@ const Page: React.FC = async () => {
           user experience, and accessibility. Based in San Francisco, I have a passion for both
           coding and technology, as well as for fitness and weightlifting. Check out the links below
           or take a look at my `}
-          <Link className="underline" href="/resume">
+          <Link className="underline" href="/resume" prefetch>
             resume
           </Link>
           .
         </p>
         <p className="py-2 text-muted-foreground">
           {"Sometimes I like to write down whats on my mind. Check out my blog posts "}
-          <Link className="underline" href="/blog">
+          <Link className="underline" href="/blog" prefetch>
             here
           </Link>
           {"."}
