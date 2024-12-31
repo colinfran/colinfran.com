@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 
 /**
- * Handles GET requests to the '/api/location' endpoints.
+ * Handles GET requests to the '/api/location/update' endpoints.
  * Retrieves BetterUptime information based on id.
  * @param {Request} request - The incoming request object.
  * @returns {Promise<Response>} - Returns a response object.
