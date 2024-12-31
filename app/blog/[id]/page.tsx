@@ -1,5 +1,5 @@
 import React from "react"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
 import Image from "next/image"
 import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
