@@ -14,7 +14,7 @@ export const blogs: Blog[] = [
     title: "Location tracking using iPhone Shortcut",
     author: "Colin Franceschini",
     date: "2024-12-30T16:47:11.954Z",
-    image: "https://i.ibb.co/1zcWgCk/locationdb.jpg",
+    image: "https://i.ibb.co/tQWF0wJ/locationdb.jpg",
     post: [
       "In today's digital world, location tracking is something we use every day, whether it's for navigation or for tracking our workouts. But I've taken it a step further and built an iPhone shortcut that automatically tracks my location every day. Not only does this help me understand my movements better, but it also allows me to store this data in a database and visualize it in exciting ways.",
 
@@ -67,7 +67,7 @@ export const blogs: Blog[] = [
     title: "The Joy of Building and Coding",
     author: "Colin Franceschini",
     date: "2024-08-26T16:47:11.954Z",
-    image: "https://i.ibb.co/WPS6nxN/programming.jpg",
+    image: "https://i.ibb.co/09MG6QJ/programming.jpg",
     post: [
       "Welcome to my blog! I'm excited to finally start sharing my thoughts and experiences as a full stack software engineer. Coding has always been more than just a profession for me—it's a passion that fuels my curiosity and creativity every day. There's an unmatched thrill in taking an abstract idea, shaping it with code, and watching it come to life as a fully functioning application.",
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
 import Image from "next/image"
 import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
@@ -20,14 +20,13 @@ const Page: React.FC<Props> = async ({ params }) => {
   const recentPosts = getRecentPosts()
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:gap-12 md:px-6 md:py-20">
-      <div className="max-w-[756px] flex-1">
-        <Image
+      <div className="flex-1 w-full md:w-[60%]">
+        <img
           alt={title}
-          className="h-[400px] w-full rounded-lg object-cover md:h-[500px]"
-          height={600}
+          className="w-full rounded-lg"
+          // height={600}
           src={image}
-          style={{ aspectRatio: "1200/600", objectFit: "cover" }}
-          width={1200}
+          // width={1200}
         />
         <div className="mt-8 space-y-4 md:mt-12">
           <h1 className="text-3xl font-bold md:text-4xl">{title}</h1>
