@@ -24,7 +24,7 @@ export const getTodaysLocation = async () => {
 
   const params = result[0]
   if (params.country === "United States") {
-    return `${params.city}, ${params.state}, ${params.country}`
+    return `${params.city}, ${params.state}, USA`
   }
   return `${params.city}, ${params.country}`
 }
