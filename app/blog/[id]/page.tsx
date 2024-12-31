@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
 import { redirect } from "next/navigation"
+import Markdown from 'react-markdown'
 
 type Props = { params: { id: string } }
 
@@ -17,7 +18,7 @@ const Page: React.FC<Props> = async ({ params }) => {
   const recentPosts = getRecentPosts()
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:gap-12 md:px-6 md:py-20">
-      <div className="flex-1">
+      <div className="flex-1 max-w-[756px]">
         <Image
           alt={title}
           className="h-[400px] w-full rounded-lg object-cover md:h-[500px]"
@@ -40,11 +41,31 @@ const Page: React.FC<Props> = async ({ params }) => {
             <span>{new Date(date).toLocaleDateString()}</span>
           </div>
           <div className="prose prose-lg dark:prose-invert mt-8 max-w-none space-y-6">
-            {post.map((paragraph: string) => (
-              <p className="indent-8 leading-loose" key={paragraph}>
-                {paragraph}
-              </p>
-            ))}
+            {post.map((paragraph: string) => {
+              if (paragraph.includes('ibb.co')) {
+                return (
+                  <Markdown key={paragraph} className="m-auto my-4 max-w-[500px]">
+                    {paragraph}
+                  </Markdown>
+                );
+              } else if (paragraph.includes('###')) {
+                return (
+                  <Markdown key={paragraph} className="text-3xl font-semibold my-4">
+                    {paragraph}
+                  </Markdown>
+                );
+              } else if (paragraph.includes('```')) {
+                return (
+                  <Markdown key={paragraph} className="my-4 bg-gray-900 w-full overflow-x-auto">
+                    {paragraph}
+                  </Markdown>
+                );
+              } else {
+                return (
+                  <Markdown key={paragraph}>{paragraph}</Markdown>
+                );
+              }
+            })}
           </div>
         </div>
       </div>
