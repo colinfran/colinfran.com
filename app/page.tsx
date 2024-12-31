@@ -3,8 +3,10 @@ import { siteConfig } from "./config"
 import { SocialLink } from "@/components/SocialLink"
 import Link from "next/link"
 import { Projects } from "@/components/Projects"
+import { getTodaysLocation } from "@/db/getTodaysLocation"
 
 const Page: React.FC = async () => {
+  const location = await getTodaysLocation()
   return (
     <div className="container mb-10 flex flex-col space-y-6 divide-y">
       <div className="space-y-2 pt-6">
@@ -31,7 +33,7 @@ const Page: React.FC = async () => {
           {"."}
         </p>
         <p className="py-2 text-muted-foreground">
-          {"Currently @ "}
+          {"💼 Currently @ "}
           <Link className="underline" href="https://www.hp.com/">
             HP
           </Link>
@@ -42,6 +44,9 @@ const Page: React.FC = async () => {
           {
             " product — a centralized data science platform that brings data, people, and compute together."
           }
+        </p>
+        <p className="py-2 text-muted-foreground">
+          {`📍 Current Location: ${location}`}
         </p>
       </div>
       <div className="space-y-2 pt-6">

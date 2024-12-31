@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server"
 import postgres from "postgres"
 
 /**
- * Handles GET requests to the '/api/location/update' endpoints.
+ * Handles GET requests to the '/api/location' endpoints.
  * @param {Request} request - The incoming request object.
  * @returns {Promise<Response>} - Returns a response object.
  */
