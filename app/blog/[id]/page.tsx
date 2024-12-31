@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
@@ -21,13 +22,7 @@ const Page: React.FC<Props> = async ({ params }) => {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:gap-12 md:px-6 md:py-20">
       <div className="w-full flex-1 md:w-3/5">
-        <img
-          alt={title}
-          className="w-full rounded-lg"
-          // height={600}
-          src={image}
-          // width={1200}
-        />
+        <img alt={title} className="w-full rounded-lg" src={image} />
         <div className="mt-8 space-y-4 md:mt-12">
           <h1 className="text-3xl font-bold md:text-4xl">{title}</h1>
           <div className="!mb-8 flex items-center space-x-4 text-muted-foreground">
