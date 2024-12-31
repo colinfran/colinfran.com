@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 
 /**
  * Handles GET requests to the '/api/location/update' endpoints.
@@ -6,24 +6,18 @@ import { NextRequest, NextResponse } from "next/server"
  * @returns {Promise<Response>} - Returns a response object.
  */
 
-type RequestProps = {
-  id?: string
-  longitude?: string
-  latitude?: string
-  city?: string
-  state?: string
-  country?: string
-}
-
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id?: string,
-    longitude?: string,
-    latitude?: string,
-    city?: string,
-    state?: string,
-    country?: string} },
-): Promise<Response> {
+export async function GET({
+  params,
+}: {
+  params: {
+    id?: string
+    longitude?: string
+    latitude?: string
+    city?: string
+    state?: string
+    country?: string
+  }
+}): Promise<Response> {
   const token = process.env.LOCATION_TOKEN!
   const id = params?.id || ""
 
