@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server"
+import postgres from "postgres"
 
 /**
  * Handles GET requests to the '/api/location/update' endpoints.
@@ -12,7 +13,9 @@ export async function POST(request: NextRequest): Promise<Response> {
   if (params.id !== token) {
     return NextResponse.json({ error: "Invalid id" }, { status: 400 })
   }
-
-  console.log(params)
+  const connectionString = process.env.LOCATION_POSTGRES_URL!
+  const sql = postgres(connectionString)
+  await sql`INSERT INTO location (date, state, latitude, longitude, city, country)
+VALUES (${new Date()}, ${params.state}, ${params.latitude}, ${params.longitude}, ${params.city}, ${params.country});`
   return NextResponse.json({ status: 200, message: "Working" })
 }
