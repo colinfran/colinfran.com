@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server"
 
 /**
  * Handles GET requests to the '/api/location/update' endpoints.
- * Retrieves BetterUptime information based on id.
  * @param {Request} request - The incoming request object.
  * @returns {Promise<Response>} - Returns a response object.
  */
@@ -24,7 +23,7 @@ export async function GET(
   const id = params?.id || ""
 
   if (id !== token) {
-    return NextResponse.json({ error: "Invalid id" }, { status: 400 })
+    return NextResponse.json({ error: "Invalid id", ...params, token }, { status: 400 })
   }
 
   console.log(params)
