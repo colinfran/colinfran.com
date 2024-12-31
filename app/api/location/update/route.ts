@@ -17,7 +17,12 @@ type RequestProps = {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: RequestProps },
+  { params }: { params: { id?: string,
+    longitude?: string,
+    latitude?: string,
+    city?: string,
+    state?: string,
+    country?: string} },
 ): Promise<Response> {
   const token = process.env.LOCATION_TOKEN!
   const id = params?.id || ""
