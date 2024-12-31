@@ -11,7 +11,7 @@ export async function GET(request: NextRequest): Promise<Response> {
   const sql = postgres(connectionString)
 
   // Get today's date in 'YYYY-MM-DD' format to match the stored date format.
-  const today = new Date().toISOString().split('T')[0]
+  const today = new Date().toISOString().split("T")[0]
 
   // Query the database to fetch today's location data.
   const result = await sql`
