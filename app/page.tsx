@@ -55,7 +55,7 @@ const Page: React.FC = async () => {
             href="/blog/tracking-location-with-iphone-shortcut"
           >
             <span className="min-w-[28px]">{"📍"}</span>
-            <span>{"Current Location: "}</span>
+            <span className="mr-2">{"Current Location: "}</span>
             <span className="group-hover:underline">{`${location} ${locationEmoji}`}</span>
           </Link>
         </div>
