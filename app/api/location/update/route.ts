@@ -6,9 +6,9 @@ import { NextResponse, NextRequest } from "next/server"
  * @returns {Promise<Response>} - Returns a response object.
  */
 
-export async function POST(request: NextRequest): Promise<Response>  {
+export async function POST(request: NextRequest): Promise<Response> {
   const token = process.env.LOCATION_TOKEN!
-  const params = await request.json();
+  const params = await request.json()
   if (params.id !== token) {
     return NextResponse.json({ error: "Invalid id" }, { status: 400 })
   }
