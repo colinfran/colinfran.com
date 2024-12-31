@@ -45,9 +45,7 @@ const Page: React.FC = async () => {
             " product — a centralized data science platform that brings data, people, and compute together."
           }
         </p>
-        <p className="py-2 text-muted-foreground">
-          {`📍 Current Location: ${location}`}
-        </p>
+        <p className="py-2 text-muted-foreground">{`📍 Current Location: ${location}`}</p>
       </div>
       <div className="space-y-2 pt-6">
         <h2 className="font-bold sm:text-lg">Projects</h2>
