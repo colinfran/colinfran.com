@@ -46,7 +46,10 @@ const Page: React.FC = async () => {
             " product — a centralized data science platform that brings data, people, and compute together."
           }
         </p>
-        <Link href="/blog/tracking-location-with-iphone-shortcut" className="py-2 text-muted-foreground">{`📍 Current Location: ${location} ${locationEmoji}`}</Link>
+        <Link
+          className="py-2 text-muted-foreground"
+          href="/blog/tracking-location-with-iphone-shortcut"
+        >{`📍 Current Location: ${location} ${locationEmoji}`}</Link>
       </div>
       <div className="space-y-2 pt-6">
         <h2 className="font-bold sm:text-lg">Projects</h2>
