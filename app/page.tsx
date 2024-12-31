@@ -47,9 +47,16 @@ const Page: React.FC = async () => {
           }
         </p>
         <Link
-          className="py-2 text-muted-foreground"
+          className="py-2 text-muted-foreground group"
           href="/blog/tracking-location-with-iphone-shortcut"
-        >{`📍 Current Location: ${location} ${locationEmoji}`}</Link>
+        >
+          <span>
+            {"📍 Current Location: "}
+          </span>
+          <span className="group-hover:underline">
+            {`${location} ${locationEmoji}`}
+          </span>
+        </Link>
       </div>
       <div className="space-y-2 pt-6">
         <h2 className="font-bold sm:text-lg">Projects</h2>

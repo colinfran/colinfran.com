@@ -5,6 +5,7 @@ import Header from "@/components/Header"
 import { Analytics } from "@vercel/analytics/react"
 import { Metadata } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
+import NextTopLoader from "nextjs-toploader"
 
 const gaId = process.env.NEXT_PUBLIC_MEASUREMENT_ID!
 
@@ -83,6 +84,7 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="relative flex min-h-screen flex-col gap-4">
+        <NextTopLoader color="#36568a" showSpinner={false} zIndex={100} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
