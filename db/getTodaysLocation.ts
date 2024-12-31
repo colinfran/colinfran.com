@@ -1,3 +1,5 @@
+import countryCodeEmoji from "country-code-emoji"
+import { countryToAlpha2 } from "country-to-iso"
 import postgres from "postgres"
 
 export const getTodaysLocation = async () => {
@@ -10,7 +12,7 @@ export const getTodaysLocation = async () => {
   // Query the database to fetch the most recent location data for today.
   const result: any = await sql`
     SELECT * FROM location
-    WHERE DATE(date) = ${today}
+    WHERE DATE(date) = ${today} 
     ORDER BY date DESC
     LIMIT 1
   `
@@ -25,4 +27,10 @@ export const getTodaysLocation = async () => {
     return `${params.city}, ${params.state}, ${params.country}`
   }
   return `${params.city}, ${params.country}`
+}
+
+export const getCountryIcon = (location: string): string => {
+  const locationCountry = location.split(",")[location.split(",").length - 1]
+  const countryCode = countryToAlpha2(locationCountry)!
+  return countryCodeEmoji(countryCode)
 }

@@ -3,10 +3,11 @@ import { siteConfig } from "./config"
 import { SocialLink } from "@/components/SocialLink"
 import Link from "next/link"
 import { Projects } from "@/components/Projects"
-import { getTodaysLocation } from "@/db/getTodaysLocation"
+import { getCountryIcon, getTodaysLocation } from "@/db/getTodaysLocation"
 
 const Page: React.FC = async () => {
   const location = await getTodaysLocation()
+  const locationEmoji = getCountryIcon(location)
   return (
     <div className="container mb-10 flex flex-col space-y-6 divide-y">
       <div className="space-y-2 pt-6">
@@ -45,7 +46,7 @@ const Page: React.FC = async () => {
             " product — a centralized data science platform that brings data, people, and compute together."
           }
         </p>
-        <p className="py-2 text-muted-foreground">{`📍 Current Location: ${location}`}</p>
+        <p className="py-2 text-muted-foreground">{`📍 Current Location: ${location} ${locationEmoji}`}</p>
       </div>
       <div className="space-y-2 pt-6">
         <h2 className="font-bold sm:text-lg">Projects</h2>
