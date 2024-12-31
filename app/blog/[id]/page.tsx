@@ -5,6 +5,8 @@ import Image from "next/image"
 import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
 import { redirect } from "next/navigation"
 import Markdown from "react-markdown"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism"
 
 type Props = { params: { id: string } }
 
@@ -56,9 +58,31 @@ const Page: React.FC<Props> = async ({ params }) => {
                 )
               } else if (paragraph.includes("```")) {
                 return (
-                  <Markdown className="my-4 w-full overflow-x-auto bg-gray-900" key={paragraph}>
-                    {paragraph}
-                  </Markdown>
+                  <Markdown
+                    children={paragraph} // eslint-disable-line react/no-children-prop
+                    components={{
+                      code(props) {
+                        const { children, className, node, ...rest } = props // eslint-disable-line unused-imports/no-unused-vars
+                        const match = /language-(\w+)/.exec(className || "")
+                        return match ? (
+                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                          // @ts-ignore
+                          <SyntaxHighlighter
+                            {...rest}
+                            children={String(children).replace(/\n$/, "")} // eslint-disable-line react/no-children-prop
+                            language={match[1]}
+                            PreTag="div"
+                            style={darcula}
+                          />
+                        ) : (
+                          <code {...rest} className={className}>
+                            {children}
+                          </code>
+                        )
+                      },
+                    }}
+                    key={paragraph}
+                  />
                 )
               } else {
                 return <Markdown key={paragraph}>{paragraph}</Markdown>
