@@ -44,41 +44,40 @@ export const blogs: Blog[] = [
   },
 
   {
-    "id": "tracking-location-with-iphone-shortcut",
-    "title": "Location tracking using iPhone Shortcut",
-    "author": "Colin Franceschini",
-    "date": "2024-12-30T16:47:11.954Z",
-    "image": "https://i.ibb.co/1zcWgCk/locationdb.jpg",
-    "post": [
+    id: "tracking-location-with-iphone-shortcut",
+    title: "Location tracking using iPhone Shortcut",
+    author: "Colin Franceschini",
+    date: "2024-12-30T16:47:11.954Z",
+    image: "https://i.ibb.co/1zcWgCk/locationdb.jpg",
+    post: [
       "In today's digital world, location tracking is something we use every day, whether it's for navigation or for tracking our workouts. But I've taken it a step further and built an iPhone shortcut that automatically tracks my location every day. Not only does this help me understand my movements better, but it also allows me to store this data in a database and visualize it in exciting ways.",
-      
+
       "### How It Works",
-      
+
       "The process starts with an iPhone Shortcut that sends a POST request to my website's API every day. The request contains information about my current location, including latitude, longitude, city, country, and state.",
-      
+
       "![iPhone Shortcuts app](https://i.ibb.co/bXj8xQS/iphone-shortcuts-screenshot.jpg)",
 
       "When the API receives this data, it stores it in a PostgreSQL database, as seen in the below Next.js POST request route: ",
 
       "```typescript\nimport { NextResponse, NextRequest } from 'next/server'\nimport postgres from 'postgres'\n\n/**\n * Handles POST requests to the '/api/location' endpoints.\n * @param {NextRequest} request - The incoming request object.\n * @returns {Promise<Response>} - Returns a response object.\n */\n\nexport async function POST(request: NextRequest): Promise<Response> {\n  const token = process.env.LOCATION_TOKEN!\n  const params = await request.json()\n  if (params.id !== token) {\n    return NextResponse.json({ error: 'Invalid id' }, { status: 400 })\n  }\n  const connectionString = process.env.LOCATION_POSTGRES_URL!\n  const sql = postgres(connectionString)\n  await sql`INSERT INTO location (date, state, latitude, longitude, city, country)\nVALUES (${new Date()}, ${params.state}, ${params.latitude}, ${params.longitude}, ${params.city}, ${params.country});`\n  return NextResponse.json({ status: 200, message: 'Working' })\n}\n```",
       "I then query this database to show my location on my homepage, providing an up-to-date record of where I've been.",
-      
+
       "```typescript\nimport * as React from 'react'\nimport { getTodaysLocation } from '@/db/getTodaysLocation'\nimport { siteConfig } from './config'\n\nconst Page: React.FC = async () => {\n  const location = await getTodaysLocation()\n  return (\n    <div className='container mb-10 flex flex-col space-y-6 divide-y'>\n      <div className='space-y-2 pt-6'>\n        <p className='py-2 text-muted-foreground'>\n          {`📍 Current Location: ${location}`}\n        </p>\n      </div>\n    </div>\n  )\n}\n\nexport default Page\n```",
-            
+
       "### The Power of Tracking My Location",
-      
+
       "With my location history tracked every day, the possibilities are endless. I can analyze my movement patterns, see how often I visit certain places, or even track my productivity by seeing how often I work from different locations. There are many exciting things I can do with this data, like creating visualizations, providing location-based suggestions, or even just reflecting on how my habits change over time.",
-            
+
       "The data can be used to derive various insights, such as identifying places I visit most frequently, tracking travel patterns, or even correlating my work habits with my physical location. This can be a useful tool for self-improvement or just a fun way to visualize my day-to-day life.",
-            
+
       "One of the most exciting things I'm planning is creating visualizations of my movement over time. I could plot my daily locations on a map, generate heatmaps of my most visited places, or even analyze my travel times between locations. This is just the beginning of what can be done with this data.",
-      
+
       "### Final Thoughts",
-      
+
       "Using an iPhone shortcut to track my location every day has been a fun and informative project. By sending data to my website and storing it in a database, I now have access to a wealth of information that can be used in various ways. Whether for fun, self-improvement, or creating insights, tracking my location has become a valuable part of my daily routine.",
-    ]
-  }
-  
+    ],
+  },
 ]
 
 export const findBlogById = (id: string): Blog | undefined => {
