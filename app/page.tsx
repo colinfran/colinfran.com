@@ -46,13 +46,15 @@ const Page: React.FC = async () => {
             " product — a centralized data science platform that brings data, people, and compute together."
           }
         </p>
-        <Link
-          className="group py-2 text-muted-foreground"
-          href="/blog/tracking-location-with-iphone-shortcut"
-        >
-          <span>{"📍 Current Location: "}</span>
-          <span className="group-hover:underline">{`${location} ${locationEmoji}`}</span>
-        </Link>
+        <div className="py-2">
+          <Link
+            className="group py-2 text-muted-foreground"
+            href="/blog/tracking-location-with-iphone-shortcut"
+          >
+            <span>{"📍 Current Location: "}</span>
+            <span className="group-hover:underline">{`${location} ${locationEmoji}`}</span>
+          </Link>
+        </div>
       </div>
       <div className="space-y-2 pt-6">
         <h2 className="font-bold sm:text-lg">Projects</h2>
