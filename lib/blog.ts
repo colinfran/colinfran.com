@@ -44,7 +44,7 @@ export const blogs: Blog[] = [
       "Using an iPhone shortcut to track my location every day has been a fun and informative project. By sending data to my website and storing it in a database, I now have access to a wealth of information that can be used in various ways. Whether for fun, self-improvement, or creating insights, tracking my location has become a valuable part of my daily routine.",
     ],
   },
-  
+
   {
     id: "building-the-future-of-ai",
     title: "Building the Future of AI with Z by HP AI Studio",
