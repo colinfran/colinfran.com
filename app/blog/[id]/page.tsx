@@ -34,7 +34,6 @@ const Page: React.FC<Props> = async ({ params }) => {
           <div className="!mb-8 flex items-center space-x-4 text-muted-foreground">
             <div className="flex items-center space-x-2">
               <Avatar className="size-12 border">
-                <AvatarImage alt="Author" src="/placeholder-user.jpg" />
                 <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>
               <span>{author}</span>
