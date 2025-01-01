@@ -2,7 +2,8 @@ import { NextResponse, NextRequest } from "next/server"
 import postgres from "postgres"
 
 /**
- * Handles GET requests to the '/api/location' endpoints.
+ * Handles POST requests to the '/api/location' endpoints.
+ * Records my current location and stores in a secure database.
  * @param {Request} request - The incoming request object.
  * @returns {Promise<Response>} - Returns a response object.
  */
@@ -10,17 +11,20 @@ import postgres from "postgres"
 export async function POST(request: NextRequest): Promise<Response> {
   const token = process.env.LOCATION_TOKEN!
   const params = await request.json()
-  if (params.id !== token) {
-    return NextResponse.json({ error: "Invalid id" }, { status: 400 })
-  }
   try {
+    if (params.id !== token) {
+      throw new Error("Invalid id")
+    }
     const connectionString = process.env.LOCATION_POSTGRES_URL!
     const sql = postgres(connectionString)
     const utcNow = new Date().toISOString()
-    await sql`INSERT INTO location (date, state, latitude, longitude, city, country)
-  VALUES (${utcNow}, ${params.state}, ${params.latitude}, ${params.longitude}, ${params.city}, ${params.country});`
-    return NextResponse.json({ status: 200 })
+    const resp = await sql`INSERT INTO location (date, state, latitude, longitude, city, country) VALUES (${utcNow}, ${params.state}, ${params.latitude}, ${params.longitude}, ${params.city}, ${params.country});`
+    if (resp.length > 0) {
+      return NextResponse.json({ status: 200 })  // Optionally return the inserted data
+    } else {
+      throw new Error("Error inserting into db.")
+    }
   } catch (error) {
-    return NextResponse.json({ error: "Error inserting into db" }, { status: 400 })
+    return NextResponse.json({ error }, { status: 400 })
   }
 }
