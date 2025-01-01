@@ -22,7 +22,16 @@ const Page: React.FC<Props> = async ({ params }) => {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:gap-12 md:px-6 md:py-20">
       <div className="w-full flex-1 md:w-3/5">
-        <img alt={title} className="w-full rounded-lg" src={image} />
+        <Image 
+          alt={title}
+          src={image.url}
+          placeholder="blur"
+          blurDataURL={image.base64}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', height: 'auto' }} // optional
+        />
         <div className="mt-8 space-y-4 md:mt-12">
           <h1 className="text-3xl font-bold md:text-4xl">{title}</h1>
           <div className="!mb-8 flex items-center space-x-4 text-muted-foreground">
@@ -100,7 +109,9 @@ const Page: React.FC<Props> = async ({ params }) => {
                     alt="Recent Post"
                     className="size-full object-cover"
                     height={48}
-                    src={recentPost.image}
+                    src={recentPost.image.url}
+                    placeholder="blur"
+                    blurDataURL={recentPost.image.base64}
                     style={{ aspectRatio: "64/48", objectFit: "cover" }}
                     width={64}
                   />

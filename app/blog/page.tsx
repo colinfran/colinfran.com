@@ -28,8 +28,10 @@ const Page: React.FC = async () => {
                       alt={title}
                       className="aspect-video w-full rounded-t-lg object-cover"
                       height={225}
-                      src={image}
+                      src={image.url}
                       width={400}
+                      placeholder="blur"
+                      blurDataURL={image.base64}
                     />
                   </CardHeader>
                   <CardContent className="p-4">
