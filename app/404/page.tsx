@@ -22,7 +22,7 @@ const Page: React.FC = async () => (
           <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Don&apos;t worry, you can still get back to safety. It&apos;s just a 404 error.
             Let&apos;s get you back to the{" "}
-            <Link className="underline underline-offset-2" href="/">
+            <Link className="underline underline-offset-2" href="/" prefetch>
               homepage
             </Link>
             .
