@@ -12,7 +12,6 @@ export const getTodaysLocation = async () => {
   // Query the database to fetch the most recent location data for today.
   const result: any = await sql`
     SELECT * FROM location
-    WHERE DATE(date) = ${today} 
     ORDER BY date DESC
     LIMIT 1
   `
