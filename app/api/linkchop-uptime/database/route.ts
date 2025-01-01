@@ -12,9 +12,10 @@ export async function GET(): Promise<NextResponse> {
     const connectionString = process.env.POSTGRES_URL!
     const sql = postgres(connectionString)
     await sql`select 1`
-    return NextResponse.json({ status: 200, message: "Database is running." })
+    return NextResponse.json({ message: 'Database is running' }, { status: 503 })
+
   } catch (err) {
-    console.log(err)
-    return NextResponse.json({ status: 503, message: "Database is not running.", error: err })
+    console.error(err)
+    return NextResponse.json({ error: 'Database is not running' }, { status: 503 })
   }
 }
