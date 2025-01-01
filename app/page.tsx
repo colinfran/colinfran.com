@@ -4,15 +4,14 @@ import { SocialLink } from "@/components/SocialLink"
 import Link from "next/link"
 import { Projects } from "@/components/Projects"
 import { getCountryIcon, getTodaysLocation } from "@/db/getTodaysLocation"
-import { headers } from 'next/headers';
+import { headers } from "next/headers"
 
 const Page: React.FC = async () => {
   const location = await getTodaysLocation()
   const locationEmoji = getCountryIcon(location)
-  const headersList = headers();
-  const userAgent = headersList.get('user-agent') || '';
-  const isWindows = userAgent.includes('Windows');
-
+  const headersList = headers()
+  const userAgent = headersList.get("user-agent") || ""
+  const isWindows = userAgent.includes("Windows")
 
   return (
     <div className="container mb-10 flex flex-col space-y-6 divide-y">

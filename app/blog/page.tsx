@@ -26,12 +26,12 @@ const Page: React.FC = async () => {
                   <CardHeader>
                     <Image
                       alt={title}
+                      blurDataURL={image.base64}
                       className="aspect-video w-full rounded-t-lg object-cover"
                       height={225}
+                      placeholder="blur"
                       src={image.url}
                       width={400}
-                      placeholder="blur"
-                      blurDataURL={image.base64}
                     />
                   </CardHeader>
                   <CardContent className="p-4">
