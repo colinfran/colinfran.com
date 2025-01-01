@@ -53,6 +53,7 @@ const Page: React.FC = async () => {
           <Link
             className="group flex flex-row py-2 text-muted-foreground"
             href="/blog/tracking-location-with-iphone-shortcut"
+            prefetch
           >
             <span className="min-w-[28px]">{"📍"}</span>
             <span className="mr-2">{"Current Location: "}</span>
