@@ -1,10 +1,11 @@
 import React from "react"
 import { Card, CardHeader, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { blogs, Blog } from "@/lib/blog"
-import Image from "next/image"
+import { getAllBlogsSorted, Blog } from "@/lib/blog"
+import { ImageWithSkeleton } from "@/components/ImageWithSkeleton"
 
 const Page: React.FC = async () => {
+  const blogs = await getAllBlogsSorted()
   return (
     <div className="flex min-h-screen flex-col">
       <div className="container mx-auto py-12">
@@ -20,17 +21,15 @@ const Page: React.FC = async () => {
       <div className="mx-auto grid grid-cols-1 gap-8 px-4 py-8 md:grid-cols-[3fr] md:px-6 md:py-12 lg:px-8 lg:py-16">
         <div className="">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {blogs.map(({ id, title, author, date, image }: Blog) => (
+            {blogs.map(({ id, title, author, date, imageUrl }: Blog) => (
               <Link href={`/blog/${id}`} key={id} prefetch>
                 <Card>
                   <CardHeader>
-                    <Image
+                    <ImageWithSkeleton
                       alt={title}
-                      blurDataURL={image.base64}
                       className="aspect-video w-full rounded-t-lg object-cover"
                       height={225}
-                      placeholder="blur"
-                      src={image.url}
+                      src={imageUrl}
                       width={400}
                     />
                   </CardHeader>

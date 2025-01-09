@@ -2,33 +2,31 @@
 import React from "react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
-import Image from "next/image"
 import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
 import { redirect } from "next/navigation"
-import Markdown from "react-markdown"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism"
+import Markdown from "@/components/Markdown"
+import { ImageWithSkeleton } from "@/components/ImageWithSkeleton"
 
 type Props = { params: { id: string } }
 
 const Page: React.FC<Props> = async ({ params }) => {
-  const blog = findBlogById(params.id as string)
+  const blog = await findBlogById(params.id as string)
   if (blog === undefined) {
     redirect("/404")
   }
-  const { title, author, date, image, post } = blog
+
+  const { title, author, date, imageUrl, content } = blog
   const initials = getInitials(author)
-  const recentPosts = getRecentPosts()
+  const recentPosts = await getRecentPosts()
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:gap-12 md:px-6 md:py-20">
       <div className="w-full flex-1 md:w-3/5">
-        <Image
+        <ImageWithSkeleton
           alt={title}
-          blurDataURL={image.base64}
           height={0}
-          placeholder="blur"
           sizes="100vw"
-          src={image.url}
+          src={imageUrl}
           style={{ width: "100%", height: "auto" }} // optional
           width={0}
         />
@@ -45,51 +43,7 @@ const Page: React.FC<Props> = async ({ params }) => {
             <span>{new Date(date).toLocaleDateString()}</span>
           </div>
           <div className="prose prose-lg dark:prose-invert mt-8 max-w-none space-y-6">
-            {post.map((paragraph: string) => {
-              if (paragraph.includes("ibb.co")) {
-                return (
-                  <Markdown className="m-auto my-4 max-w-[500px]" key={paragraph}>
-                    {paragraph}
-                  </Markdown>
-                )
-              } else if (paragraph.includes("###")) {
-                return (
-                  <Markdown className="my-4 text-3xl font-semibold" key={paragraph}>
-                    {paragraph}
-                  </Markdown>
-                )
-              } else if (paragraph.includes("```")) {
-                return (
-                  <Markdown
-                    children={paragraph} // eslint-disable-line react/no-children-prop
-                    components={{
-                      code(props) {
-                        const { children, className, node, ...rest } = props // eslint-disable-line unused-imports/no-unused-vars
-                        const match = /language-(\w+)/.exec(className || "")
-                        return match ? (
-                          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                          // @ts-ignore
-                          <SyntaxHighlighter
-                            {...rest}
-                            children={String(children).replace(/\n$/, "")} // eslint-disable-line react/no-children-prop
-                            language={match[1]}
-                            PreTag="div"
-                            style={darcula}
-                          />
-                        ) : (
-                          <code {...rest} className={className}>
-                            {children}
-                          </code>
-                        )
-                      },
-                    }}
-                    key={paragraph}
-                  />
-                )
-              } else {
-                return <Markdown key={paragraph}>{paragraph}</Markdown>
-              }
-            })}
+            <Markdown content={content} />
           </div>
         </div>
       </div>
@@ -105,13 +59,11 @@ const Page: React.FC<Props> = async ({ params }) => {
                 prefetch
               >
                 <div className="h-12 w-16 shrink-0 overflow-hidden rounded-md">
-                  <Image
+                  <ImageWithSkeleton
                     alt="Recent Post"
-                    blurDataURL={recentPost.image.base64}
                     className="size-full object-cover"
                     height={48}
-                    placeholder="blur"
-                    src={recentPost.image.url}
+                    src={recentPost.imageUrl}
                     style={{ aspectRatio: "64/48", objectFit: "cover" }}
                     width={64}
                   />
