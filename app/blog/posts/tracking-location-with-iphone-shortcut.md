@@ -49,14 +49,6 @@ import React, { FC } as React from "react"
 import { getTodaysLocation } from "@/db/getTodaysLocation"
 import { siteConfig } from "./config"
 
-type Location = {
-  city: string;
-  state: string;
-  country: string;
-  date: string;
-  id: string;
-}
-
 const Page: FC = async () => {
   const getTodaysLocation = async () => {
     const connectionString = process.env.POSTGRES_URL!
@@ -64,7 +56,7 @@ const Page: FC = async () => {
     // Get today's date in 'YYYY-MM-DD' format to match the stored date format.
     const today = new Date().toISOString().split("T")[0]
     // Query the database to fetch the most recent location data for today.
-    const result: Location[] = await sql`
+    const result: any[] = await sql`
       SELECT * FROM location
       ORDER BY date DESC
       LIMIT 1
