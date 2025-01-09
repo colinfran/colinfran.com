@@ -18,8 +18,23 @@ export async function POST(request: NextRequest): Promise<Response> {
     const connectionString = process.env.LOCATION_POSTGRES_URL!
     const sql = postgres(connectionString)
     const utcNow = new Date().toISOString()
-    const resp =
-      await sql`INSERT INTO location (date, state, latitude, longitude, city, country) VALUES (${utcNow}, ${params.state}, ${params.latitude}, ${params.longitude}, ${params.city}, ${params.country});`
+    const resp = await sql`
+      INSERT INTO location (
+        date,
+        state,
+        latitude,
+        longitude,
+        city,
+        country
+      ) 
+      VALUES (
+        ${utcNow},
+        ${params.state},
+        ${params.latitude},
+        ${params.longitude},
+        ${params.city},
+        ${params.country}
+      );`
     if (resp.length > 0) {
       return NextResponse.json({ status: 200 }) // Optionally return the inserted data
     } else {

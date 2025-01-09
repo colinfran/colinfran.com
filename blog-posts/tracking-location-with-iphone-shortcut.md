@@ -37,7 +37,24 @@ export async function POST(request: NextRequest): Promise<Response> {
   }
   const connectionString = process.env.LOCATION_POSTGRES_URL!
   const sql = postgres(connectionString)
-  await sql`INSERT INTO location (date, state, latitude, longitude, city, country) VALUES (${new Date()}, ${params.state}, ${params.latitude}, ${params.longitude}, ${params.city}, ${params.country});`
+  const utcNow = new Date().toISOString()
+  const resp = await sql`
+    INSERT INTO location (
+      date,
+      state,
+      latitude,
+      longitude,
+      city,
+      country
+    ) 
+    VALUES (
+      ${utcNow},
+      ${params.state},
+      ${params.latitude},
+      ${params.longitude},
+      ${params.city},
+      ${params.country}
+    );`  
   return NextResponse.json({ message: 'Working' }, { status: 200 })
 }
 ```
