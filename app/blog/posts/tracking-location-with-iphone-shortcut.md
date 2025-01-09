@@ -6,8 +6,6 @@ date: "2024-12-30T16:47:11.954Z"
 imageUrl: "https://i.ibb.co/tQWF0wJ/locationdb.jpg"
 ---
 
-## Location Tracking Using iPhone Shortcuts and Automation
-
 In today's digital world, location tracking is something we use every day, whether it's for navigation or for tracking our workouts. But I've taken it a step further and built an iPhone shortcut and automation that automatically tracks my location every day. Not only does this help me understand my movements better, but it also allows me to store this data in a database and visualize it in exciting ways.
 
 ### How It Works
