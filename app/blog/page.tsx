@@ -2,7 +2,7 @@ import React from "react"
 import { Card, CardHeader, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { getAllBlogsSorted, Blog } from "@/lib/blog"
-import { ImageWithSkeleton } from "@/components/ImageWithSkeleton"
+import ImageWithSkeleton from "@/components/ImageWithSkeleton"
 
 const Page: React.FC = async () => {
   const blogs = await getAllBlogsSorted()
