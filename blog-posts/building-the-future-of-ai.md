@@ -2,7 +2,7 @@
 id: "building-the-future-of-ai"
 title: "Building the Future of AI with Z by HP AI Studio"
 author: "Colin Franceschini"
-date: "2024-08-30T22:47:11.954Z"
+date: "2024-09-20T22:47:11.954Z"
 imageUrl: "https://i.ibb.co/jLKmLhW/1696865761040.jpg"
 ---
 
