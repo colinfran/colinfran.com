@@ -8,7 +8,7 @@ const Page: React.FC = async () => {
   const blogs = await getAllBlogsSorted()
   return (
     <div className="flex min-h-screen flex-col">
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto pt-12">
         <div className="mx-4 md:mx-6 lg:mx-auto lg:max-w-4xl">
           <h1 className="text-center text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
             Blogs

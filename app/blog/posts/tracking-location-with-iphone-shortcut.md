@@ -45,16 +45,37 @@ export async function POST(request: NextRequest): Promise<Response> {
 I then query this database to show my location on my homepage, providing an up-to-date record of where I've been.
 
 ```typescript
-import * as React from 'react'
-import { getTodaysLocation } from '@/db/getTodaysLocation'
-import { siteConfig } from './config'
+import React, { FC } as React from "react"
+import { getTodaysLocation } from "@/db/getTodaysLocation"
+import { siteConfig } from "./config"
 
-const Page: React.FC = async () => {
+const Page: FC = async () => {
+  const getTodaysLocation = async () => {
+    const connectionString = process.env.POSTGRES_URL!
+    const sql = postgres(connectionString)
+    // Get today's date in 'YYYY-MM-DD' format to match the stored date format.
+    const today = new Date().toISOString().split("T")[0]
+    // Query the database to fetch the most recent location data for today.
+    const result: any = await sql`
+      SELECT * FROM location
+      ORDER BY date DESC
+      LIMIT 1
+    `
+    // If there is no result, return null or an appropriate message
+    if (result.length === 0) {
+      return "Location unavailable"
+    }
+    const params = result[0]
+    if (params.country === "United States") {
+      return `${params.city}, ${params.state}, USA`
+    }
+    return `${params.city}, ${params.country}`
+  }
   const location = await getTodaysLocation()
   return (
-    <div className='container mb-10 flex flex-col space-y-6 divide-y'>
-      <div className='space-y-2 pt-6'>
-        <p className='py-2 text-muted-foreground'>
+    <div className="container mb-10 flex flex-col space-y-6 divide-y">
+      <div className="space-y-2 pt-6">
+        <p className="py-2 text-muted-foreground">
           {`📍 Current Location: ${location}`}
         </p>
       </div>
