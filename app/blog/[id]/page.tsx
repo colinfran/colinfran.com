@@ -5,7 +5,7 @@ import Link from "next/link"
 import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
 import { redirect } from "next/navigation"
 import Markdown from "@/components/Markdown"
-import { ImageWithSkeleton } from "@/components/ImageWithSkeleton"
+import ImageWithSkeleton from "@/components/ImageWithSkeleton"
 
 type Props = { params: { id: string } }
 
