@@ -1,4 +1,4 @@
-import { blogs } from "@/lib/blog"
+import { getAllBlogsSorted } from "@/lib/blog"
 import { getServerSideSitemap } from "next-sitemap"
 
 export async function GET(): Promise<Response> {
@@ -16,6 +16,7 @@ export async function GET(): Promise<Response> {
       lastmod: new Date().toISOString(),
     },
   ]
+  const blogs = await getAllBlogsSorted()
   blogs.forEach((blog) => {
     arr.push({
       loc: `https://colinfran.com/blog/${blog.id}`,
