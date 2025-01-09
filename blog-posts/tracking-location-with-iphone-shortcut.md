@@ -2,7 +2,7 @@
 id: "tracking-location-with-iphone-shortcut"
 title: "Location Tracking Using iPhone Shortcuts and Automation"
 author: "Colin Franceschini"
-date: "2024-12-30T16:47:11.954Z"
+date: "2025-01-05T16:47:11.954Z"
 imageUrl: "https://i.ibb.co/tQWF0wJ/locationdb.jpg"
 ---
 
