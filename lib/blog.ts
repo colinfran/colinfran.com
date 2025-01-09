@@ -11,7 +11,7 @@ export type Blog = {
   content: string
 }
 
-const postsDirectory = path.join(process.cwd(), "app/blog/posts")
+const postsDirectory = path.join(process.cwd(), "blog-posts")
 
 export const getAllBlogsSorted = async (): Promise<Blog[]> => {
   // Get file names under /posts
