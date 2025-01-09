@@ -60,11 +60,9 @@ const Page: FC = async () => {
       LIMIT 1
     `
     // If there is no result, return null or an appropriate message
-    if (result.length === 0) {
-      return "Location unavailable"
-    }
+    if (result.length === 0) return "Location unavailable"
     const params = result[0]
-    if (params.country === "United States") {
+    if (params.country === "United States"){
       return `${params.city}, ${params.state}, USA`
     }
     return `${params.city}, ${params.country}`
