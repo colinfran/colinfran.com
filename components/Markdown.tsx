@@ -16,7 +16,9 @@ const Markdown: FC<Props> = ({ content }) => {
         // eslint-disable-next-line jsx-a11y/heading-has-content
         h3: ({ ...props }) => <h3 className="my-4 text-3xl font-semibold" {...props} />,
         // eslint-disable-next-line @next/next/no-img-element
-        img: ({ ...props }) => <img alt="" className="m-auto my-4 max-w-[100%] md:max-w-[600px]" {...props} />,
+        img: ({ ...props }) => (
+          <img alt="" className="m-auto my-4 max-w-full md:max-w-[600px]" {...props} />
+        ),
         code(props) {
           const { children, className, node, ...rest } = props // eslint-disable-line unused-imports/no-unused-vars
           const match = /language-(\w+)/.exec(className || "")

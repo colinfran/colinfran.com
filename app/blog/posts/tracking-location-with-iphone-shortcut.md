@@ -53,8 +53,6 @@ const Page: FC = async () => {
   const getTodaysLocation = async () => {
     const connectionString = process.env.POSTGRES_URL!
     const sql = postgres(connectionString)
-    // Get today's date in 'YYYY-MM-DD' format to match the stored date format.
-    const today = new Date().toISOString().split("T")[0]
     // Query the database to fetch the most recent location data for today.
     const result: any[] = await sql`
       SELECT * FROM location
