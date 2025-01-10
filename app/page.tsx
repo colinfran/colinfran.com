@@ -61,7 +61,7 @@ const Page: React.FC = async () => {
           >
             <span className="min-w-[28px]">{"📍"}</span>
             <span className="mr-2">{"Current Location: "}</span>
-            <span className="group-hover:underline">{`${location}${!isWindows ? ` ${getCountryIcon(location)m}` : ""}`}</span>
+            <span className="group-hover:underline">{`${location}${!isWindows ? ` ${getCountryIcon(location)}` : ""}`}</span>
           </Link>
         </div>
       </div>
