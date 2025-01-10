@@ -8,7 +8,6 @@ import { headers } from "next/headers"
 
 const Page: React.FC = async () => {
   const location = await getTodaysLocation()
-  const locationEmoji = getCountryIcon(location)
   const headersList = headers()
   const userAgent = headersList.get("user-agent") || ""
   const isWindows = userAgent.includes("Windows")
@@ -62,7 +61,7 @@ const Page: React.FC = async () => {
           >
             <span className="min-w-[28px]">{"📍"}</span>
             <span className="mr-2">{"Current Location: "}</span>
-            <span className="group-hover:underline">{`${location}${!isWindows ? ` ${locationEmoji}` : ""}`}</span>
+            <span className="group-hover:underline">{`${location}${!isWindows ? ` ${getCountryIcon(location)m}` : ""}`}</span>
           </Link>
         </div>
       </div>
