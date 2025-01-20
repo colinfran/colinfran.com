@@ -31,7 +31,7 @@ export const siteConfig = {
           text: "GitHub",
         },
         {
-          url: "https://franceschini.food/",
+          url: "https://franceschini.food/?utm_source=https://colinfran.com&utm_medium=referral",
           text: "Website",
         },
       ],
