@@ -39,7 +39,7 @@ export const siteConfig = {
         "React.js",
         "TypeScript",
         "shadcn/ui",
-        "Postges",
+        "PostgreSQL",
         "UploadThing",
         "OpenAI",
         "Dall-E",
