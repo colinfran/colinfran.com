@@ -9,6 +9,7 @@ import linkChompDark from "../assets/images/linkchop-dark.webp"
 import linkChompLight from "../assets/images/linkchop-light.webp"
 import franfoodDark from "../assets/images/franfood-dark.webp"
 import franfoodLight from "../assets/images/franfood-light.webp"
+import gitArt from "../assets/images/git-art.webp"
 
 export const siteConfig = {
   name: "Colin Franceschini",
@@ -21,6 +22,20 @@ export const siteConfig = {
     x: "https://x.com/colinfran",
   },
   projects: [
+    {
+      id: "git-art",
+      title: "GitArt",
+      description: "Discover and visualize your GitHub contributions in an artistic way. GitArt transforms your GitHub activity into a unique visual experience.",
+      links: [
+        {
+          url: "https://gitart.app/?utm_source%3Dhttps%3A%2F%2Fcolinfran.com%26utm_medium%3Dreferral",
+          text: "Website",
+        },
+      ],
+      tags: ["Next.js", "Tailwind CSS", "React.js", "TypeScript", "shadcn/ui", "Postges", "UploadThing", "OpenAI", "Dall-E"],
+      imageSrc: gitArt,
+      imageSrcDark: gitArt,
+    },
     {
       id: "franceschini-food",
       title: "Franceschini Food",
