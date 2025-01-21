@@ -25,14 +25,25 @@ export const siteConfig = {
     {
       id: "git-art",
       title: "GitArt",
-      description: "Discover and visualize your GitHub contributions in an artistic way. GitArt transforms your GitHub activity into a unique visual experience.",
+      description:
+        "Discover and visualize your GitHub contributions in an artistic way. GitArt transforms your GitHub activity into a unique visual experience.",
       links: [
         {
           url: "https://gitart.app/?utm_source%3Dhttps%3A%2F%2Fcolinfran.com%26utm_medium%3Dreferral",
           text: "Website",
         },
       ],
-      tags: ["Next.js", "Tailwind CSS", "React.js", "TypeScript", "shadcn/ui", "Postges", "UploadThing", "OpenAI", "Dall-E"],
+      tags: [
+        "Next.js",
+        "Tailwind CSS",
+        "React.js",
+        "TypeScript",
+        "shadcn/ui",
+        "Postges",
+        "UploadThing",
+        "OpenAI",
+        "Dall-E",
+      ],
       imageSrc: gitArt,
       imageSrcDark: gitArt,
     },
