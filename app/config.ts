@@ -9,7 +9,8 @@ import linkChompDark from "../assets/images/linkchop-dark.webp"
 import linkChompLight from "../assets/images/linkchop-light.webp"
 import franfoodDark from "../assets/images/franfood-dark.webp"
 import franfoodLight from "../assets/images/franfood-light.webp"
-import gitArt from "../assets/images/git-art.webp"
+import gitArtLight from "../assets/images/git-art-light.webp"
+import gitArtDark from "../assets/images/git-art-dark.webp"
 
 export const siteConfig = {
   name: "Colin Franceschini",
@@ -44,8 +45,8 @@ export const siteConfig = {
         "OpenAI",
         "Dall-E",
       ],
-      imageSrc: gitArt,
-      imageSrcDark: gitArt,
+      imageSrc: gitArtLight,
+      imageSrcDark: gitArtDark,
     },
     {
       id: "franceschini-food",
