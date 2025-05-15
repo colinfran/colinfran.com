@@ -16,7 +16,7 @@ const Page: React.FC = async () => {
     <div className="container mb-10 flex flex-col space-y-6 divide-y">
       <div className="space-y-2 pt-6">
         <h1 className="mb-8 scroll-m-20 text-4xl font-extrabold tracking-tight">
-          Hello, I&apos;m Colin!
+          Hello, I&apos;m Colin Franceschini!
         </h1>
         <p className="text-muted-foreground">
           {`I am a Full Stack Software Engineer and like to focus on building dynamic applications
