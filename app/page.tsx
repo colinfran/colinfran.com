@@ -66,12 +66,6 @@ const Page: React.FC = async () => {
         </div>
       </div>
       <div className="space-y-2 pt-6">
-        <h2 className="font-bold sm:text-lg">Projects</h2>
-        <div className="flex flex-col">
-          <Projects />
-        </div>
-      </div>
-      <div className="space-y-2 pt-6">
         <h2 className="font-bold sm:text-lg">Links</h2>
         <div className="flex flex-row gap-5">
           <SocialLink href={siteConfig.links.github} icon="Github" title="Github" />
@@ -79,6 +73,12 @@ const Page: React.FC = async () => {
           <SocialLink href={siteConfig.links.instagram} icon="Instagram" title="Instagram" />
           <SocialLink href={siteConfig.links.x} icon="X" title="X (Twitter)" />
           <SocialLink href={siteConfig.links.email} icon="Email" title="Email" />
+        </div>
+      </div>
+      <div className="space-y-2 pt-6">
+        <h2 className="font-bold sm:text-lg">Projects</h2>
+        <div className="flex flex-col">
+          <Projects />
         </div>
       </div>
     </div>
