@@ -9,7 +9,6 @@ import linkChompDark from "../assets/images/linkchop-dark.webp"
 import linkChompLight from "../assets/images/linkchop-light.webp"
 import franfoodDark from "../assets/images/franfood-dark.webp"
 import franfoodLight from "../assets/images/franfood-light.webp"
-import gitArtLight from "../assets/images/git-art-light.webp"
 import gitArtDark from "../assets/images/git-art-dark.webp"
 
 export const siteConfig = {
@@ -45,7 +44,7 @@ export const siteConfig = {
         "OpenAI",
         "Dall-E",
       ],
-      imageSrc: gitArtLight,
+      imageSrc: gitArtDark,
       imageSrcDark: gitArtDark,
     },
     {
@@ -104,21 +103,21 @@ export const siteConfig = {
       imageSrc: kwalletMockup,
       imageSrcDark: kwalletMockupDark,
     },
-    {
-      id: "learn-react-quick",
-      title: "Learn React Quick - free course",
-      description:
-        "Master React.js in no time. A free course for anyone interested in learning React.js",
-      links: [
-        {
-          url: "https://colinfran.github.io/learn-react-quick/",
-          text: "Course",
-        },
-      ],
-      tags: ["Docusaurus", "React.js"],
-      imageSrc: lrqLight,
-      imageSrcDark: lrqDark,
-    },
+    // {
+    //   id: "learn-react-quick",
+    //   title: "Learn React Quick - free course",
+    //   description:
+    //     "Master React.js in no time. A free course for anyone interested in learning React.js",
+    //   links: [
+    //     {
+    //       url: "https://colinfran.github.io/learn-react-quick/",
+    //       text: "Course",
+    //     },
+    //   ],
+    //   tags: ["Docusaurus", "React.js"],
+    //   imageSrc: lrqLight,
+    //   imageSrcDark: lrqDark,
+    // },
     {
       id: "nhdashboard",
       title: "NHDashboard",
