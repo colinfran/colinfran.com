@@ -4,10 +4,9 @@ import { NextRequest, NextResponse } from "next/server"
  * Handles GET requests to the '/linkchop-uptime/[id]' endpoint.
  * Retrieves BetterUptime information based on id.
  */
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } },
-): Promise<NextResponse> {
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function GET(request: NextRequest, { params }: any): Promise<NextResponse<unknown>> {
   const searchParams = request.nextUrl.searchParams
   const id = params.id
 
