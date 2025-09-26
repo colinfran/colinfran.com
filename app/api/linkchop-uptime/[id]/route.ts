@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server"
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string } },
 ): Promise<NextResponse> {
   const searchParams = request.nextUrl.searchParams
   const id = params.id
