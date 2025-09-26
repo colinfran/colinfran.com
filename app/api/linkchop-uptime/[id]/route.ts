@@ -1,33 +1,44 @@
 import { NextRequest, NextResponse } from "next/server"
 
+interface RouteContext {
+  params: {
+    id: string
+  }
+}
+
 /**
  * Handles GET requests to the '/linkchop-uptime/[id]' endpoints.
  * Retrieves BetterUptime information based on id.
- * @param {Request} request - The incoming request object.
- * @returns {Promise<Response>} - Returns a response object.
+ * @param {NextRequest} request - The incoming request object.
+ * @param {RouteContext} context - The route parameters.
+ * @returns {Promise<NextResponse>} - Returns a response object.
  */
-
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } },
-): Promise<Response> {
+  context: RouteContext,
+): Promise<NextResponse> {
   const searchParams = request.nextUrl.searchParams
-  const id = params.id
+  const id = context.params.id
+
   try {
     const response = await fetch(`https://betteruptime.com/api/v2/monitors/${id}`, {
       headers: {
         Authorization: `Bearer ${process.env.BETTERUPTIME_TOKEN}`,
       },
     })
+
     if (!response.ok) {
-      throw Error("Bad response")
+      throw new Error("Bad response")
     }
+
     const data = await response.json()
-    const status = data?.data?.attributes?.status === "up" ? "up" : "down"
-    const message = status
+    const isUp = data?.data?.attributes?.status === "up"
+
+    const message = isUp
       ? searchParams.get("up_message") || "up"
       : searchParams.get("down_message") || "down"
-    const color = status
+
+    const color = isUp
       ? searchParams.get("up_color") || "#4c1"
       : searchParams.get("down_color") || "#e05d44"
 
@@ -43,9 +54,9 @@ export async function GET(
       logoColor: searchParams.get("logo_color") || undefined,
       cacheSeconds: 300,
     }
+
     return NextResponse.json(res)
   } catch (err) {
-    // Handle any errors and redirect the user to the 404 page.
     console.error(err)
     return NextResponse.redirect(new URL("/404", request.url))
   }
