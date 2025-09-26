@@ -1,24 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
 
-interface RouteContext {
-  params: {
-    id: string
-  }
-}
-
 /**
- * Handles GET requests to the '/linkchop-uptime/[id]' endpoints.
+ * Handles GET requests to the '/linkchop-uptime/[id]' endpoint.
  * Retrieves BetterUptime information based on id.
- * @param {NextRequest} request - The incoming request object.
- * @param {RouteContext} context - The route parameters.
- * @returns {Promise<NextResponse>} - Returns a response object.
  */
 export async function GET(
   request: NextRequest,
-  context: RouteContext,
+  { params }: { params: { id: string } }
 ): Promise<NextResponse> {
   const searchParams = request.nextUrl.searchParams
-  const id = context.params.id
+  const id = params.id
 
   try {
     const response = await fetch(`https://betteruptime.com/api/v2/monitors/${id}`, {
