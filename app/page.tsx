@@ -8,7 +8,7 @@ import { headers } from "next/headers"
 
 const Page: React.FC = async () => {
   const location = await getTodaysLocation()
-  const headersList = headers()
+  const headersList = await headers()
   const userAgent = headersList.get("user-agent") || ""
   const isWindows = userAgent.includes("Windows")
 
