@@ -1,6 +1,5 @@
 {
   "rewrites": [
-    { "source": "/locations/:path*", "destination": "https://colinfran-locations.vercel.app/locations/:path*" },
-    { "source": "/locations/_next/:path*", "destination": "https://colinfran-locations.vercel.app/locations/_next/:path*" }
+    { "source": "/locations/:path*", "destination": "https://colinfran-locations.vercel.app/locations/:path*" }
   ]
 }
