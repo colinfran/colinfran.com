@@ -12,10 +12,10 @@ const links: Links = {
 
 type PageProps = { params: { id: string } }
 
-const Page: React.FC<PageProps> = ({ params }) => {
+const Page: React.FC<PageProps> = async (props) => {
+  const params = await props.params
   const link = links[params.id]
-
-  if (!link) {
+  if (link === undefined) {
     return (
       <div className="flex flex-col items-center p-10">
         <h2 className="font-bold sm:text-lg">Not a valid URL</h2>
@@ -25,11 +25,10 @@ const Page: React.FC<PageProps> = ({ params }) => {
       </div>
     )
   }
-
   return (
     <div className="flex flex-col items-center p-10">
       <h2 className="font-bold sm:text-lg">Link:</h2>
-      <p>{link}</p>
+      <p>{`${link}`}</p>
       <div className="mt-6 ">
         <CountdownRedirect link={link} />
       </div>
