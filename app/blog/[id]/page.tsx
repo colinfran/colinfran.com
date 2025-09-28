@@ -1,19 +1,16 @@
-/* eslint-disable @next/next/no-img-element */
-import React from "react"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import Link from "next/link"
-import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
 import { redirect } from "next/navigation"
+import Link from "next/link"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import Markdown from "@/components/Markdown"
 import ImageWithSkeleton from "@/components/ImageWithSkeleton"
+import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
 
-type Props = { params: { id: string } }
-
-const Page: React.FC<Props> = async ({ params }) => {
-  const blog = await findBlogById(params.id as string)
-  if (blog === undefined) {
-    redirect("/404")
-  }
+// Server Component — async function is correct for server-side fetching
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function Page({ params }: any) {
+  // Fetch the blog by ID
+  const blog = await findBlogById(params.id)
+  if (!blog) redirect("/404")
 
   const { title, author, date, imageUrl, content } = blog
   const initials = getInitials(author)
@@ -25,13 +22,15 @@ const Page: React.FC<Props> = async ({ params }) => {
         <ImageWithSkeleton
           alt={title}
           height={0}
+          width={0}
           sizes="100vw"
           src={imageUrl}
-          style={{ width: "100%", height: "auto" }} // optional
-          width={0}
+          style={{ width: "100%", height: "auto" }}
         />
+
         <div className="mt-8 space-y-4 md:mt-12">
           <h1 className="text-3xl font-bold md:text-4xl">{title}</h1>
+
           <div className="!mb-8 flex items-center space-x-4 text-muted-foreground">
             <div className="flex items-center space-x-2">
               <Avatar className="size-12 border">
@@ -42,20 +41,22 @@ const Page: React.FC<Props> = async ({ params }) => {
             <span>•</span>
             <span>{new Date(date).toLocaleDateString()}</span>
           </div>
+
           <div className="prose prose-lg dark:prose-invert mt-8 max-w-none space-y-6">
             <Markdown content={content} />
           </div>
         </div>
       </div>
+
       <div className="w-full space-y-8 md:w-[300px]">
         <div>
           <h2 className="mb-4 text-xl font-bold">Recent Posts</h2>
           <div className="space-y-4">
             {recentPosts.map((recentPost) => (
               <Link
-                className="group flex items-center space-x-4"
+                key={recentPost.id}
                 href={`/blog/${recentPost.id}`}
-                key={`${recentPost.id} - recent post`}
+                className="group flex items-center space-x-4"
                 prefetch
               >
                 <div className="h-12 w-16 shrink-0 overflow-hidden rounded-md">
@@ -63,13 +64,15 @@ const Page: React.FC<Props> = async ({ params }) => {
                     alt="Recent Post"
                     className="size-full object-cover"
                     height={48}
-                    src={recentPost.imageUrl}
-                    style={{ aspectRatio: "64/48", objectFit: "cover" }}
                     width={64}
+                    style={{ aspectRatio: "64/48", objectFit: "cover" }}
+                    src={recentPost.imageUrl}
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-medium group-hover:underline">{recentPost.title}</h3>
+                  <h3 className="text-lg font-medium group-hover:underline">
+                    {recentPost.title}
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     {new Date(recentPost.date).toLocaleDateString()}
                   </p>
@@ -82,5 +85,3 @@ const Page: React.FC<Props> = async ({ params }) => {
     </div>
   )
 }
-
-export default Page

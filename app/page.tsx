@@ -13,8 +13,8 @@ const Page: React.FC = async () => {
   const isWindows = userAgent.includes("Windows")
 
   return (
-    <div className="container mb-10 flex flex-col space-y-6 divide-y">
-      <div className="space-y-2 pt-6">
+    <div className="container mx-auto px-8 mb-10 flex flex-col space-y-6 divide-y">
+      <div className="space-y-2 pb-6 pt-6">
         <h1 className="mb-8 scroll-m-20 text-4xl font-extrabold tracking-tight">
           Hello, I&apos;m Colin Franceschini!
         </h1>
@@ -65,7 +65,7 @@ const Page: React.FC = async () => {
           </Link>
         </div>
       </div>
-      <div className="space-y-2 pt-6">
+      <div className="space-y-2 pb-6">
         <h2 className="font-bold sm:text-lg">Links</h2>
         <div className="flex flex-row gap-5">
           <SocialLink href={siteConfig.links.github} icon="Github" title="Github" />

@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Card } from "./ui/card"
 import Link from "next/link"
 import { Button } from "./ui/button"
-import { v4 } from "uuid"
+// removed uuid import to avoid generating unstable keys during SSR
 import { useTheme } from "next-themes"
 import { ProjectProps } from "./Projects"
 import { Badge } from "@/components/ui/badge"
@@ -53,7 +53,7 @@ export const Project: React.FC<ProjectPropType> = ({
   return (
     <Card
       aria-expanded={open}
-      className="flex cursor-pointer flex-col gap-2 p-8"
+      className="flex cursor-pointer flex-col gap-2 p-8 min-w-0"
       ref={element}
       tabIndex={0}
       onClick={onClick}
@@ -75,9 +75,9 @@ export const Project: React.FC<ProjectPropType> = ({
             </Badge>
           ))}
         </div>
-        <div className="flex flex-row gap-10">
+        <div className="flex flex-row flex-wrap gap-10">
           {links.map(({ text, url }: { text: string; url: string }) => (
-            <Button className="w-full" key={v4()} asChild>
+            <Button className="w-full flex-1 min-w-[120px]" key={url} asChild>
               <Link className="w-full" href={url} rel="noopener noreferrer" target="_blank">
                 {text}
               </Link>

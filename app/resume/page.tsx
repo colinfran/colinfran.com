@@ -1,8 +1,8 @@
 "use client"
 import { Icons } from "@/components/Icons"
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 
-const Page = (): JSX.Element => {
+const Page: FC = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const Icon = Icons["Loader"]
 

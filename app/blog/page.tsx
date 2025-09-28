@@ -27,10 +27,10 @@ const Page: React.FC = async () => {
                   <CardHeader>
                     <ImageWithSkeleton
                       alt={title}
-                      className="aspect-video w-full rounded-t-lg object-cover"
-                      height={225}
+                      className="w-full rounded-t-lg object-cover"
+                      height={0}
                       src={imageUrl}
-                      width={400}
+                      width={0}
                     />
                   </CardHeader>
                   <CardContent className="p-4">

@@ -32,7 +32,39 @@ export const getTodaysLocation = async () => {
 }
 
 export const getCountryIcon = (location: string): string => {
-  const locationCountry = location.split(",")[location.split(",").length - 1]
-  const countryCode = countryToAlpha2(locationCountry)!
+  // Extract last comma-separated segment and trim whitespace
+  const parts = location.split(",")
+  const locationCountry = parts[parts.length - 1]?.trim() || ""
+
+  // countryToAlpha2 may return a string or an object depending on version.
+  // Be defensive: accept either, and fall back to a small map for common cases.
+  let countryCode: unknown = countryToAlpha2(locationCountry)
+
+  // Common aliases / normalization
+  const aliasMap: Record<string, string> = {
+    "USA": "US",
+    "U.S.": "US",
+    "United States": "US",
+    "United States of America": "US",
+    "UK": "GB",
+    "U.K.": "GB",
+  }
+
+  if (!countryCode) {
+    countryCode = aliasMap[locationCountry] ?? undefined
+  }
+
+  // If an object was returned, try to extract a sensible alpha-2 code.
+  if (typeof countryCode === "object" && countryCode !== null) {
+    // try common property names that might contain the code
+    const obj: any = countryCode
+    countryCode = obj.alpha2 ?? obj.alpha_2 ?? obj["alpha-2"] ?? obj.code ?? obj.iso2 ?? undefined
+  }
+
+  if (!countryCode || typeof countryCode !== "string") {
+    // Unknown country -> return empty string (no icon) to avoid runtime error
+    return ""
+  }
+
   return countryCodeEmoji(countryCode)
 }
