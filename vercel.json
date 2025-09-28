@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/locations/(.*)",
-      "destination": "https://colinfran-locations.vercel.app/$1"
+      "source": "/locations/:path*",
+      "destination": "https://colinfran-locations.vercel.app/:path*"
     }
   ]
 }
