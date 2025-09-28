@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import React, { useState, FC } from "react";
-import Image, { ImageProps } from "next/image";
-import { Skeleton } from "@/components/ui/skeleton";
+import React, { useState, useEffect, FC } from "react"
+import Image, { ImageProps } from "next/image"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface ImageWithSkeletonProps extends ImageProps {
-  skeletonClassName?: string;
-  fillFallbackHeight?: string; // Tailwind height for fill layout
+  skeletonClassName?: string
+  projectPage?: boolean
 }
 
 const ImageWithSkeleton: FC<ImageWithSkeletonProps> = ({
@@ -15,43 +15,49 @@ const ImageWithSkeleton: FC<ImageWithSkeletonProps> = ({
   width,
   height,
   className,
-  skeletonClassName,
-  fillFallbackHeight = "h-64",
+  projectPage = false,
   ...props
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    // setIsLoading(true)
+  }, [src])
 
-  const useFill = width === undefined || height === undefined;
+  const [isLoading, setIsLoading] = useState(true)
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+
+  useEffect(() => {
+    setIsLoading(true)
+    if (typeof window !== "undefined") {
+      const img = new window.Image()
+      img.src = typeof src === "string" ? src : ""
+      img.onload = () => {
+        setDimensions({ width: img.width, height: img.height })
+        setIsLoading(false)
+      }
+    }
+  }, [src])
+
+  const skeletonStyle =
+    projectPage && width === 0 && height === 0
+      ? { paddingBottom: `${(dimensions.height / dimensions.width) * 100 || 56.25}%` }
+      : { width, height }
 
   return (
-    <div className={`relative ${useFill ? fillFallbackHeight : ""}`}>
+    <div className="relative">
       {isLoading && (
-        <Skeleton className={`absolute inset-0 w-full h-full ${skeletonClassName || ""}`} />
+        <Skeleton className={`${isLoading ? "opacity-100" : "opacity-0"}`} style={skeletonStyle} />
       )}
-
-      {useFill ? (
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className={`${className || ""} ${isLoading ? "opacity-0" : "opacity-100"}`}
-          style={{ objectFit: "cover" }} // ONLY objectFit, no height/width
-          onLoadingComplete={() => setIsLoading(false)}
-          {...props}
-        />
-      ) : (
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          className={`${className || ""} ${isLoading ? "opacity-0" : "opacity-100"}`}
-          onLoadingComplete={() => setIsLoading(false)}
-          {...props}
-        />
-      )}
+      <Image
+        alt={alt}
+        className={`${className} ${isLoading ? "opacity-0" : "opacity-100"}`}
+        height={dimensions.height || height}
+        src={src}
+        width={dimensions.width || width}
+        onLoad={() => setIsLoading(false)}
+        {...props}
+      />
     </div>
-  );
-};
+  )
+}
 
-export default ImageWithSkeleton;
+export default ImageWithSkeleton
