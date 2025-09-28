@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/locations/(.*)",
-      "destination": "https://colinfran-locations.vercel.app/locations/$1"
+      "destination": "https://colinfran-locations.vercel.app/$1"
     }
   ]
 }
