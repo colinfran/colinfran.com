@@ -1,20 +1,25 @@
-import { redirect } from "next/navigation"
-import Link from "next/link"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import Markdown from "@/components/Markdown"
-import ImageWithSkeleton from "@/components/ImageWithSkeleton"
-import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Markdown from "@/components/Markdown";
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
+import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog";
 
-// Server Component — async function is correct for server-side fetching
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default async function Page({ params }: any) {
-  // Fetch the blog by ID
-  const blog = await findBlogById(params.id)
-  if (!blog) redirect("/404")
+// PageProps type
+type PageProps = {
+  params: { id: string };
+};
 
-  const { title, author, date, imageUrl, content } = blog
-  const initials = getInitials(author)
-  const recentPosts = await getRecentPosts()
+// Keep it async for SSR
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+  const blog = await findBlogById(params.id);
+
+  if (!blog) redirect("/404");
+
+  const { title, author, date, imageUrl, content } = blog;
+  const initials = getInitials(author);
+  const recentPosts = await getRecentPosts();
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:gap-12 md:px-6 md:py-20">
@@ -83,5 +88,5 @@ export default async function Page({ params }: any) {
         </div>
       </div>
     </div>
-  )
+  );
 }
