@@ -1,24 +1,17 @@
-// eslint.config.ts
-import eslint from "@eslint/js";
+import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import react from "eslint-plugin-react";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import importPlugin from "eslint-plugin-import";
-import prettierPlugin from "eslint-plugin-prettier";
-import tailwindPlugin from "eslint-plugin-tailwindcss";
-import unusedImports from "eslint-plugin-unused-imports";
 import reactHooks from "eslint-plugin-react-hooks";
-import nextPlugin from "@next/eslint-plugin-next";
-import { defineConfig } from "eslint/config";
+import importPlugin from "eslint-plugin-import";
+import jsxA11y from "eslint-plugin-jsx-a11y";
+import prettierPlugin from "eslint-plugin-prettier";
+import tailwindcss from "eslint-plugin-tailwindcss";
+import unusedImports from "eslint-plugin-unused-imports";
+import next from "@next/eslint-plugin-next";
 
-export default defineConfig([
-  // Base configs
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-
+export default tseslint.config(
   {
-    files: ["**/*.{ts,tsx,js,jsx}"],
-
+    files: ["**/*.{ts,tsx}"],
     ignores: [
       "node_modules",
       ".DS_Store",
@@ -38,19 +31,20 @@ export default defineConfig([
       "package.json",
       "package-lock.json",
       "next-env.d.ts",
+      "build",
+      ".next",
     ],
 
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        ecmaVersion: 12,
+        ecmaVersion: "latest",
         sourceType: "module",
-        project: true,
-        tsconfigRootDir: __dirname,
       },
       globals: {
-        React: "writable",
-        JSX: "writable",
+        browser: true,
+        node: true,
+        es2021: true,
       },
     },
 
@@ -80,30 +74,18 @@ export default defineConfig([
 
     plugins: {
       react,
-      "jsx-a11y": jsxA11y,
-      import: importPlugin,
-      prettier: prettierPlugin,
-      tailwindcss: tailwindPlugin,
-      "unused-imports": unusedImports,
       "react-hooks": reactHooks,
-      "@next/next": nextPlugin,
+      import: importPlugin,
+      "jsx-a11y": jsxA11y,
+      prettier: prettierPlugin,
+      tailwindcss,
+      "unused-imports": unusedImports,
+      next,
     },
-
-    extends: [
-      "plugin:react/recommended",
-      "plugin:import/recommended",
-      "plugin:jsx-a11y/recommended",
-      "plugin:@typescript-eslint/recommended",
-      "eslint-config-prettier",
-      "plugin:prettier/recommended",
-      "plugin:tailwindcss/recommended",
-      "plugin:@next/next/recommended",
-    ],
 
     rules: {
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "off",
-
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [
         "warn",
@@ -114,28 +96,24 @@ export default defineConfig([
           argsIgnorePattern: "^_",
         },
       ],
-
       "prettier/prettier": ["error", { endOfLine: "auto" }],
-      "jsx-a11y/role-supports-aria-props": "off",
+      "jsx-a11y/role-supports-aria-props": 0,
       quotes: ["error", "double"],
       "no-use-before-define": "off",
       "@typescript-eslint/no-use-before-define": ["error"],
-
       "react/function-component-definition": [
-        "error",
+        2,
         {
           namedComponents: "arrow-function",
           unnamedComponents: "arrow-function",
         },
       ],
-
       "react/jsx-filename-extension": [
         "warn",
         {
           extensions: [".tsx"],
         },
       ],
-
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": ["error"],
       "@typescript-eslint/explicit-function-return-type": [
@@ -144,14 +122,12 @@ export default defineConfig([
           allowExpressions: true,
         },
       ],
-
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "import/prefer-default-export": "off",
       "react/prop-types": "off",
-
       "react/jsx-sort-props": [
-        "error",
+        2,
         {
           callbacksLast: true,
           shorthandFirst: false,
@@ -161,5 +137,6 @@ export default defineConfig([
         },
       ],
     },
-  },
-]);
+  }
+);
+
