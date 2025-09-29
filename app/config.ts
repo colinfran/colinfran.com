@@ -8,6 +8,8 @@ import linkChompLight from "../assets/images/linkchop-light.webp"
 import franfoodDark from "../assets/images/franfood-dark.webp"
 import franfoodLight from "../assets/images/franfood-light.webp"
 import gitArtDark from "../assets/images/git-art-dark.webp"
+import myLocationDark from "../assets/images/mylocation-dark.webp"
+import myLocationLight from "../assets/images/mylocation-light.webp"
 
 export const siteConfig = {
   name: "Colin Franceschini",
@@ -20,6 +22,30 @@ export const siteConfig = {
     x: "https://x.com/colinfran",
   },
   projects: [
+    {
+      id: "my-location-analysis",
+      title: "MyLocationAnalysis",
+      description:
+        "A personal project to analyze and visualize my location data using iOS Shortcuts, PostgreSQL, and Next.js.",
+      links: [
+        {
+          url: "/locations",
+          text: "Website",
+          target: "_self",
+        },
+      ],
+      tags: [
+        "Next.js",
+        "Tailwind CSS",
+        "React.js",
+        "TypeScript",
+        "shadcn/ui",
+        "PostgreSQL",
+        "iOS Shortcuts",
+      ],
+      imageSrc: myLocationLight,
+      imageSrcDark: myLocationDark,
+    },
     {
       id: "git-art",
       title: "GitArt",

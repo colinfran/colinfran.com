@@ -8,6 +8,7 @@ import { siteConfig } from "../app/config"
 type LinksProps = {
   url: string
   text: string
+  target?: string
 }
 
 export type ProjectProps = {

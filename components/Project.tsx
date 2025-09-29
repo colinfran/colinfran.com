@@ -76,9 +76,9 @@ export const Project: React.FC<ProjectPropType> = ({
           ))}
         </div>
         <div className="flex flex-row flex-wrap gap-10">
-          {links.map(({ text, url }: { text: string; url: string }) => (
+          {links.map(({ text, url, target }) => (
             <Button className="w-full flex-1 min-w-[120px]" key={url} asChild>
-              <Link className="w-full" href={url} rel="noopener noreferrer" target="_blank">
+              <Link className="w-full" href={url} rel="noopener noreferrer" target={target ? target : "_blank"} prefetch={target === "self" ? true : false}>
                 {text}
               </Link>
             </Button>
