@@ -17,9 +17,9 @@ interface LocationData {
 }
 
 export default function Page() {
-  const { locations, loading } = useData();
-  useLockBodyScroll(loading);
-  
+  const { locations, loading } = useData()
+  useLockBodyScroll(loading)
+
   if (loading) {
     return (
       <main className="min-h-screen bg-background py-8 px-4">
@@ -59,7 +59,9 @@ export default function Page() {
           </Card>
           <Card>
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold">{new Set(locations?.map((d) => d.country).filter(c => c !== "")).size}</div>
+              <div className="text-2xl font-bold">
+                {new Set(locations?.map((d) => d.country).filter((c) => c !== "")).size}
+              </div>
               <div className="text-sm text-muted-foreground">Countries</div>
             </CardContent>
           </Card>

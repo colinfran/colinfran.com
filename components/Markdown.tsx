@@ -11,9 +11,8 @@ const Markdown: FC<Props> = ({ content }) => {
   return (
     <ReactMarkdown
       components={{
-        // eslint-disable-next-line jsx-a11y/heading-has-content
         h2: ({ ...props }) => <h2 className="my-4 text-4xl font-semibold" {...props} />,
-        // eslint-disable-next-line jsx-a11y/heading-has-content
+
         h3: ({ ...props }) => <h3 className="my-4 text-3xl font-semibold" {...props} />,
         // eslint-disable-next-line @next/next/no-img-element
         img: ({ ...props }) => (
@@ -27,7 +26,7 @@ const Markdown: FC<Props> = ({ content }) => {
             // @ts-ignore
             <SyntaxHighlighter
               {...rest}
-              children={String(children).replace(/\n$/, "")} // eslint-disable-line react/no-children-prop
+              children={String(children).replace(/\n$/, "")}
               language={match[1]}
               PreTag="div"
               style={darcula}

@@ -21,7 +21,7 @@ const navigationItems = [
   },
 ]
 
-export function Navigation() {
+export const Navigation = () => {
   const pathname = usePathname()
 
   return (
@@ -40,11 +40,14 @@ export function Navigation() {
 
               return (
                 <Button
+                  className={cn(
+                    "flex items-center space-x-2",
+                    isActive && "bg-primary text-primary-foreground",
+                  )}
                   key={item.href}
-                  variant={isActive ? "default" : "ghost"}
                   size="sm"
+                  variant={isActive ? "default" : "ghost"}
                   asChild
-                  className={cn("flex items-center space-x-2", isActive && "bg-primary text-primary-foreground")}
                 >
                   <Link href={item.href} prefetch>
                     <Icon className="h-4 w-4" />

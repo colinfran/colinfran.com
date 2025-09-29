@@ -19,12 +19,21 @@ import {
   Area,
   AreaChart,
 } from "recharts"
-import { Clock, MapPin, TrendingUp, AlertTriangle, Home, Briefcase, Calendar, Route } from "lucide-react"
+import {
+  Clock,
+  MapPin,
+  TrendingUp,
+  AlertTriangle,
+  Home,
+  Briefcase,
+  Calendar,
+  Route,
+} from "lucide-react"
 import { useData } from "@/components/providers/data-provider"
 import { Skeleton } from "./ui/skeleton"
 import useLockBodyScroll from "@/hooks/useLockBodyScroll"
 
-export function LocationAnalysis() {
+export const LocationAnalysis = () => {
   const { locations, loading } = useData()
   useLockBodyScroll(loading)
   // Helper: Haversine distance in km
@@ -43,7 +52,9 @@ export function LocationAnalysis() {
     if (locations.length === 0) return null
 
     // Sort by date
-    const sortedData = [...locations].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    const sortedData = [...locations].sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+    )
 
     // --- Travel calculations ---
     let totalDistance = 0
@@ -52,7 +63,9 @@ export function LocationAnalysis() {
 
     for (let i = 0; i < sortedData.length; i++) {
       const loc = sortedData[i]
-      const day = (typeof loc.date === "string" ? loc.date : new Date(loc.date).toISOString()).split("T")[0]
+      const day = (
+        typeof loc.date === "string" ? loc.date : new Date(loc.date).toISOString()
+      ).split("T")[0]
 
       // Daily distances
       if (i > 0) {
@@ -61,7 +74,7 @@ export function LocationAnalysis() {
           Number(prev.latitude),
           Number(prev.longitude),
           Number(loc.latitude),
-          Number(loc.longitude)
+          Number(loc.longitude),
         )
         totalDistance += dist
         dailyDistances[day] = (dailyDistances[day] || 0) + dist
@@ -81,12 +94,19 @@ export function LocationAnalysis() {
     }))
 
     // --- Routine calculations ---
-    const locationCount: Record<string, { count: number; hourly: number[]; weekly: Record<string, number> }> = {}
+    const locationCount: Record<
+      string,
+      { count: number; hourly: number[]; weekly: Record<string, number> }
+    > = {}
 
     sortedData.forEach((loc) => {
       const locKey = `${loc.city || ""}, ${loc.state || ""}`
       if (!locationCount[locKey])
-        locationCount[locKey] = { count: 0, hourly: Array(24).fill(0), weekly: { Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0 } }
+        locationCount[locKey] = {
+          count: 0,
+          hourly: Array(24).fill(0),
+          weekly: { Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0 },
+        }
 
       locationCount[locKey].count += 1
 
@@ -107,7 +127,9 @@ export function LocationAnalysis() {
       .slice(0, 10)
 
     // Hourly and weekly patterns (aggregate of top location)
-    const hourlyData = topLocations[0]?.hourly_pattern.map((h) => ({ hour: `${h.hour}:00`, count: h.count })) || Array.from({ length: 24 }, (_, hour) => ({ hour: `${hour}:00`, count: 0 }))
+    const hourlyData =
+      topLocations[0]?.hourly_pattern.map((h) => ({ hour: `${h.hour}:00`, count: h.count })) ||
+      Array.from({ length: 24 }, (_, hour) => ({ hour: `${hour}:00`, count: 0 }))
     const weeklyData = topLocations[0]?.weekly_pattern || []
 
     // --- Simple cluster detection (top 5 locations by visits) ---
@@ -123,13 +145,19 @@ export function LocationAnalysis() {
     // --- Simple anomaly detection: daily distance > 2x average ---
     const anomalies = Object.entries(dailyDistances)
       .filter(([day, dist]) => dist > 2 * avgDailyDistance)
-      .map(([day, dist]) => ({ date: day, distance: Math.round(dist), reason: "High travel distance" }))
+      .map(([day, dist]) => ({
+        date: day,
+        distance: Math.round(dist),
+        reason: "High travel distance",
+      }))
 
     const totalDays = Math.max(
       1,
       Math.ceil(
-        (new Date(sortedData[sortedData.length - 1].date).getTime() - new Date(sortedData[0].date).getTime()) / (1000 * 60 * 60 * 24)
-      )
+        (new Date(sortedData[sortedData.length - 1].date).getTime() -
+          new Date(sortedData[0].date).getTime()) /
+          (1000 * 60 * 60 * 24),
+      ),
     )
 
     return {
@@ -149,7 +177,7 @@ export function LocationAnalysis() {
 
   if (!analysis) {
     return (
-       <div className="w-full h-[calc(100vh-200px)]">
+      <div className="w-full h-[calc(100vh-200px)]">
         <Skeleton className="w-full h-full rounded-none" />
       </div>
     )
@@ -160,7 +188,7 @@ export function LocationAnalysis() {
   return (
     // ...rest of your component JSX, using `analysis` for all charts/cards
     <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Distance</CardTitle>
@@ -206,7 +234,7 @@ export function LocationAnalysis() {
         </Card>
       </div>
 
-      <Tabs defaultValue="routines" className="space-y-4">
+      <Tabs className="space-y-4" defaultValue="routines">
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="routines">Daily Routines</TabsTrigger>
           <TabsTrigger value="travel">Travel Patterns</TabsTrigger>
@@ -214,7 +242,7 @@ export function LocationAnalysis() {
           <TabsTrigger value="anomalies">Anomalies</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="routines" className="space-y-4">
+        <TabsContent className="space-y-4" value="routines">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Most Visited Places */}
             <Card>
@@ -228,14 +256,16 @@ export function LocationAnalysis() {
               <CardContent>
                 <div className="space-y-3">
                   {analysis.topLocations.map((location, index) => (
-                    <div key={location.location} className="flex items-center justify-between">
+                    <div className="flex items-center justify-between" key={location.location}>
                       <div className="flex items-center gap-2">
                         <Badge variant={index === 0 ? "default" : "secondary"}>{index + 1}</Badge>
                         <span className="font-medium">{location.location}</span>
                       </div>
                       <div className="text-right">
                         <div className="text-sm font-medium">{location.count} visits</div>
-                        <div className="text-xs text-muted-foreground">{location.percentage.toFixed(1)}%</div>
+                        <div className="text-xs text-muted-foreground">
+                          {location.percentage.toFixed(1)}%
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -253,13 +283,19 @@ export function LocationAnalysis() {
                 <CardDescription>When you're most active throughout the day</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={200}>
+                <ResponsiveContainer height={200} width="100%">
                   <AreaChart data={analysis.hourlyData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="hour" />
                     <YAxis />
                     <Tooltip />
-                    <Area type="monotone" dataKey="count" stroke="#8884d8" fill="#8884d8" fillOpacity={0.3} />
+                    <Area
+                      dataKey="count"
+                      fill="#8884d8"
+                      fillOpacity={0.3}
+                      stroke="#8884d8"
+                      type="monotone"
+                    />
                   </AreaChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -276,7 +312,7 @@ export function LocationAnalysis() {
               <CardDescription>Your activity levels throughout the week</CardDescription>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
+              <ResponsiveContainer height={300} width="100%">
                 <BarChart data={analysis.weeklyData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="day" />
@@ -289,27 +325,29 @@ export function LocationAnalysis() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="travel" className="space-y-4">
+        <TabsContent className="space-y-4" value="travel">
           <Card>
             <CardHeader>
               <CardTitle>Country Distribution</CardTitle>
               <CardDescription>Where you spend your time geographically</CardDescription>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer height={400} width="100%">
                 <PieChart>
                   <Pie
-                    data={analysis.countryData}
                     cx="50%"
                     cy="50%"
-                    labelLine={false}
-                    label={({ country, percentage }) => `${country} (${(percentage as number).toFixed(1)}%)`}
-                    outerRadius={120}
-                    fill="#8884d8"
+                    data={analysis.countryData}
                     dataKey="count"
+                    fill="#8884d8"
+                    label={({ country, percentage }) =>
+                      `${country} (${(percentage as number).toFixed(1)}%)`
+                    }
+                    labelLine={false}
+                    outerRadius={120}
                   >
                     {analysis.countryData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
                     ))}
                   </Pie>
                   <Tooltip />
@@ -319,21 +357,29 @@ export function LocationAnalysis() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="clusters" className="space-y-4">
+        <TabsContent className="space-y-4" value="clusters">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Briefcase className="h-5 w-5" />
                 Important Places Analysis
               </CardTitle>
-              <CardDescription>Automatically identified significant locations in your routine</CardDescription>
+              <CardDescription>
+                Automatically identified significant locations in your routine
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {analysis.clusters.map((cluster, index) => (
-                  <div key={cluster.name} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div
+                    className="flex items-center justify-between p-4 border rounded-lg"
+                    key={cluster.name}
+                  >
                     <div className="flex items-center gap-3">
-                      <div className="w-4 h-4 rounded-full" style={{ backgroundColor: cluster.color }} />
+                      <div
+                        className="w-4 h-4 rounded-full"
+                        style={{ backgroundColor: cluster.color }}
+                      />
                       <div>
                         <div className="font-medium">{cluster.name}</div>
                         <div className="text-sm text-muted-foreground">{cluster.type}</div>
@@ -342,8 +388,8 @@ export function LocationAnalysis() {
                     <div className="text-right">
                       <div className="font-medium">{cluster.visits} visits</div>
                       <Progress
-                        value={(cluster.visits / (analysis.topLocations[0]?.count || 1)) * 100}
                         className="w-20 mt-1"
+                        value={(cluster.visits / (analysis.topLocations[0]?.count || 1)) * 100}
                       />
                     </div>
                   </div>
@@ -353,7 +399,7 @@ export function LocationAnalysis() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="anomalies" className="space-y-4">
+        <TabsContent className="space-y-4" value="anomalies">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -367,17 +413,22 @@ export function LocationAnalysis() {
                 <div className="space-y-3">
                   {analysis.anomalies.map((anomaly, index) => (
                     <div
-                      key={index}
                       className="flex items-center justify-between p-3 bg-destructive/10 border border-destructive/20 rounded-lg"
+                      key={index}
                     >
                       <div>
-                        <div className="font-medium">{new Date(anomaly.date).toLocaleDateString()}</div>
+                        <div className="font-medium">
+                          {new Date(anomaly.date).toLocaleDateString()}
+                        </div>
                         <div className="text-sm text-muted-foreground">Unusual travel day</div>
                       </div>
                       <div className="text-right">
                         <div className="font-medium text-destructive">{anomaly.distance} km</div>
                         <div className="text-xs text-muted-foreground">
-                          {Math.round((anomaly.distance / Math.max(analysis.avgDailyDistance, 1)) * 100)}% above average
+                          {Math.round(
+                            (anomaly.distance / Math.max(analysis.avgDailyDistance, 1)) * 100,
+                          )}
+                          % above average
                         </div>
                       </div>
                     </div>

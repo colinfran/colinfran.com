@@ -4,14 +4,13 @@
 import { LocationType } from "@/db/schema"
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react"
 
-
 interface DataContextValue {
   locations: LocationType[]
   loading: boolean
 }
 
 type DataProps = {
-  data: LocationType[],
+  data: LocationType[]
   success: boolean
 }
 
@@ -33,7 +32,7 @@ export const DataProvider = ({ children }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden"
         const res = await fetch("/api/data")
         if (res.ok) {
           const json = await res.json()
@@ -45,16 +44,12 @@ export const DataProvider = ({ children }: Props) => {
         console.error("Error fetching locations:", error)
       } finally {
         setLoading(false)
-        document.body.style.overflow = 'scroll';
+        document.body.style.overflow = "scroll"
       }
     }
 
     fetchData()
   }, [])
 
-  return (
-    <DataContext.Provider value={{ locations, loading }}>
-      {children}
-    </DataContext.Provider>
-  )
+  return <DataContext.Provider value={{ locations, loading }}>{children}</DataContext.Provider>
 }

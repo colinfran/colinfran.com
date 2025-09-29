@@ -1,25 +1,25 @@
-import { redirect } from "next/navigation";
-import Link from "next/link";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import Markdown from "@/components/Markdown";
-import ImageWithSkeleton from "@/components/ImageWithSkeleton";
-import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog";
+import { redirect } from "next/navigation"
+import Link from "next/link"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import Markdown from "@/components/Markdown"
+import ImageWithSkeleton from "@/components/ImageWithSkeleton"
+import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
 
 // PageProps type
 type PageProps = {
-  params: { id: string };
-};
+  params: { id: string }
+}
 
 // Keep it async for SSR
 export default async function Page(props: PageProps) {
-  const params = await props.params;
-  const blog = await findBlogById(params.id);
+  const params = await props.params
+  const blog = await findBlogById(params.id)
 
-  if (!blog) redirect("/404");
+  if (!blog) redirect("/404")
 
-  const { title, author, date, imageUrl, content } = blog;
-  const initials = getInitials(author);
-  const recentPosts = await getRecentPosts();
+  const { title, author, date, imageUrl, content } = blog
+  const initials = getInitials(author)
+  const recentPosts = await getRecentPosts()
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 md:flex-row md:gap-12 md:px-6 md:py-20">
@@ -27,10 +27,10 @@ export default async function Page(props: PageProps) {
         <ImageWithSkeleton
           alt={title}
           height={0}
-          width={0}
           sizes="100vw"
           src={imageUrl}
           style={{ width: "100%", height: "auto" }}
+          width={0}
         />
 
         <div className="mt-8 space-y-4 md:mt-12">
@@ -59,9 +59,9 @@ export default async function Page(props: PageProps) {
           <div className="space-y-4">
             {recentPosts.map((recentPost) => (
               <Link
-                key={recentPost.id}
-                href={`/blog/${recentPost.id}`}
                 className="group flex items-center space-x-4"
+                href={`/blog/${recentPost.id}`}
+                key={recentPost.id}
                 prefetch
               >
                 <div className="h-12 w-16 shrink-0 overflow-hidden rounded-md">
@@ -69,15 +69,13 @@ export default async function Page(props: PageProps) {
                     alt="Recent Post"
                     className="size-full object-cover"
                     height={48}
-                    width={64}
-                    style={{ aspectRatio: "64/48", objectFit: "cover" }}
                     src={recentPost.imageUrl}
+                    style={{ aspectRatio: "64/48", objectFit: "cover" }}
+                    width={64}
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-medium group-hover:underline">
-                    {recentPost.title}
-                  </h3>
+                  <h3 className="text-lg font-medium group-hover:underline">{recentPost.title}</h3>
                   <p className="text-sm text-muted-foreground">
                     {new Date(recentPost.date).toLocaleDateString()}
                   </p>
@@ -88,5 +86,5 @@ export default async function Page(props: PageProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }

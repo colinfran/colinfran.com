@@ -3,12 +3,12 @@ import { countryToAlpha2 } from "country-to-iso"
 import postgres from "postgres"
 
 type Location = {
-  city: string;
-  state: string;
-  country: string;
-  date: string;
-  longitude: string;
-  latitude: string;
+  city: string
+  state: string
+  country: string
+  date: string
+  longitude: string
+  latitude: string
 }
 
 export const getTodaysLocation = async () => {
@@ -42,11 +42,11 @@ export const getCountryIcon = (location: string): string => {
 
   // Common aliases / normalization
   const aliasMap: Record<string, string> = {
-    "USA": "US",
+    USA: "US",
     "U.S.": "US",
     "United States": "US",
     "United States of America": "US",
-    "UK": "GB",
+    UK: "GB",
     "U.K.": "GB",
   }
 
