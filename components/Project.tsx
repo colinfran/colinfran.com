@@ -78,7 +78,14 @@ export const Project: React.FC<ProjectPropType> = ({
         <div className="flex flex-row flex-wrap gap-10">
           {links.map(({ text, url, target }) => (
             <Button className="w-full flex-1 min-w-[120px]" key={url} asChild>
-              <Link className="w-full" href={url} rel="noopener noreferrer" target={target ? target : "_blank"} prefetch={target === "self" ? true : false}>
+              <Link
+                className="w-full"
+                href={url}
+                rel="noopener noreferrer"
+                target={target ? target : "_blank"}
+                prefetch={target === "self" ? true : false}
+                onClick={(e) => e.stopPropagation()} // prevent the card's onClick from firing when navigating
+              >
                 {text}
               </Link>
             </Button>
