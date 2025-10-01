@@ -8,7 +8,7 @@ import { FC } from "react"
 const Page: FC = () => {
   const { loading } = useData()
   useLockBodyScroll(loading)
-  
+
   return (
     <main className="min-h-screen bg-background py-8 px-4">
       <div className="container mx-auto">
