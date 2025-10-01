@@ -234,215 +234,224 @@ export const LocationAnalysis = () => {
         </Card>
       </div>
 
-      <Tabs className="space-y-4" defaultValue="routines">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="routines">Daily Routines</TabsTrigger>
-          <TabsTrigger value="travel">Travel Patterns</TabsTrigger>
-          <TabsTrigger value="clusters">Important Places</TabsTrigger>
-          <TabsTrigger value="anomalies">Anomalies</TabsTrigger>
+    <Tabs className="space-y-4" defaultValue="routines">
+      {/* Scrollable Tabs Navigation */}
+      <div className="overflow-x-auto">
+        <TabsList className="flex w-max gap-2 min-w-full">
+          <TabsTrigger value="routines" className="flex-shrink-0">
+            Daily Routines
+          </TabsTrigger>
+          <TabsTrigger value="travel" className="flex-shrink-0">
+            Travel Patterns
+          </TabsTrigger>
+          <TabsTrigger value="clusters" className="flex-shrink-0">
+            Important Places
+          </TabsTrigger>
+          <TabsTrigger value="anomalies" className="flex-shrink-0">
+            Anomalies
+          </TabsTrigger>
         </TabsList>
+      </div>
 
-        <TabsContent className="space-y-4" value="routines">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Most Visited Places */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Home className="h-5 w-5" />
-                  Most Visited Places
-                </CardTitle>
-                <CardDescription>Your top locations by frequency</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {analysis.topLocations.map((location, index) => (
-                    <div className="flex items-center justify-between" key={location.location}>
-                      <div className="flex items-center gap-2">
-                        <Badge variant={index === 0 ? "default" : "secondary"}>{index + 1}</Badge>
-                        <span className="font-medium">{location.location}</span>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-sm font-medium">{location.count} visits</div>
-                        <div className="text-xs text-muted-foreground">
-                          {location.percentage.toFixed(1)}%
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Hourly Activity */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Clock className="h-5 w-5" />
-                  Hourly Activity Pattern
-                </CardTitle>
-                <CardDescription>When you're most active throughout the day</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer height={200} width="100%">
-                  <AreaChart data={analysis.hourlyData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="hour" />
-                    <YAxis />
-                    <Tooltip />
-                    <Area
-                      dataKey="count"
-                      fill="#8884d8"
-                      fillOpacity={0.3}
-                      stroke="#8884d8"
-                      type="monotone"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Weekly Pattern */}
+      {/* Routines Tab */}
+      <TabsContent className="space-y-4" value="routines">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Most Visited Places */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
-                Weekly Activity Pattern
+                <Home className="h-5 w-5" /> Most Visited Places
               </CardTitle>
-              <CardDescription>Your activity levels throughout the week</CardDescription>
+              <CardDescription>Your top locations by frequency</CardDescription>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer height={300} width="100%">
-                <BarChart data={analysis.weeklyData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="day" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="count" fill="#82ca9d" />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent className="space-y-4" value="travel">
-          <Card>
-            <CardHeader>
-              <CardTitle>Country Distribution</CardTitle>
-              <CardDescription>Where you spend your time geographically</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer height={400} width="100%">
-                <PieChart>
-                  <Pie
-                    cx="50%"
-                    cy="50%"
-                    data={analysis.countryData}
-                    dataKey="count"
-                    fill="#8884d8"
-                    label={({ country, percentage }) =>
-                      `${country} (${(percentage as number).toFixed(1)}%)`
-                    }
-                    labelLine={false}
-                    outerRadius={120}
-                  >
-                    {analysis.countryData.map((entry, index) => (
-                      <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent className="space-y-4" value="clusters">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Briefcase className="h-5 w-5" />
-                Important Places Analysis
-              </CardTitle>
-              <CardDescription>
-                Automatically identified significant locations in your routine
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {analysis.clusters.map((cluster, index) => (
-                  <div
-                    className="flex items-center justify-between p-4 border rounded-lg"
-                    key={cluster.name}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="w-4 h-4 rounded-full"
-                        style={{ backgroundColor: cluster.color }}
-                      />
-                      <div>
-                        <div className="font-medium">{cluster.name}</div>
-                        <div className="text-sm text-muted-foreground">{cluster.type}</div>
-                      </div>
+              <div className="space-y-3">
+                {analysis.topLocations.map((location, index) => (
+                  <div className="flex items-center justify-between" key={location.location}>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={index === 0 ? "default" : "secondary"}>{index + 1}</Badge>
+                      <span className="font-medium">{location.location}</span>
                     </div>
                     <div className="text-right">
-                      <div className="font-medium">{cluster.visits} visits</div>
-                      <Progress
-                        className="w-20 mt-1"
-                        value={(cluster.visits / (analysis.topLocations[0]?.count || 1)) * 100}
-                      />
+                      <div className="text-sm font-medium">{location.count} visits</div>
+                      <div className="text-xs text-muted-foreground">
+                        {location.percentage.toFixed(1)}%
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
 
-        <TabsContent className="space-y-4" value="anomalies">
+          {/* Hourly Activity */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5" />
-                Anomaly Detection
+                <Clock className="h-5 w-5" /> Hourly Activity Pattern
               </CardTitle>
-              <CardDescription>Days with unusual travel patterns or distances</CardDescription>
+              <CardDescription>When you're most active throughout the day</CardDescription>
             </CardHeader>
             <CardContent>
-              {analysis.anomalies.length > 0 ? (
-                <div className="space-y-3">
-                  {analysis.anomalies.map((anomaly, index) => (
-                    <div
-                      className="flex items-center justify-between p-3 bg-destructive/10 border border-destructive/20 rounded-lg"
-                      key={index}
-                    >
-                      <div>
-                        <div className="font-medium">
-                          {new Date(anomaly.date).toLocaleDateString()}
-                        </div>
-                        <div className="text-sm text-muted-foreground">Unusual travel day</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-medium text-destructive">{anomaly.distance} km</div>
-                        <div className="text-xs text-muted-foreground">
-                          {Math.round(
-                            (anomaly.distance / Math.max(analysis.avgDailyDistance, 1)) * 100,
-                          )}
-                          % above average
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center text-muted-foreground py-8">
-                  No significant anomalies detected in your travel patterns
-                </div>
-              )}
+              <ResponsiveContainer height={200} width="100%">
+                <AreaChart data={analysis.hourlyData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="hour" />
+                  <YAxis />
+                  <Tooltip />
+                  <Area
+                    dataKey="count"
+                    fill="#8884d8"
+                    fillOpacity={0.3}
+                    stroke="#8884d8"
+                    type="monotone"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </CardContent>
           </Card>
-        </TabsContent>
-      </Tabs>
+        </div>
+
+        {/* Weekly Pattern */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Calendar className="h-5 w-5" /> Weekly Activity Pattern
+            </CardTitle>
+            <CardDescription>Your activity levels throughout the week</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer height={300} width="100%">
+              <BarChart data={analysis.weeklyData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="day" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="count" fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Travel Tab */}
+      <TabsContent className="space-y-4" value="travel">
+        <Card>
+          <CardHeader>
+            <CardTitle>Country Distribution</CardTitle>
+            <CardDescription>Where you spend your time geographically</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer height={400} width="100%">
+              <PieChart>
+                <Pie
+                  cx="50%"
+                  cy="50%"
+                  data={analysis.countryData}
+                  dataKey="count"
+                  fill="#8884d8"
+                  label={({ country, percentage }) =>
+                    `${country} (${(percentage as number).toFixed(1)}%)`
+                  }
+                  labelLine={false}
+                  outerRadius={120}
+                >
+                  {analysis.countryData.map((entry, index) => (
+                    <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Clusters Tab */}
+      <TabsContent className="space-y-4" value="clusters">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Briefcase className="h-5 w-5" /> Important Places Analysis
+            </CardTitle>
+            <CardDescription>
+              Automatically identified significant locations in your routine
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {analysis.clusters.map((cluster) => (
+                <div
+                  className="flex items-center justify-between p-4 border rounded-lg"
+                  key={cluster.name}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-4 h-4 rounded-full" style={{ backgroundColor: cluster.color }} />
+                    <div>
+                      <div className="font-medium">{cluster.name}</div>
+                      <div className="text-sm text-muted-foreground">{cluster.type}</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-medium">{cluster.visits} visits</div>
+                    <Progress
+                      className="w-20 mt-1"
+                      value={(cluster.visits / (analysis.topLocations[0]?.count || 1)) * 100}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Anomalies Tab */}
+      <TabsContent className="space-y-4" value="anomalies">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5" /> Anomaly Detection
+            </CardTitle>
+            <CardDescription>Days with unusual travel patterns or distances</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {analysis.anomalies.length > 0 ? (
+              <div className="space-y-3">
+                {analysis.anomalies.map((anomaly, index) => (
+                  <div
+                    className="flex items-center justify-between p-3 bg-destructive/10 border border-destructive/20 rounded-lg"
+                    key={index}
+                  >
+                    <div>
+                      <div className="font-medium">
+                        {new Date(anomaly.date).toLocaleDateString()}
+                      </div>
+                      <div className="text-sm text-muted-foreground">Unusual travel day</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-medium text-destructive">{anomaly.distance} km</div>
+                      <div className="text-xs text-muted-foreground">
+                        {Math.round(
+                          (anomaly.distance / Math.max(analysis.avgDailyDistance, 1)) * 100,
+                        )}
+                        % above average
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center text-muted-foreground py-8">
+                No significant anomalies detected in your travel patterns
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
+
+
     </div>
   )
 }
