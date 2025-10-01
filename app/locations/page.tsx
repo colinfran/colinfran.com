@@ -23,7 +23,7 @@ export default function Page() {
   if (loading) {
     return (
       <main className="min-h-screen bg-background py-8 px-4">
-        <div className="container mx-auto">
+        <div className="flex flex-col container mx-auto gap-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {[...Array(4)].map((_, i) => (
               <Card key={i}>
@@ -34,6 +34,7 @@ export default function Page() {
               </Card>
             ))}
           </div>
+          <LocationHeatmap />
         </div>
       </main>
     )

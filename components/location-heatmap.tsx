@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, useCallback } from "react"
 import Map, { Source, Layer } from "react-map-gl/mapbox-legacy"
 import "mapbox-gl/dist/mapbox-gl.css"
 import { Skeleton } from "./ui/skeleton"
@@ -9,40 +9,73 @@ import { useData } from "@/components/providers/data-provider"
 const LocationHeatmap: React.FC = () => {
   const { locations, loading: dataLoading } = useData()
   const mapRef = useRef<any>(null)
-  const [loading, setLoading] = useState(true) // internal loading
+  const [loading, setLoading] = useState(true)
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1024,
   )
 
+  const scale = Math.max(0.5, Math.min(1.5, windowWidth / 1024))
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!
 
-  // window resize
+  // track window resize
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth)
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  // Fit bounds and mark loading false
-  useEffect(() => {
-    if (!mapRef.current || !locations || locations.length === 0) return
+  // helper to fit bounds
+  const fitToBounds = useCallback(() => {
+    if (!mapRef.current || !locations?.length) return
 
-    const lats = locations.map((loc) => parseFloat(loc.latitude as unknown as string))
-    const lngs = locations.map((loc) => parseFloat(loc.longitude as unknown as string))
+    const map = mapRef.current.getMap?.() ?? mapRef.current
+    if (!map?.fitBounds) return
+
+    const lats = locations.map((loc) => parseFloat(loc.latitude as string))
+    const lngs = locations.map((loc) => parseFloat(loc.longitude as string))
+
+    let minLat = Math.min(...lats)
+    let maxLat = Math.max(...lats)
+    let minLng = Math.min(...lngs)
+    let maxLng = Math.max(...lngs)
+
+    const EPS = 0.01
+    if (minLat === maxLat) {
+      minLat -= EPS
+      maxLat += EPS
+    }
+    if (minLng === maxLng) {
+      minLng -= EPS
+      maxLng += EPS
+    }
 
     const bounds: [[number, number], [number, number]] = [
-      [Math.min(...lngs), Math.min(...lats)],
-      [Math.max(...lngs), Math.max(...lats)],
+      [minLng, minLat],
+      [maxLng, maxLat],
     ]
 
-    mapRef.current.fitBounds(bounds, { padding: 50, maxZoom: 3 * scale, offset: [0, -134 / 2] })
-    setLoading(false) // map + data ready
-  }, [locations])
+    try {
+      map.resize()
+      map.fitBounds(bounds, { padding: 50 * scale, maxZoom: 15, animate: false })
+    } catch {
+      // fallback center/zoom if fitBounds fails
+      const center = [(minLng + maxLng) / 2, (minLat + maxLat) / 2]
+      if (map.setCenter) map.setCenter(center)
+      if (map.setZoom) map.setZoom(Math.min(3 * scale, 15))
+    } finally {
+      setLoading(false)
+    }
+  }, [locations, scale])
+
+  // refit on resize + data change
+  useEffect(() => {
+    fitToBounds()
+  }, [fitToBounds, windowWidth])
 
   const features =
     locations?.map((loc) => {
-      const lat = parseFloat(loc.latitude as unknown as string)
-      const lng = parseFloat(loc.longitude as unknown as string)
+      const lat = parseFloat(loc.latitude as string)
+      const lng = parseFloat(loc.longitude as string)
       return {
         type: "Feature" as const,
         geometry: { type: "Point" as const, coordinates: [lng, lat] },
@@ -51,11 +84,6 @@ const LocationHeatmap: React.FC = () => {
     }) || []
 
   const geojson = { type: "FeatureCollection" as const, features }
-  const lats = features.map((f) => f.geometry.coordinates[1])
-  const lngs = features.map((f) => f.geometry.coordinates[0])
-  const centerLat = lats.length ? (Math.min(...lats) + Math.max(...lats)) / 2 : 0
-  const centerLng = lngs.length ? (Math.min(...lngs) + Math.max(...lngs)) / 2 : 0
-  const scale = Math.max(0.5, Math.min(1.5, windowWidth / 1024))
 
   const heatmapLayer: any = {
     id: "heatmap",
@@ -80,19 +108,19 @@ const LocationHeatmap: React.FC = () => {
   }
 
   return (
-    <div className="relative w-full h-[600px] border rounded-lg">
-      {/* Always render the map */}
+    <div className="relative w-full h-[600px]">
       <Map
         initialViewState={{
-          latitude: centerLat,
-          longitude: centerLng,
-          zoom: 3 * scale,
+          latitude: 0,
+          longitude: 0,
+          zoom: 1,
         }}
         mapboxAccessToken={token}
         mapStyle="mapbox://styles/mapbox/dark-v11"
         projection="mercator"
         ref={mapRef}
         style={{ width: "100%", height: "100%", zIndex: 11 }}
+        onLoad={fitToBounds} // 👈 run fitBounds once on init
       >
         {features.length > 0 && (
           <Source data={geojson} id="locations" type="geojson">
@@ -101,7 +129,6 @@ const LocationHeatmap: React.FC = () => {
         )}
       </Map>
 
-      {/* Skeleton overlay */}
       {(dataLoading || loading) && (
         <div className="absolute top-0 left-0 w-full h-full z-1">
           <Skeleton className="w-full h-full rounded-none" />
