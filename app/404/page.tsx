@@ -13,7 +13,7 @@ const Page: React.FC = async () => (
           </div>
         </div>
         <div className="space-y-2">
-          <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">
+          <div className="inline-block text-white rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">
             Error
           </div>
           <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
