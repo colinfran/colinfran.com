@@ -1,8 +1,8 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import { db } from "@/db"
 import { locations } from "@/db/schema"
 
-export async function GET(request: NextRequest) {
+export const GET = async (): Promise<NextResponse> => {
   try {
     const allLocations = await db.select().from(locations)
     return NextResponse.json({

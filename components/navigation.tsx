@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Map, BarChart3, Route } from "lucide-react"
+import { FC } from "react"
 
 const navigationItems = [
   {
@@ -21,7 +22,7 @@ const navigationItems = [
   },
 ]
 
-export const Navigation = () => {
+export const Navigation: FC = () => {
   const pathname = usePathname()
 
   return (

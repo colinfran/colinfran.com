@@ -11,7 +11,7 @@ type Location = {
   latitude: string
 }
 
-export const getTodaysLocation = async () => {
+export const getTodaysLocation = async (): Promise<string> => {
   const connectionString = process.env.LOCATION_POSTGRES_URL!
   const sql = postgres(connectionString)
   // Query the database to fetch the most recent location data.

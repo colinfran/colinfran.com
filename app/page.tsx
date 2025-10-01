@@ -5,8 +5,9 @@ import Link from "next/link"
 import { Projects } from "@/components/Projects"
 import { getCountryIcon, getTodaysLocation } from "@/db/getTodaysLocation"
 import { headers } from "next/headers"
+import { FC } from "react"
 
-const Page: React.FC = async () => {
+const Page: FC = async () => {
   const location = await getTodaysLocation()
   const headersList = await headers()
   const userAgent = headersList.get("user-agent") || ""

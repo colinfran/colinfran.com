@@ -5,18 +5,9 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useData } from "@/components/providers/data-provider"
 import LocationHeatmap from "@/components/location-heatmap"
 import useLockBodyScroll from "@/hooks/useLockBodyScroll"
+import { FC } from "react"
 
-interface LocationData {
-  id: string
-  date: string
-  latitude: number
-  longitude: number
-  city: string
-  state: string
-  country: string
-}
-
-export default function Page() {
+export const Page: FC = () => {
   const { locations, loading } = useData()
   useLockBodyScroll(loading)
 
@@ -25,14 +16,16 @@ export default function Page() {
       <main className="min-h-screen bg-background py-8 px-4">
         <div className="flex flex-col container mx-auto gap-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {[...Array(4)].map((_, i) => (
-              <Card key={i}>
-                <CardContent className="p-4 text-center h-[84px]">
-                  <Skeleton className="h-8 w-16 mx-auto mb-2" />
-                  <Skeleton className="h-4 w-24 mx-auto" />
-                </CardContent>
-              </Card>
-            ))}
+            {[...Array(4)].map(
+              (_, i): FC => (
+                <Card key={i}>
+                  <CardContent className="p-4 text-center h-[84px]">
+                    <Skeleton className="h-8 w-16 mx-auto mb-2" />
+                    <Skeleton className="h-4 w-24 mx-auto" />
+                  </CardContent>
+                </Card>
+              ),
+            )}
           </div>
           <LocationHeatmap />
         </div>

@@ -23,7 +23,7 @@ export const TrendsTab: FC = () => {
         <CardTitle>Travel Trends Over Time</CardTitle>
       </CardHeader>
       <CardContent className="h-[300px]">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer height="100%" width="100%">
           <LineChart data={analysis.monthlyTrends}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
@@ -42,7 +42,7 @@ export const TrendsTab: FC = () => {
               }}
             />
             <Tooltip />
-            <Line type="monotone" dataKey="distance" stroke="#8884d8" strokeWidth={2} />
+            <Line dataKey="distance" stroke="#8884d8" strokeWidth={2} type="monotone" />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>

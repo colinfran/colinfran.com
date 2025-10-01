@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-export async function GET() {
+export const GET = async (): Promise<NextResponse> => {
   return NextResponse.json({
     token: process.env.MAPBOX_TOKEN,
   })

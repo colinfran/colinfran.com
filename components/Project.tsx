@@ -81,9 +81,9 @@ export const Project: React.FC<ProjectPropType> = ({
               <Link
                 className="w-full"
                 href={url}
+                prefetch={target === "self" ? true : false}
                 rel="noopener noreferrer"
                 target={target ? target : "_blank"}
-                prefetch={target === "self" ? true : false}
                 onClick={(e) => e.stopPropagation()} // prevent the card's onClick from firing when navigating
               >
                 {text}

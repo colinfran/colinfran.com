@@ -13,8 +13,9 @@ import { TrendsTab } from "./TrendsTab"
 import { PatternsTab } from "./PatternsTab"
 import { StreaksTab } from "./Streaks"
 import { TransitionsTab } from "./TransitionsTab"
+import { FC } from "react"
 
-export const LocationInsights = () => {
+export const LocationInsights: FC = () => {
   const { analysis, loading } = useData()
   useLockBodyScroll(loading)
 
@@ -30,7 +31,7 @@ export const LocationInsights = () => {
       </div>
       <div className="w-full flex justify-center">
         <div className="relative w-full max-w-5xl">
-          <Tabs defaultValue="routines" className="w-full">
+          <Tabs className="w-full" defaultValue="routines">
             {/* Scrollable TabsList */}
             <div className="overflow-x-auto no-scrollbar">
               <TabsList className="flex gap-2 px-2 min-w-max">

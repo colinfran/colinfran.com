@@ -2,12 +2,9 @@ import type React from "react"
 
 import { Navigation } from "@/components/navigation"
 import { DataProvider } from "@/components/providers/data-provider"
+import { FC, ReactNode } from "react"
 
-export default function Layout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export const Layout: FC<Readonly<{ children: ReactNode }>> = ({ children }) => {
   return (
     <>
       <Navigation />

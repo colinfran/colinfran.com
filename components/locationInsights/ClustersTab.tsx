@@ -12,12 +12,17 @@ export const ClustersTab: FC = () => {
         <CardTitle className="flex items-center gap-2">
           <Briefcase className="h-5 w-5" /> Important Places Analysis
         </CardTitle>
-        <CardDescription>Automatically identified significant locations in your routine</CardDescription>
+        <CardDescription>
+          Automatically identified significant locations in your routine
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {analysis.clusters.map((cluster: any) => (
-            <div className="flex items-center justify-between p-4 border rounded-lg" key={cluster.name}>
+            <div
+              className="flex items-center justify-between p-4 border rounded-lg"
+              key={cluster.name}
+            >
               <div className="flex items-center gap-3">
                 <div className="w-4 h-4 rounded-full" style={{ backgroundColor: cluster.color }} />
                 <div>
@@ -27,7 +32,10 @@ export const ClustersTab: FC = () => {
               </div>
               <div className="text-right">
                 <div className="font-medium">{cluster.visits} visits</div>
-                <Progress className="w-20 mt-1" value={(cluster.visits / (analysis.topLocations[0]?.count || 1)) * 100} />
+                <Progress
+                  className="w-20 mt-1"
+                  value={(cluster.visits / (analysis.topLocations[0]?.count || 1)) * 100}
+                />
               </div>
             </div>
           ))}

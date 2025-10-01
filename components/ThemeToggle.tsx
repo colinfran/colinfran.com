@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/enforces-negative-arbitrary-values */
 "use client"
 import React, { useEffect, useState } from "react"
 import { useTheme } from "next-themes"

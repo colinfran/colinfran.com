@@ -29,17 +29,17 @@ export const PatternsTab: FC = () => {
           <CardTitle>Top Locations</CardTitle>
         </CardHeader>
         <CardContent className="h-[300px] flex justify-center items-center">
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer height="100%" width="100%">
             <PieChart>
               <Pie
                 data={topLocationData}
                 dataKey="value"
+                label={({ name, value }) => `${name} (${value})`}
                 nameKey="name"
                 outerRadius={100}
-                label={({ name, value }) => `${name} (${value})`}
               >
                 {topLocationData.map((entry, index) => (
-                  <Cell key={index} fill={entry.color} />
+                  <Cell fill={entry.color} key={index} />
                 ))}
               </Pie>
               <Tooltip />

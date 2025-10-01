@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import Markdown from "@/components/Markdown"
 import ImageWithSkeleton from "@/components/ImageWithSkeleton"
 import { findBlogById, getInitials, getRecentPosts } from "@/lib/blog"
+import { FC } from "react"
 
 // PageProps type
 type PageProps = {
@@ -11,7 +12,7 @@ type PageProps = {
 }
 
 // Keep it async for SSR
-export default async function Page(props: PageProps) {
+export const Page: FC<PageProps> = async (props) => {
   const params = await props.params
   const blog = await findBlogById(params.id)
 

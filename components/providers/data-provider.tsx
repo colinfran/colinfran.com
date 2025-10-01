@@ -3,19 +3,20 @@
 
 import { LocationType } from "@/db/schema"
 import { calculateDistance } from "@/lib/utils"
-import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo } from "react"
-
-
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useMemo,
+  FC,
+} from "react"
 
 interface DataContextValue {
   locations: LocationType[]
   loading: boolean
-  analysis?: any;
-}
-
-type DataProps = {
-  data: LocationType[]
-  success: boolean
+  analysis?: any
 }
 
 const DataContext = createContext<DataContextValue>({
@@ -24,18 +25,18 @@ const DataContext = createContext<DataContextValue>({
   analysis: undefined,
 })
 
-export const useData = () => useContext(DataContext)
+export const useData = (): DataContextValue => useContext(DataContext)
 
 interface Props {
   children: ReactNode
 }
 
-export const DataProvider = ({ children }: Props) => {
+export const DataProvider: FC<Props> = ({ children }) => {
   const [locations, setLocations] = useState<LocationType[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       try {
         document.body.style.overflow = "hidden"
         const res = await fetch("/api/data")
@@ -268,5 +269,7 @@ export const DataProvider = ({ children }: Props) => {
     }
   }, [locations])
 
-  return <DataContext.Provider value={{ locations, loading, analysis }}>{children}</DataContext.Provider>
+  return (
+    <DataContext.Provider value={{ locations, loading, analysis }}>{children}</DataContext.Provider>
+  )
 }

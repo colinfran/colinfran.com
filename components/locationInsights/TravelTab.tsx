@@ -2,7 +2,17 @@
 
 import { FC } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, BarChart, Bar } from "recharts"
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  BarChart,
+  Bar,
+} from "recharts"
 import { useData } from "../providers/data-provider"
 
 export const TravelTab: FC = () => {
@@ -12,7 +22,7 @@ export const TravelTab: FC = () => {
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-       {/* Travel Stats */}
+      {/* Travel Stats */}
       <Card className="md:col-span-2">
         <CardHeader>
           <CardTitle>Travel Summary</CardTitle>
@@ -39,7 +49,7 @@ export const TravelTab: FC = () => {
           </div>
         </CardContent>
       </Card>
-      
+
       {/* Monthly Travel Trends */}
       <Card>
         <CardHeader>
@@ -53,7 +63,7 @@ export const TravelTab: FC = () => {
               <XAxis dataKey="month" />
               <YAxis />
               <Tooltip />
-              <Line type="monotone" dataKey="distance" stroke="#8884d8" strokeWidth={2} />
+              <Line dataKey="distance" stroke="#8884d8" strokeWidth={2} type="monotone" />
             </LineChart>
           </ResponsiveContainer>
         </CardContent>

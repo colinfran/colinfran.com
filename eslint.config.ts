@@ -1,25 +1,28 @@
-import js from "@eslint/js";
-import tseslint from "typescript-eslint";
-import react from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
-import importPlugin from "eslint-plugin-import";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import prettierPlugin from "eslint-plugin-prettier";
-import tailwindcss from "eslint-plugin-tailwindcss";
-import unusedImports from "eslint-plugin-unused-imports";
-import next from "@next/eslint-plugin-next";
+// .eslintrc.cjs or .eslintrc.js
+import tsPlugin from "@typescript-eslint/eslint-plugin"
+import tsParser from "@typescript-eslint/parser"
+import react from "eslint-plugin-react"
+import reactHooks from "eslint-plugin-react-hooks"
+import importPlugin from "eslint-plugin-import"
+import jsxA11y from "eslint-plugin-jsx-a11y"
+import prettierPlugin from "eslint-plugin-prettier"
+import tailwindcss from "eslint-plugin-tailwindcss"
+import unusedImports from "eslint-plugin-unused-imports"
+import next from "@next/eslint-plugin-next"
 
-export default tseslint.config(
+export default [
+  // Global ignores
   {
-    files: ["**/*.{ts,tsx}"],
     ignores: [
-      "node_modules",
+      "node_modules/**",
+      ".next/**",
+      "dist/**",
+      "dist-ssr/**",
+      "build/**",
       ".DS_Store",
-      "dist",
-      "dist-ssr",
       "*.local",
       ".eslintcache",
-      "/components/ui",
+      "components/ui/**",
       ".eslintignore",
       ".eslintrc.json",
       ".prettierignore",
@@ -31,12 +34,14 @@ export default tseslint.config(
       "package.json",
       "package-lock.json",
       "next-env.d.ts",
-      "build",
-      ".next",
     ],
+  },
 
+  // TypeScript files
+  {
+    files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      parser: tseslint.parser,
+      parser: tsParser,
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
@@ -80,6 +85,7 @@ export default tseslint.config(
       prettier: prettierPlugin,
       tailwindcss,
       "unused-imports": unusedImports,
+      "@typescript-eslint": tsPlugin,
       next,
     },
 
@@ -137,6 +143,5 @@ export default tseslint.config(
         },
       ],
     },
-  }
-);
-
+  },
+]

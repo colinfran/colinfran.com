@@ -5,7 +5,6 @@ import { NextRequest, NextResponse } from "next/server"
  * Retrieves BetterUptime information based on id.
  */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function GET(request: NextRequest, { params }: any): Promise<NextResponse<unknown>> {
   const searchParams = request.nextUrl.searchParams
   const id = params.id

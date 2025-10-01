@@ -14,7 +14,6 @@ const Markdown: FC<Props> = ({ content }) => {
         h2: ({ ...props }) => <h2 className="my-4 text-4xl font-semibold" {...props} />,
 
         h3: ({ ...props }) => <h3 className="my-4 text-3xl font-semibold" {...props} />,
-        // eslint-disable-next-line @next/next/no-img-element
         img: ({ ...props }) => (
           <img alt="" className="m-auto my-4 max-w-full md:max-w-[600px]" {...props} />
         ),
@@ -22,7 +21,6 @@ const Markdown: FC<Props> = ({ content }) => {
           const { children, className, node, ...rest } = props // eslint-disable-line unused-imports/no-unused-vars
           const match = /language-(\w+)/.exec(className || "")
           return match ? (
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             <SyntaxHighlighter
               {...rest}

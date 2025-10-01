@@ -1,12 +1,12 @@
 "use client"
 
-import React, { useEffect, useRef, useState, useCallback } from "react"
+import React, { useEffect, useRef, useState, useCallback, FC } from "react"
 import Map, { Source, Layer } from "react-map-gl/mapbox-legacy"
 import "mapbox-gl/dist/mapbox-gl.css"
 import { Skeleton } from "./ui/skeleton"
 import { useData } from "@/components/providers/data-provider"
 
-const LocationHeatmap: React.FC = () => {
+const LocationHeatmap: FC = () => {
   const { locations, loading: dataLoading } = useData()
   const mapRef = useRef<any>(null)
   const [loading, setLoading] = useState(true)
@@ -19,7 +19,7 @@ const LocationHeatmap: React.FC = () => {
 
   // track window resize
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth)
+    const handleResize = (): void => setWindowWidth(window.innerWidth)
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])

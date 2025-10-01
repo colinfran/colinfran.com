@@ -1,8 +1,9 @@
 "use client"
 
 import { LocationInsights } from "@/components/locationInsights"
+import { FC } from "react"
 
-export default function AnalysisPage() {
+export const AnalysisPage: FC = () => {
   return (
     <main className="min-h-screen bg-background py-8 px-4">
       <div className="container mx-auto">

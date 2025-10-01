@@ -2,7 +2,17 @@ import { FC } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Clock, Home, Calendar } from "lucide-react"
-import { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Bar } from "recharts"
+import {
+  ResponsiveContainer,
+  AreaChart,
+  Area,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  BarChart,
+  Bar,
+} from "recharts"
 import { useData } from "../providers/data-provider"
 
 export const RoutinesTab: FC = () => {
@@ -53,7 +63,13 @@ export const RoutinesTab: FC = () => {
                 <XAxis dataKey="hour" />
                 <YAxis />
                 <Tooltip />
-                <Area dataKey="count" fill="#8884d8" fillOpacity={0.3} stroke="#8884d8" type="monotone" />
+                <Area
+                  dataKey="count"
+                  fill="#8884d8"
+                  fillOpacity={0.3}
+                  stroke="#8884d8"
+                  type="monotone"
+                />
               </AreaChart>
             </ResponsiveContainer>
           </CardContent>
