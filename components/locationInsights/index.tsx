@@ -25,7 +25,7 @@ export const LocationInsights = () => {
   return (
     <div className="space-y-6 flex flex-col items-center">
       {/* Centered SummaryCards with a max-width */}
-      <div className="w-full max-w-5xl px-4">
+      <div className="w-full max-w-5xl">
         <SummaryCards />
       </div>
       <div className="w-full flex justify-center">
