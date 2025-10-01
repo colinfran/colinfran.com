@@ -14,8 +14,8 @@ const navigationItems = [
     description: "Home page for Location Analytics",
   },
   {
-    name: "Analysis",
-    href: "/locations/analysis",
+    name: "Insights",
+    href: "/locations/insights",
     icon: BarChart3,
     description: "Insights and patterns from your data",
   },
@@ -30,7 +30,7 @@ export const Navigation = () => {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center space-x-2">
             <Map className="h-6 w-6 text-primary" />
-            <h1 className="text-xl font-semibold">Location Analytics</h1>
+            <h1 className="text font-semibold">MyLocationAnalysis</h1>
           </div>
 
           <div className="flex items-center space-x-1">
