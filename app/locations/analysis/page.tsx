@@ -1,6 +1,8 @@
+"use client"
+
 import { LocationAnalysis } from "@/components/location-analysis"
 
-export default async function AnalysisPage() {
+export default function AnalysisPage() {
   return (
     <main className="min-h-screen bg-background py-8 px-4">
       <div className="container mx-auto">
