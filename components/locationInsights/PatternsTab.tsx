@@ -1,6 +1,6 @@
 "use client"
 
-import { FC } from "react"
+import { FC, Key } from "react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts"
 import { useData } from "../providers/data-provider"
@@ -38,9 +38,11 @@ export const PatternsTab: FC = () => {
                 nameKey="name"
                 outerRadius={100}
               >
-                {topLocationData.map((entry, index) => (
-                  <Cell fill={entry.color} key={index} />
-                ))}
+                {topLocationData.map(
+                  (entry: { color: string | undefined }, index: Key | null | undefined) => (
+                    <Cell fill={entry.color} key={index} />
+                  ),
+                )}
               </Pie>
               <Tooltip />
             </PieChart>

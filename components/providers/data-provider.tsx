@@ -13,10 +13,50 @@ import React, {
   FC,
 } from "react"
 
+export interface Analysis {
+  topLocations: {
+    location: string
+    count: number
+    percentage: number
+    hourly_pattern: { hour: number; count: number }[]
+    weekly_pattern: { day: string; count: number }[]
+  }[]
+  hourlyData: { hour: string; count: number }[]
+  weeklyData: { day: string; count: number }[]
+  totalDistance: number
+  avgDailyDistance: number
+  maxDailyDistance: number
+  countryData: { country: string; count: number; percentage: number }[]
+  clusters: {
+    name: string
+    visits: number
+    type: string
+    latitude: number
+    longitude: number
+    color: string
+  }[]
+  anomalies: { date: string; distance: number; reason: string }[]
+  totalDays: number
+  uniqueLocations: number
+  monthlyTrends: { month: string; distance: number }[]
+  avgTripLength: number
+  avgStopsPerDay: number
+  diversityIndex: number
+  timeBuckets: {
+    Night: number
+    Morning: number
+    Afternoon: number
+    Evening: number
+  }
+  longestStreak: number
+  topTransitions: { path: string; count: number }[]
+  heatmap: Record<string, Record<number, number>>
+}
+
 interface DataContextValue {
   locations: LocationType[]
   loading: boolean
-  analysis?: any
+  analysis?: Analysis
 }
 
 const DataContext = createContext<DataContextValue>({
@@ -141,14 +181,17 @@ export const DataProvider: FC<Props> = ({ children }) => {
     const weeklyData = topLocations[0]?.weekly_pattern || []
 
     // --- Clusters ---
-    const clusters = topLocations.slice(0, 5).map((loc, idx) => ({
-      name: loc.location,
-      visits: loc.count,
-      type: "Frequent",
-      latitude: sortedData.find((d) => `${d.city}, ${d.state}` === loc.location)?.latitude || 0,
-      longitude: sortedData.find((d) => `${d.city}, ${d.state}` === loc.location)?.longitude || 0,
-      color: ["#8884d8", "#82ca9d", "#ffc658", "#ff7300", "#00ff00"][idx % 5],
-    }))
+    const clusters: Analysis["clusters"] = topLocations.slice(0, 5).map((loc, idx) => {
+      const found = sortedData.find((d) => `${d.city}, ${d.state}` === loc.location)
+      return {
+        name: loc.location,
+        visits: loc.count,
+        type: "Frequent",
+        latitude: found ? Number(found.latitude) : 0, // <- cast to number
+        longitude: found ? Number(found.longitude) : 0, // <- cast to number
+        color: ["#8884d8", "#82ca9d", "#ffc658", "#ff7300", "#00ff00"][idx % 5],
+      }
+    })
 
     // --- Anomalies ---
     const anomalies = Object.entries(dailyDistances)

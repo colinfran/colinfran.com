@@ -5,9 +5,9 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useData } from "@/components/providers/data-provider"
 import LocationHeatmap from "@/components/location-heatmap"
 import useLockBodyScroll from "@/hooks/useLockBodyScroll"
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 
-export const Page: FC = () => {
+const Page: FC = () => {
   const { locations, loading } = useData()
   useLockBodyScroll(loading)
 
@@ -17,7 +17,7 @@ export const Page: FC = () => {
         <div className="flex flex-col container mx-auto gap-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {[...Array(4)].map(
-              (_, i): FC => (
+              (_, i): ReactNode => (
                 <Card key={i}>
                   <CardContent className="p-4 text-center h-[84px]">
                     <Skeleton className="h-8 w-16 mx-auto mb-2" />
@@ -71,3 +71,5 @@ export const Page: FC = () => {
     </main>
   )
 }
+
+export default Page

@@ -3,7 +3,7 @@
 import { LocationInsights } from "@/components/locationInsights"
 import { FC } from "react"
 
-export const AnalysisPage: FC = () => {
+const Page: FC = () => {
   return (
     <main className="min-h-screen bg-background py-8 px-4">
       <div className="container mx-auto">
@@ -17,3 +17,5 @@ export const AnalysisPage: FC = () => {
     </main>
   )
 }
+
+export default Page

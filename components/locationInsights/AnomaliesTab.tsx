@@ -14,7 +14,7 @@ export const AnomaliesTab: FC = () => {
         <CardDescription>Days with unusual travel patterns or distances</CardDescription>
       </CardHeader>
       <CardContent>
-        {analysis.anomalies.length > 0 ? (
+        {analysis && analysis?.anomalies?.length > 0 ? (
           <div className="space-y-3">
             {analysis.anomalies.map((anomaly: any, index: number) => (
               <div

@@ -4,7 +4,7 @@ import { Navigation } from "@/components/navigation"
 import { DataProvider } from "@/components/providers/data-provider"
 import { FC, ReactNode } from "react"
 
-export const Layout: FC<Readonly<{ children: ReactNode }>> = ({ children }) => {
+const Layout: FC<Readonly<{ children: ReactNode }>> = ({ children }) => {
   return (
     <>
       <Navigation />
@@ -12,3 +12,5 @@ export const Layout: FC<Readonly<{ children: ReactNode }>> = ({ children }) => {
     </>
   )
 }
+
+export default Layout

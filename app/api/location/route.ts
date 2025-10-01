@@ -8,7 +8,7 @@ import postgres from "postgres"
  * @returns {Promise<Response>} - Returns a response object.
  */
 
-export async function POST(request: NextRequest): Promise<Response> {
+export const POST = async (request: NextRequest): Promise<Response> => {
   const token = process.env.LOCATION_TOKEN!
   const params = await request.json()
   try {

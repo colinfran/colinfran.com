@@ -13,8 +13,8 @@ export const SummaryCards: FC = () => {
           <Route className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{analysis.totalDistance.toLocaleString()} km</div>
-          <p className="text-xs text-muted-foreground">Across {analysis.totalDays} days</p>
+          <div className="text-2xl font-bold">{analysis?.totalDistance.toLocaleString()} km</div>
+          <p className="text-xs text-muted-foreground">Across {analysis?.totalDays} days</p>
         </CardContent>
       </Card>
 
@@ -24,7 +24,7 @@ export const SummaryCards: FC = () => {
           <TrendingUp className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{analysis.avgDailyDistance} km</div>
+          <div className="text-2xl font-bold">{analysis?.avgDailyDistance} km</div>
           <p className="text-xs text-muted-foreground">Per day average</p>
         </CardContent>
       </Card>
@@ -35,7 +35,7 @@ export const SummaryCards: FC = () => {
           <MapPin className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{analysis.uniqueLocations}</div>
+          <div className="text-2xl font-bold">{analysis?.uniqueLocations}</div>
           <p className="text-xs text-muted-foreground">Different places visited</p>
         </CardContent>
       </Card>
@@ -46,7 +46,7 @@ export const SummaryCards: FC = () => {
           <AlertTriangle className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{analysis.maxDailyDistance} km</div>
+          <div className="text-2xl font-bold">{analysis?.maxDailyDistance} km</div>
           <p className="text-xs text-muted-foreground">Longest travel day</p>
         </CardContent>
       </Card>

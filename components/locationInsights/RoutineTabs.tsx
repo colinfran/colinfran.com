@@ -30,20 +30,21 @@ export const RoutinesTab: FC = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {analysis.topLocations.map((location: any, index: number) => (
-                <div className="flex items-center justify-between" key={location.location}>
-                  <div className="flex items-center gap-2">
-                    <Badge variant={index === 0 ? "default" : "secondary"}>{index + 1}</Badge>
-                    <span className="font-medium">{location.location}</span>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm font-medium">{location.count} visits</div>
-                    <div className="text-xs text-muted-foreground">
-                      {location.percentage.toFixed(1)}%
+              {analysis &&
+                analysis?.topLocations.map((location: any, index: number) => (
+                  <div className="flex items-center justify-between" key={location.location}>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={index === 0 ? "default" : "secondary"}>{index + 1}</Badge>
+                      <span className="font-medium">{location.location}</span>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-sm font-medium">{location.count} visits</div>
+                      <div className="text-xs text-muted-foreground">
+                        {location.percentage.toFixed(1)}%
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </CardContent>
         </Card>
@@ -54,11 +55,11 @@ export const RoutinesTab: FC = () => {
             <CardTitle className="flex items-center gap-2">
               <Clock className="h-5 w-5" /> Hourly Activity Pattern
             </CardTitle>
-            <CardDescription>When you're most active throughout the day</CardDescription>
+            <CardDescription>{"When youre most active throughout the day"}</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer height={200} width="100%">
-              <AreaChart data={analysis.hourlyData}>
+              <AreaChart data={analysis?.hourlyData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="hour" />
                 <YAxis />
@@ -86,7 +87,7 @@ export const RoutinesTab: FC = () => {
         </CardHeader>
         <CardContent>
           <ResponsiveContainer height={300} width="100%">
-            <BarChart data={analysis.weeklyData}>
+            <BarChart data={analysis?.weeklyData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="day" />
               <YAxis />

@@ -14,8 +14,9 @@ const Markdown: FC<Props> = ({ content }) => {
         h2: ({ ...props }) => <h2 className="my-4 text-4xl font-semibold" {...props} />,
 
         h3: ({ ...props }) => <h3 className="my-4 text-3xl font-semibold" {...props} />,
+
         img: ({ ...props }) => (
-          <img alt="" className="m-auto my-4 max-w-full md:max-w-[600px]" {...props} />
+          <img alt="" className="m-auto my-4 max-w-full md:max-w-[600px]" {...props} /> // eslint-disable-line @next/next/no-img-element
         ),
         code(props) {
           const { children, className, node, ...rest } = props // eslint-disable-line unused-imports/no-unused-vars
@@ -24,7 +25,7 @@ const Markdown: FC<Props> = ({ content }) => {
             // @ts-ignore
             <SyntaxHighlighter
               {...rest}
-              children={String(children).replace(/\n$/, "")}
+              children={String(children).replace(/\n$/, "")} // eslint-disable-line react/no-children-prop
               language={match[1]}
               PreTag="div"
               style={darcula}

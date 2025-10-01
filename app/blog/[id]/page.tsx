@@ -12,7 +12,7 @@ type PageProps = {
 }
 
 // Keep it async for SSR
-export const Page: FC<PageProps> = async (props) => {
+const Page: FC<PageProps> = async (props) => {
   const params = await props.params
   const blog = await findBlogById(params.id)
 
@@ -89,3 +89,5 @@ export const Page: FC<PageProps> = async (props) => {
     </div>
   )
 }
+
+export default Page
