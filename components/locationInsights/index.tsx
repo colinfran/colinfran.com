@@ -14,6 +14,7 @@ import { PatternsTab } from "./PatternsTab"
 import { StreaksTab } from "./Streaks"
 import { TransitionsTab } from "./TransitionsTab"
 import { FC } from "react"
+import { ScrollArea, ScrollBar } from "../ui/scroll-area"
 
 export const LocationInsights: FC = () => {
   const { analysis, loading } = useData()
@@ -33,7 +34,7 @@ export const LocationInsights: FC = () => {
         <div className="relative w-full max-w-5xl">
           <Tabs className="w-full" defaultValue="routines">
             {/* Scrollable TabsList */}
-            <div className="overflow-x-auto no-scrollbar">
+            <ScrollArea className="w-full max-w-5xl rounded-md border">
               <TabsList className="flex gap-2 px-2 min-w-max">
                 <TabsTrigger className="flex-shrink-0" value="routines">
                   Daily Routines
@@ -60,7 +61,8 @@ export const LocationInsights: FC = () => {
                   Transitions
                 </TabsTrigger>
               </TabsList>
-            </div>
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
 
             <TabsContent value="routines">
               <RoutinesTab />
