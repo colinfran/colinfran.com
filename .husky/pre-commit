@@ -1,1 +1,20 @@
-npm run lint:fix
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Get staged JS/TS files (suppress grep exit code if no match)
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$' || true)
+
+if [ -n "$STAGED_FILES" ]; then
+  echo "🔍 Running eslint --fix on staged files..."
+
+  # Run eslint with auto-fix
+  npx eslint --fix $STAGED_FILES || true
+
+  # Re-add only files that were staged
+  git add $STAGED_FILES
+
+  echo "🔍 Checking for remaining lint errors..."
+  npx eslint $STAGED_FILES
+else
+  echo "✅ No JS/TS files staged for commit."
+fi
