@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 import { v4 } from "uuid"
 import { Project } from "./Project"
 import { StaticImageData } from "next/image"
@@ -20,7 +20,7 @@ export type ProjectProps = {
   imageSrcDark?: StaticImageData
 }
 
-export const Projects: React.FC = () => {
+export const Projects: FC = () => {
   const [indexOpen, setIndexOpen] = useState<undefined | number>(undefined)
   const { projects } = siteConfig
   const handleProjectClick = (index: number): void => {

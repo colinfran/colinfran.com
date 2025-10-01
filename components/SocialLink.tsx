@@ -1,5 +1,5 @@
 "use client"
-import React from "react"
+import React, { FC } from "react"
 import Link from "next/link"
 import { Icons } from "./Icons"
 import { Button } from "./ui/button"
@@ -10,7 +10,7 @@ type SocialLinkProps = {
   title: string
 }
 
-export const SocialLink: React.FC<SocialLinkProps> = ({ icon, href, title }) => {
+export const SocialLink: FC<SocialLinkProps> = ({ icon, href, title }) => {
   const Icon = Icons[icon]
   return (
     <Button size="icon" variant="outline" asChild>

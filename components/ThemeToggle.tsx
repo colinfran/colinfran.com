@@ -1,10 +1,10 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { MoonIcon, SunIcon } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
 
-const ThemeToggle: React.FC = () => {
+const ThemeToggle: FC = () => {
   const { setTheme, resolvedTheme } = useTheme()
 
   const [trueTheme, setTrueTheme] = useState<undefined | string>(undefined)

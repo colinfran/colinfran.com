@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, ReactNode } from "react"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import Header from "@/components/Header"
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
 }
 
 type RootLayoutProps = {
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 const RootLayout: FC<RootLayoutProps> = async ({ children }) => {

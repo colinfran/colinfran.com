@@ -1,9 +1,9 @@
-import React from "react"
+import React, { FC } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import ThemeToggle from "./ThemeToggle"
 
-const Header: React.FC = async () => (
+const Header: FC = async () => (
   <header className="container mx-auto px-8">
     <div className="flex items-center justify-between border-b py-4">
       <Link href="/">

@@ -1,7 +1,7 @@
-import React from "react"
+import React, { HTMLAttributes } from "react"
 import { Github, Instagram, Linkedin, Mail, Loader2 } from "lucide-react"
 
-type IconProps = React.HTMLAttributes<SVGElement>
+type IconProps = HTMLAttributes<SVGElement>
 
 export const Icons = {
   Loader: (props: IconProps) => <Loader2 className="animate-spin" {...props} strokeWidth={1.5} />,

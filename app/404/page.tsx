@@ -1,7 +1,7 @@
-import React from "react"
+import React, { FC } from "react"
 import Link from "next/link"
 
-const Page: React.FC = async () => (
+const Page: FC = async () => (
   <div className="flex size-full">
     <div className="flex size-full flex-col">
       <div className="flex min-h-[calc(100vh-72px)] flex-col items-center px-10 text-center">

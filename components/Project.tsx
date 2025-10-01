@@ -1,6 +1,6 @@
 "use client"
 // Project.tsx
-import React, { useRef, useEffect, useCallback } from "react"
+import React, { useRef, useEffect, useCallback, FC, KeyboardEvent } from "react"
 import Image from "next/image"
 import { Card } from "./ui/card"
 import Link from "next/link"
@@ -17,12 +17,7 @@ type ProjectPropType = {
   handleProjectClick: (index: number) => void
 }
 
-export const Project: React.FC<ProjectPropType> = ({
-  project,
-  index,
-  indexOpen,
-  handleProjectClick,
-}) => {
+export const Project: FC<ProjectPropType> = ({ project, index, indexOpen, handleProjectClick }) => {
   const { title, description, links, imageSrc, imageSrcDark, tags } = project
   const element = useRef<HTMLDivElement>(null)
 
@@ -42,7 +37,7 @@ export const Project: React.FC<ProjectPropType> = ({
   }, [handleProjectClick, index])
 
   const onKeyDown = useCallback(
-    (e: React.KeyboardEvent<HTMLDivElement>) => {
+    (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Enter" || e.key === " ") {
         onClick()
       }

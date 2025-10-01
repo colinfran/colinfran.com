@@ -1,12 +1,12 @@
 "use client"
 import { redirect } from "next/navigation"
-import React, { useEffect, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 
 type CountdownRedirectProps = {
   link: string
 }
 
-const CountdownRedirect: React.FC<CountdownRedirectProps> = ({ link }) => {
+const CountdownRedirect: FC<CountdownRedirectProps> = ({ link }) => {
   const [seconds, setSeconds] = useState(5)
 
   useEffect(() => {

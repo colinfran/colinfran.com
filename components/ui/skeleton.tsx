@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils"
+import React, { ComponentProps, FC } from "react"
 
-const Skeleton = ({ className, ...props }: React.ComponentProps<"div">) => {
+const Skeleton: FC<ComponentProps<"div">> = ({ className, ...props }) => {
   return (
     <div
       className={cn("bg-accent animate-pulse rounded-md", className)}

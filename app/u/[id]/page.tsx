@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FC } from "react"
 import CountdownRedirect from "@/components/CountdownRedirect"
 
 interface Links {
@@ -12,7 +12,7 @@ const links: Links = {
 
 type PageProps = { params: { id: string } }
 
-const Page: React.FC<PageProps> = async (props) => {
+const Page: FC<PageProps> = async (props) => {
   const params = await props.params
   const link = links[params.id]
   if (link === undefined) {
