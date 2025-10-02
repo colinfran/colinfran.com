@@ -3,9 +3,9 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 import { Map, BarChart3, Route } from "lucide-react"
 import { FC } from "react"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const navigationItems = [
   {
@@ -34,30 +34,27 @@ export const Navigation: FC = () => {
             <h1 className="text font-semibold">MyLocationAnalysis</h1>
           </div>
 
-          <div className="flex items-center space-x-1 pt-4">
-            {navigationItems.map((item) => {
-              const Icon = item.icon
-              const isActive = pathname === item.href
-
-              return (
-                <Button
-                  className={cn(
-                    "flex items-center space-x-2",
-                    isActive && "bg-primary text-primary-foreground",
-                  )}
-                  key={item.href}
-                  size="sm"
-                  variant={isActive ? "default" : "ghost"}
-                  asChild
-                >
-                  <Link href={item.href} prefetch>
-                    <Icon className="h-4 w-4" />
-                    <span>{item.name}</span>
-                  </Link>
-                </Button>
-              )
-            })}
-          </div>
+          <Tabs className="flex items-center space-x-1 pt-4" value={pathname}>
+            <TabsList>
+              {navigationItems.map((item) => {
+                const Icon = item.icon
+                return (
+                  <TabsTrigger
+                    className={cn("flex items-center space-x-2 px-3 py-1")}
+                    key={item.href}
+                    value={item.href}
+                  >
+                    <Link href={item.href} prefetch>
+                      <div className="flex items-center space-x-2">
+                        <Icon className="h-4 w-4" />
+                        <span>{item.name}</span>
+                      </div>
+                    </Link>
+                  </TabsTrigger>
+                )
+              })}
+            </TabsList>
+          </Tabs>
         </div>
       </div>
     </nav>
