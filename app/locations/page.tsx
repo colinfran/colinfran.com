@@ -8,10 +8,10 @@ import useLockBodyScroll from "@/hooks/useLockBodyScroll"
 import { FC, ReactNode } from "react"
 
 const Page: FC = () => {
-  const { locations, loading } = useData()
+  const { analysis, loading } = useData()
   useLockBodyScroll(loading)
 
-  if (loading) {
+  if (loading || !analysis) {
     return (
       <main className="min-h-screen bg-background py-8 px-4">
         <div className="flex flex-col container mx-auto gap-4">
@@ -33,39 +33,43 @@ const Page: FC = () => {
     )
   }
 
+  const { topLocations, uniqueLocations, totalDistance, totalDays, countryData } = analysis
+
   return (
     <main className="min-h-screen bg-background py-8 px-4">
       <div className="flex flex-col container mx-auto gap-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card>
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold">{locations?.length.toLocaleString()}</div>
+              <div className="text-2xl font-bold">
+                {topLocations?.reduce((sum, loc) => sum + loc.count, 0).toLocaleString()}
+              </div>
               <div className="text-sm text-muted-foreground">Total Locations</div>
             </CardContent>
           </Card>
+
           <Card>
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold">
-                {new Set(locations?.map((d) => `${d.city}, ${d.state}`)).size.toLocaleString()}
-              </div>
+              <div className="text-2xl font-bold">{uniqueLocations?.toLocaleString()}</div>
               <div className="text-sm text-muted-foreground">Unique Cities</div>
             </CardContent>
           </Card>
+
           <Card>
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold">
-                {new Set(locations?.map((d) => d.country).filter((c) => c !== "")).size}
-              </div>
+              <div className="text-2xl font-bold">{countryData?.length.toLocaleString()}</div>
               <div className="text-sm text-muted-foreground">Countries</div>
             </CardContent>
           </Card>
+
           <Card>
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold">{Math.round((locations?.length * 1.5) / 24)}</div>
+              <div className="text-2xl font-bold">{totalDays}</div>
               <div className="text-sm text-muted-foreground">Days Tracked</div>
             </CardContent>
           </Card>
         </div>
+
         <LocationHeatmap />
       </div>
     </main>

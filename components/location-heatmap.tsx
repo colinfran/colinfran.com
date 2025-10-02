@@ -7,7 +7,7 @@ import { Skeleton } from "./ui/skeleton"
 import { useData } from "@/components/providers/data-provider"
 
 const LocationHeatmap: FC = () => {
-  const { locations, loading: dataLoading } = useData()
+  const { analysis, loading: dataLoading } = useData()
   const mapRef = useRef<any>(null)
   const [loading, setLoading] = useState(true)
   const [windowWidth, setWindowWidth] = useState(
@@ -24,15 +24,15 @@ const LocationHeatmap: FC = () => {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  // helper to fit bounds
+  // fit map to bounds based on heatmap points
   const fitToBounds = useCallback(() => {
-    if (!mapRef.current || !locations?.length) return
+    if (!mapRef.current || !analysis?.heatmap?.length) return
 
     const map = mapRef.current.getMap?.() ?? mapRef.current
     if (!map?.fitBounds) return
 
-    const lats = locations.map((loc) => parseFloat(loc.latitude as string))
-    const lngs = locations.map((loc) => parseFloat(loc.longitude as string))
+    const lats = analysis.heatmap.map((p) => p.latitude)
+    const lngs = analysis.heatmap.map((p) => p.longitude)
 
     let minLat = Math.min(...lats)
     let maxLat = Math.max(...lats)
@@ -58,30 +58,25 @@ const LocationHeatmap: FC = () => {
       map.resize()
       map.fitBounds(bounds, { padding: 50 * scale, maxZoom: 15, animate: false })
     } catch {
-      // fallback center/zoom if fitBounds fails
       const center = [(minLng + maxLng) / 2, (minLat + maxLat) / 2]
       if (map.setCenter) map.setCenter(center)
       if (map.setZoom) map.setZoom(Math.min(3 * scale, 15))
     } finally {
       setLoading(false)
     }
-  }, [locations, scale])
+  }, [analysis, scale])
 
-  // refit on resize + data change
   useEffect(() => {
     fitToBounds()
-  }, [fitToBounds, windowWidth])
+  }, [fitToBounds, windowWidth, analysis])
 
+  // create GeoJSON features from server-side heatmap points
   const features =
-    locations?.map((loc) => {
-      const lat = parseFloat(loc.latitude as string)
-      const lng = parseFloat(loc.longitude as string)
-      return {
-        type: "Feature" as const,
-        geometry: { type: "Point" as const, coordinates: [lng, lat] },
-        properties: { count: 1 },
-      }
-    }) || []
+    analysis?.heatmap?.map((p) => ({
+      type: "Feature" as const,
+      geometry: { type: "Point" as const, coordinates: [p.longitude, p.latitude] },
+      properties: { count: p.count },
+    })) || []
 
   const geojson = { type: "FeatureCollection" as const, features }
 
@@ -110,17 +105,13 @@ const LocationHeatmap: FC = () => {
   return (
     <div className="relative w-full h-[600px]">
       <Map
-        initialViewState={{
-          latitude: 0,
-          longitude: 0,
-          zoom: 1,
-        }}
+        initialViewState={{ latitude: 0, longitude: 0, zoom: 1 }}
         mapboxAccessToken={token}
         mapStyle="mapbox://styles/mapbox/dark-v11"
         projection="mercator"
         ref={mapRef}
         style={{ width: "100%", height: "100%", zIndex: 11 }}
-        onLoad={fitToBounds} // 👈 run fitBounds once on init
+        onLoad={fitToBounds}
       >
         {features.length > 0 && (
           <Source data={geojson} id="locations" type="geojson">
