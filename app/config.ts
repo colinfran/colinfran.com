@@ -34,7 +34,7 @@ export const siteConfig = {
           target: "_self",
         },
         {
-          url: "https://github.com/colinfran/colinfran.com",
+          url: "https://github.com/colinfran/colinfran.com/?tab=readme-ov-file#mylocationanalysis-app",
           text: "GitHub",
           target: "_blank",
         },
