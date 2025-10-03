@@ -2,9 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { AlertTriangle } from "lucide-react"
 import { useData } from "../providers/data-provider"
 import { FC } from "react"
+import { toMiles } from "@/lib/utils"
 
 export const AnomaliesTab: FC = () => {
-  const { analysis } = useData()
+  const { analysis, unit } = useData()
   return (
     <Card>
       <CardHeader>
@@ -26,7 +27,11 @@ export const AnomaliesTab: FC = () => {
                   <div className="text-sm text-muted-foreground">Unusual travel day</div>
                 </div>
                 <div className="text-right">
-                  <div className="font-medium text-destructive">{anomaly.distance} km</div>
+                  <div className="font-medium text-destructive">
+                    {unit === "mi"
+                      ? `${toMiles(anomaly.distance)} miles`
+                      : `${anomaly.distance} km`}
+                  </div>
                   <div className="text-xs text-muted-foreground">
                     {Math.round((anomaly.distance / Math.max(analysis.avgDailyDistance, 1)) * 100)}%
                     above average

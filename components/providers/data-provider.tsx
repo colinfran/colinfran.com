@@ -3,7 +3,16 @@
 
 import { HeatmapPoint } from "@/app/api/location/analysis/generateHeatmapGrid"
 
-import React, { createContext, useContext, useState, useEffect, ReactNode, FC } from "react"
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+  FC,
+  SetStateAction,
+  Dispatch,
+} from "react"
 
 export interface Analysis {
   topLocations: {
@@ -48,11 +57,15 @@ export interface Analysis {
 interface DataContextValue {
   loading: boolean
   analysis?: Analysis
+  setUnit: Dispatch<SetStateAction<"mi" | "m">>
+  unit: "mi" | "m"
 }
 
 const DataContext = createContext<DataContextValue>({
   loading: true,
   analysis: undefined,
+  setUnit: () => {},
+  unit: "mi",
 })
 
 export const useData = (): DataContextValue => useContext(DataContext)
@@ -64,6 +77,7 @@ interface Props {
 export const DataProvider: FC<Props> = ({ children }) => {
   const [analysis, setAnalysis] = useState(undefined)
   const [loading, setLoading] = useState(true)
+  const [unit, setUnit] = useState<"mi" | "m">("mi")
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -78,7 +92,6 @@ export const DataProvider: FC<Props> = ({ children }) => {
         })
         if (res.ok) {
           const json = await res.json()
-          console.log("hereerrere", json)
           setAnalysis(json.data)
         } else {
           console.error("Failed to fetch locations")
@@ -94,5 +107,9 @@ export const DataProvider: FC<Props> = ({ children }) => {
     fetchData()
   }, [])
 
-  return <DataContext.Provider value={{ loading, analysis }}>{children}</DataContext.Provider>
+  return (
+    <DataContext.Provider value={{ loading, analysis, unit, setUnit }}>
+      {children}
+    </DataContext.Provider>
+  )
 }

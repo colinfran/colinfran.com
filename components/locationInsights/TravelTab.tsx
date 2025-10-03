@@ -14,11 +14,20 @@ import {
   Bar,
 } from "recharts"
 import { useData } from "../providers/data-provider"
+import { toMiles } from "@/lib/utils"
 
 export const TravelTab: FC = () => {
-  const { analysis } = useData()
+  const { analysis, unit } = useData()
 
   if (!analysis) return null
+
+  const lineChartData =
+    unit === "mi"
+      ? analysis.monthlyTrends.map((item) => ({
+          month: item.month,
+          distance: toMiles(item.distance),
+        }))
+      : analysis.monthlyTrends
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -31,11 +40,19 @@ export const TravelTab: FC = () => {
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
-              <p className="text-2xl font-bold">{analysis.totalDistance.toLocaleString()} km</p>
+              <p className="text-2xl font-bold">
+                {unit === "mi"
+                  ? `${toMiles(analysis!.totalDistance)} mi`
+                  : `${analysis?.totalDistance.toLocaleString()} km`}
+              </p>
               <p className="text-sm text-muted-foreground">Total Distance</p>
             </div>
             <div>
-              <p className="text-2xl font-bold">{analysis.avgTripLength} km</p>
+              <p className="text-2xl font-bold">
+                {unit === "mi"
+                  ? `${toMiles(analysis!.avgTripLength)} mi`
+                  : `${analysis?.avgTripLength.toLocaleString()} km`}
+              </p>
               <p className="text-sm text-muted-foreground">Avg Trip Length</p>
             </div>
             <div>
@@ -58,10 +75,24 @@ export const TravelTab: FC = () => {
         </CardHeader>
         <CardContent>
           <ResponsiveContainer height={300} width="100%">
-            <LineChart data={analysis.monthlyTrends}>
+            <LineChart data={lineChartData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
+              <XAxis
+                dataKey="month"
+                label={{
+                  value: "Month",
+                  position: "insideBottom",
+                  offset: -5,
+                }}
+              />
+              <YAxis
+                label={{
+                  value: `Distance Traveled (${unit === "mi" ? "miles" : "km"})`,
+                  angle: -90,
+                  position: "insideLeft",
+                  style: { textAnchor: "middle" },
+                }}
+              />
               <Tooltip />
               <Line dataKey="distance" stroke="#8884d8" strokeWidth={2} type="monotone" />
             </LineChart>

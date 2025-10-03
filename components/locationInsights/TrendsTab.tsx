@@ -11,11 +11,23 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import { useData } from "../providers/data-provider"
-import { FC } from "react"
+import { FC, useMemo } from "react"
+import { toMiles } from "@/lib/utils"
 
 export const TrendsTab: FC = () => {
-  const { analysis } = useData()
-  if (!analysis?.monthlyTrends) return null
+  const { analysis, unit } = useData()
+
+  const lineChartData = useMemo(() => {
+    if (!analysis?.monthlyTrends) return []
+    return unit === "mi"
+      ? analysis.monthlyTrends.map((item) => ({
+          month: item.month,
+          distance: toMiles(item.distance),
+        }))
+      : analysis.monthlyTrends
+  }, [analysis, unit])
+
+  if (lineChartData.length === 0) return null
 
   return (
     <Card className="w-full">
@@ -24,7 +36,7 @@ export const TrendsTab: FC = () => {
       </CardHeader>
       <CardContent className="h-[300px]">
         <ResponsiveContainer height="100%" width="100%">
-          <LineChart data={analysis.monthlyTrends}>
+          <LineChart data={lineChartData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="month"
@@ -36,9 +48,10 @@ export const TrendsTab: FC = () => {
             />
             <YAxis
               label={{
-                value: "Distance Traveled",
+                value: `Distance Traveled (${unit === "mi" ? "miles" : "km"})`,
                 angle: -90,
                 position: "insideLeft",
+                style: { textAnchor: "middle" },
               }}
             />
             <Tooltip />

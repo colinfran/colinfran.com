@@ -2,9 +2,10 @@ import { FC } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin, Route, TrendingUp, AlertTriangle } from "lucide-react"
 import { useData } from "../providers/data-provider"
+import { toMiles } from "@/lib/utils"
 
 export const SummaryCards: FC = () => {
-  const { analysis } = useData()
+  const { analysis, unit } = useData()
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       <Card>
@@ -13,7 +14,11 @@ export const SummaryCards: FC = () => {
           <Route className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{analysis?.totalDistance.toLocaleString()} km</div>
+          <div className="text-2xl font-bold">
+            {unit === "mi"
+              ? `${toMiles(analysis!.totalDistance)} mi`
+              : `${analysis?.totalDistance.toLocaleString()} km`}
+          </div>
           <p className="text-xs text-muted-foreground">Across {analysis?.totalDays} days</p>
         </CardContent>
       </Card>
@@ -24,7 +29,11 @@ export const SummaryCards: FC = () => {
           <TrendingUp className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{analysis?.avgDailyDistance} km</div>
+          <div className="text-2xl font-bold">
+            {unit === "mi"
+              ? `${toMiles(analysis!.avgDailyDistance)} mi`
+              : `${analysis?.avgDailyDistance.toLocaleString()} km`}
+          </div>
           <p className="text-xs text-muted-foreground">Per day average</p>
         </CardContent>
       </Card>
@@ -46,7 +55,11 @@ export const SummaryCards: FC = () => {
           <AlertTriangle className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{analysis?.maxDailyDistance} km</div>
+          <div className="text-2xl font-bold">
+            {unit === "mi"
+              ? `${toMiles(analysis!.maxDailyDistance)} mi`
+              : `${analysis?.maxDailyDistance.toLocaleString()} km`}
+          </div>
           <p className="text-xs text-muted-foreground">Longest travel day</p>
         </CardContent>
       </Card>

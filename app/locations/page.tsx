@@ -33,7 +33,7 @@ const Page: FC = () => {
     )
   }
 
-  const { topLocations, uniqueLocations, totalDistance, totalDays, countryData } = analysis
+  const { topLocations, uniqueLocations, totalDays, countryData } = analysis
 
   return (
     <main className="min-h-screen bg-background py-8 px-4">
