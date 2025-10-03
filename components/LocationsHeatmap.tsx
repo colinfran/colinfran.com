@@ -6,7 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css"
 import { Skeleton } from "./ui/skeleton"
 import { useData } from "@/components/providers/data-provider"
 
-const LocationHeatmap: FC = () => {
+const LocationsHeatmap: FC = () => {
   const { analysis, loading: dataLoading } = useData()
   const mapRef = useRef<any>(null)
   const [loading, setLoading] = useState(true)
@@ -129,4 +129,4 @@ const LocationHeatmap: FC = () => {
   )
 }
 
-export default LocationHeatmap
+export default LocationsHeatmap

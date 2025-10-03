@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { useData } from "@/components/providers/data-provider"
-import LocationHeatmap from "@/components/location-heatmap"
+import LocationsHeatmap from "@/components/LocationsHeatmap"
 import useLockBodyScroll from "@/hooks/useLockBodyScroll"
 import { FC, ReactNode } from "react"
 
@@ -27,7 +27,7 @@ const Page: FC = () => {
               ),
             )}
           </div>
-          <LocationHeatmap />
+          <LocationsHeatmap />
         </div>
       </main>
     )
@@ -70,7 +70,7 @@ const Page: FC = () => {
           </Card>
         </div>
 
-        <LocationHeatmap />
+        <LocationsHeatmap />
       </div>
     </main>
   )
