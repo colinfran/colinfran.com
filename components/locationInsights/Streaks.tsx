@@ -15,7 +15,7 @@ export const StreaksTab: FC = () => {
       </CardHeader>
       <CardContent>
         <p className="text-lg">
-          Your longest streak of consecutive days visiting new locations is{" "}
+          My longest streak of consecutive days visiting new locations is{" "}
           <span className="font-bold">{analysis.longestStreak}</span> days.
         </p>
       </CardContent>

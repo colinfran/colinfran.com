@@ -18,7 +18,7 @@ const navigationItems = [
     name: "Insights",
     href: "/locations/insights",
     icon: BarChart3,
-    description: "Insights and patterns from your data",
+    description: "Insights and patterns from my data",
   },
 ]
 

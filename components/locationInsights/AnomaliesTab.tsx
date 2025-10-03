@@ -42,7 +42,7 @@ export const AnomaliesTab: FC = () => {
           </div>
         ) : (
           <div className="text-center text-muted-foreground py-8">
-            No significant anomalies detected in your travel patterns
+            No significant anomalies detected in my travel patterns
           </div>
         )}
       </CardContent>

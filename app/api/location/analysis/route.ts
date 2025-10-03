@@ -8,7 +8,6 @@ export const POST = async (): Promise<NextResponse> => {
   try {
     const allLocations = await db.select().from(locations)
 
-    // server-side analysis (your previous analyzeLocations function)
     const analysis = analyzeLocations(allLocations)
 
     // generate heatmap points

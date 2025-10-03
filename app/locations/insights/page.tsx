@@ -14,7 +14,7 @@ const Page: FC = () => {
       <div className="container mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Location Insights</h1>
-          <p className="text-muted-foreground">Insights and patterns from your location data</p>
+          <p className="text-muted-foreground">Insights and patterns from my location data</p>
         </div>
 
         <LocationInsights />

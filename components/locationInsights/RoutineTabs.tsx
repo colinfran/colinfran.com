@@ -26,7 +26,7 @@ export const RoutinesTab: FC = () => {
             <CardTitle className="flex items-center gap-2">
               <Home className="h-5 w-5" /> Most Visited Places
             </CardTitle>
-            <CardDescription>Your top locations by frequency</CardDescription>
+            <CardDescription>My top locations by frequency</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -61,8 +61,22 @@ export const RoutinesTab: FC = () => {
             <ResponsiveContainer height={200} width="100%">
               <AreaChart data={analysis?.hourlyData}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="hour" />
-                <YAxis />
+                <XAxis
+                  dataKey="hour"
+                  label={{
+                    value: "Hour",
+                    position: "insideBottom",
+                    offset: -5,
+                  }}
+                />
+                <YAxis
+                  label={{
+                    value: "Count",
+                    angle: -90,
+                    position: "insideLeft",
+                    style: { textAnchor: "middle" },
+                  }}
+                />
                 <Tooltip />
                 <Area
                   dataKey="count"
@@ -83,7 +97,7 @@ export const RoutinesTab: FC = () => {
           <CardTitle className="flex items-center gap-2">
             <Calendar className="h-5 w-5" /> Weekly Activity Pattern
           </CardTitle>
-          <CardDescription>Your activity levels throughout the week</CardDescription>
+          <CardDescription>My activity levels throughout the week</CardDescription>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer height={300} width="100%">

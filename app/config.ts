@@ -33,6 +33,11 @@ export const siteConfig = {
           text: "Website",
           target: "_self",
         },
+        {
+          url: "https://github.com/colinfran/colinfran.com",
+          text: "GitHub",
+          target: "_blank",
+        },
       ],
       tags: [
         "Next.js",

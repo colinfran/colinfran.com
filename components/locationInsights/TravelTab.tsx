@@ -35,7 +35,7 @@ export const TravelTab: FC = () => {
       <Card className="md:col-span-2">
         <CardHeader>
           <CardTitle>Travel Summary</CardTitle>
-          <CardDescription>Key stats about your travel activity</CardDescription>
+          <CardDescription>Key stats about my travel activity</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -104,7 +104,7 @@ export const TravelTab: FC = () => {
       <Card>
         <CardHeader>
           <CardTitle>Frequent Travel Routes</CardTitle>
-          <CardDescription>Your most common trips between locations</CardDescription>
+          <CardDescription>My most common trips between locations</CardDescription>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer height={300} width="100%">

@@ -13,7 +13,7 @@ export const ClustersTab: FC = () => {
           <Briefcase className="h-5 w-5" /> Important Places Analysis
         </CardTitle>
         <CardDescription>
-          Automatically identified significant locations in your routine
+          Automatically identified significant locations in my routine
         </CardDescription>
       </CardHeader>
       <CardContent>
