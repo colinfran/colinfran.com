@@ -11,7 +11,7 @@ Welcome to my personal website! This monorepo contains the source code for [coli
 
 ---
 
-## <a name="location-app"></a>Location App
+## <a name="mylocationanalysis-app"></a>MyLocationAnalysis App
 
 MyLocationAnalysis is a custom-built app for tracking, analyzing, and visualizing my location data. It includes:
 
