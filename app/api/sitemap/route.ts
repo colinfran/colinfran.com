@@ -15,6 +15,14 @@ export async function GET(): Promise<Response> {
       loc: "https://colinfran.com/blog",
       lastmod: new Date().toISOString(),
     },
+    {
+      loc: "https://colinfran.com/locations",
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: "https://colinfran.com/locations/insights",
+      lastmod: new Date().toISOString(),
+    },
   ]
   const blogs = await getAllBlogsSorted()
   blogs.forEach((blog) => {

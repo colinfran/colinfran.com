@@ -4,6 +4,3 @@ Allow: /
 
 # Host
 Host: https://colinfran.com/
-
-# Sitemaps
-Sitemap: https://colinfran.com/sitemap.xml
