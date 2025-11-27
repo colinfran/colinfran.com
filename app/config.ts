@@ -10,6 +10,8 @@ import franfoodLight from "../assets/images/franfood-light.webp"
 import gitArtDark from "../assets/images/git-art-dark.webp"
 import myLocationDark from "../assets/images/mylocation-dark.webp"
 import myLocationLight from "../assets/images/mylocation-light.webp"
+import stockmarketbotDark from "../assets/images/stockmarketbot-dark.webp"
+import stockmarketbotLight from "../assets/images/stockmarketbot-light.webp"
 
 export const siteConfig = {
   name: "Colin Franceschini",
@@ -22,6 +24,36 @@ export const siteConfig = {
     x: "https://x.com/colinfran",
   },
   projects: [
+    {
+      id: "stockmarketbot",
+      title: "stockmarketbot",
+      description:
+        "A fully autonomous stock-market bot that turns cutting-edge AI reasoning into real (paper) trades - every single week, without any human intervention.",
+      links: [
+        {
+          url: "https://stockmarketbot.app",
+          text: "Website",
+          target: "_self",
+        },
+        {
+          url: "https://github.com/colinfran/stockmarketbot",
+          text: "GitHub",
+          target: "_blank",
+        },
+      ],
+      tags: [
+        "Next.js",
+        "Tailwind CSS",
+        "React.js",
+        "TypeScript",
+        "shadcn/ui",
+        "PostgreSQL",
+        "Grok",
+        "Alpaca",
+      ],
+      imageSrc: stockmarketbotLight,
+      imageSrcDark: stockmarketbotDark,
+    },
     {
       id: "my-location-analysis",
       title: "MyLocationAnalysis",
