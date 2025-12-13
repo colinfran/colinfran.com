@@ -18,7 +18,7 @@ export const POST = async (request: NextRequest): Promise<Response> => {
     const connectionString = process.env.LOCATION_POSTGRES_URL!
     const sql = postgres(connectionString)
     const utcNow = new Date().toISOString()
-    const resp = await sql`
+    await sql`
       INSERT INTO location (
         date,
         state,
@@ -35,11 +35,7 @@ export const POST = async (request: NextRequest): Promise<Response> => {
         ${params.city},
         ${params.country}
       );`
-    if (resp.length > 0) {
-      return NextResponse.json({ status: 200 }) // Optionally return the inserted data
-    } else {
-      throw new Error("Error inserting into db.")
-    }
+    return NextResponse.json({ success: true }, { status: 204 })
   } catch (error) {
     return NextResponse.json({ error }, { status: 400 })
   }
