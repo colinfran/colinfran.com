@@ -36,7 +36,7 @@ export const POST = async (request: NextRequest): Promise<Response> => {
         ${params.country}
       );
     `
-    return NextResponse.json(null, { status: 204 })
+    return NextResponse.json({}, { status: 200 })
   } catch (error) {
     console.error("POST /location failed:", error)
     return NextResponse.json({ error }, { status: 400 })
