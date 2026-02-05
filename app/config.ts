@@ -1,4 +1,5 @@
-import calculatorMockup from "../assets/images/calculator-mockup.webp"
+import calculatorMockupLight from "../assets/images/calculator-mockup-light.webp"
+import calculatorMockupDark from "../assets/images/calculator-mockup-dark.webp"
 import nhdashboardMockup from "../assets/images/nhdashboard-mockup.webp"
 import wallpaperqrMockup from "../assets/images/wallpaperqr-mockup.webp"
 import kwalletMockup from "../assets/images/kwallet-mockup-light.webp"
@@ -231,7 +232,8 @@ export const siteConfig = {
         },
       ],
       tags: ["React Native", "Expo"],
-      imageSrc: calculatorMockup,
+      imageSrc: calculatorMockupLight,
+      imageSrcDark: calculatorMockupDark,
     },
   ],
 }
