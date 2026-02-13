@@ -3,7 +3,7 @@ id: "expo-rebuild-after-appstore-removal"
 title: "Rebuilding My React Native App with Expo After App Store Removal"
 author: "Colin Franceschini"
 date: "2026-01-31T14:30:00.000Z"
-imageUrl: "https://i.ibb.co/mrPdHqNs/jobfinder.jpg"
+imageUrl: "https://i.ibb.co/Gf3mLz0L/app-rebuild.jpg"
 ---
 
 Recently, I received an email from Apple informing me that my old React Native app had been **removed from the App Store**. The message explained that I hadn’t responded to updated age rating questions in the App Information section, covering topics like in-app controls, medical or wellness content, and violent themes. The deadline to submit responses was January 31, 2026, or I wouldn’t be able to upload updates.
