@@ -13,6 +13,8 @@ import myLocationDark from "../assets/images/mylocation-dark.webp"
 import myLocationLight from "../assets/images/mylocation-light.webp"
 import stockmarketbotDark from "../assets/images/stockmarketbot-dark.webp"
 import stockmarketbotLight from "../assets/images/stockmarketbot-light.webp"
+import jobfinderLight from "../assets/images/jobfinder-light.webp"
+import jobfinderDark from "../assets/images/jobfinder-dark.webp"
 
 export const siteConfig = {
   name: "Colin Franceschini",
@@ -25,6 +27,35 @@ export const siteConfig = {
     x: "https://x.com/colinfran",
   },
   projects: [
+    {
+      id: "jobfinder",
+      title: "JobFinder",
+      description:
+        "An automated job search aggregator that collects listings from multiple platforms using Google Search. Never miss an opportunity again. Track and manage all your applications in one place.",
+      links: [
+        {
+          url: "https://jobfinder.dev",
+          text: "Website",
+        },
+        {
+          url: "https://github.com/colinfran/jobfinder",
+          text: "GitHub",
+        },
+      ],
+      tags: [
+        "Next.js",
+        "React.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "Better Auth",
+        "Serper API",
+      ],
+      imageSrc: jobfinderLight,
+      imageSrcDark: jobfinderDark,
+    },
     {
       id: "stockmarketbot",
       title: "stockmarketbot",
