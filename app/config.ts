@@ -15,6 +15,7 @@ import stockmarketbotDark from "../assets/images/stockmarketbot-dark.webp"
 import stockmarketbotLight from "../assets/images/stockmarketbot-light.webp"
 import jobfinderLight from "../assets/images/jobfinder-light.webp"
 import jobfinderDark from "../assets/images/jobfinder-dark.webp"
+import easyCopy from "../assets/images/easy-copy.webp"
 
 export const siteConfig = {
   name: "Colin Franceschini",
@@ -27,6 +28,25 @@ export const siteConfig = {
     x: "https://x.com/colinfran",
   },
   projects: [
+    {
+      id: "easy-copy",
+      title: "EasyCopy",
+      description:
+        "A lightweight macOS menu bar app for saving, organizing, and one-click copying links. Built with Tauri + Rust and a React/TypeScript frontend, with local persistent storage and drag-and-drop reordering.",
+      links: [
+        {
+          url: "https://colinfran.github.io/easy-copy",
+          text: "Website",
+        },
+        {
+          url: "https://github.com/colinfran/easy-copy",
+          text: "GitHub",
+        },
+      ],
+      tags: ["Tauri", "Rust", "React.js", "TypeScript", "Vite", "Tailwind CSS", "dnd-kit", "macOS"],
+      imageSrc: easyCopy,
+    },
+
     {
       id: "jobfinder",
       title: "JobFinder",
