@@ -126,6 +126,10 @@ export const siteConfig = {
           url: "https://gitart.app/?utm_source%3Dhttps%3A%2F%2Fcolinfran.com%26utm_medium%3Dreferral",
           text: "Website",
         },
+        {
+          url: "https://github.com/colinfran/gitart",
+          text: "GitHub",
+        },
       ],
       tags: [
         "Next.js",
