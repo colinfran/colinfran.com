@@ -10,7 +10,7 @@ const Page: FC = () => {
     <div className="relative">
       <iframe
         className={isLoaded ? "fade-in" : "invisible"}
-        src="https://drive.google.com/file/d/1T_Vw7legDgmtCFABY_1GA7UankOD4ErpYa3AVhvEwo4/preview"
+        src="https://drive.google.com/file/d/1FzW2ZxRe6ufAJ10YF-BRmCWsTe4bv_dH_IOJepD_3fI/preview"
         style={{ height: "100vh", width: "100%" }}
         title="resume"
         onLoad={() => setIsLoaded(true)}
