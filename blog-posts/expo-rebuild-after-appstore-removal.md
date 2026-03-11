@@ -12,6 +12,6 @@ This was a wake-up call. Rather than patching the old app, I decided to **rebuil
 
 Rebuilding the app was more than just a technical refresh. It gave me the opportunity to **refactor the codebase**, organize components more logically, improve state management, and optimize performance. I also revisited the app’s design, ensuring a cleaner, more consistent user experience and reducing unnecessary complexity. Overall, it was a chance to approach the app with fresh eyes and make it more maintainable and scalable for the future.
 
-While receiving a removal notice from Apple might feel stressful at first, this experience turned into an opportunity to modernize and optimize the app. With Expo, the process was surprisingly smooth, and I’m excited to share the [updated version](https://apps.apple.com/us/app/wallpaperqr/id1558057109) with users.
+While receiving a removal notice from Apple might feel stressful at first, this experience turned into an opportunity to modernize and optimize the app. With Expo, the process was surprisingly smooth, and I’m excited to share the updated version with users: [https://apps.apple.com/us/app/calculator-for-minimalists/id1560501633](https://apps.apple.com/us/app/calculator-for-minimalists/id1560501633)
 
 For other React Native developers facing App Store challenges, this is a reminder: sometimes a forced rebuild is the perfect chance to improve your app and simplify future updates.
