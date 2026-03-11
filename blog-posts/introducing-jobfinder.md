@@ -14,7 +14,19 @@ On the product side, the dashboard keeps things tight: a topic switcher (softwar
 
 Under the hood, JobFinder is built with **Next.js** and **React**, styled with **Tailwind CSS** and **shadcn/ui**, and deployed on **Vercel**. The data layer uses **Drizzle ORM** with PostgreSQL, and auth is handled with social sign-in (Google and GitHub) so each user gets a personalized dashboard state.
 
-I also leaned into the idea of quality over noise. JobFinder validates links and normalizes incoming data so listings stay clean and usable. The validation layer runs in two parts: scheduled Vercel cron jobs for ingestion and basic checks, plus deeper validation scripts that run on **GitHub Actions** (including Puppeteer-based checks for sources that require browser automation). That setup helps keep stale or invalid jobs from piling up.
+Where this project got difficult was not UI. It was data quality.
+
+I had to handle the whole system end to end: ingestion, normalization, deduplication, validation, and relevance. Job listings change constantly, sources behave differently, and a weak pipeline quickly fills up with stale or duplicate links.
+
+I leaned hard into quality over noise. JobFinder normalizes incoming titles and URLs, deduplicates records by canonical links, and validates listings in multiple layers:
+
+- Scheduled Vercel cron jobs run ingestion and baseline checks.
+- A second cron pass removes duplicates and validates server-rendered sources (like Greenhouse, Lever, and Rippling) with source-specific parsing logic.
+- Deeper validation for harder sources (Ashby, Workday, and Gem) runs through GitHub Actions using a dedicated validator tool with Puppeteer and API-based checks.
+
+That validation layer is a big part of the product. It is designed to keep invalid jobs from piling up while staying conservative around inconclusive failures (timeouts, partial responses, rate-limited pages) so good listings are not removed too aggressively.
+
+I also focused heavily on responsiveness because the value of the product depends on moving quickly through a lot of listings. Optimistic UI updates and list virtualization helped keep the dashboard fast even as larger datasets were being processed in the background.
 
 ## What I Learned
 
@@ -23,6 +35,10 @@ Building JobFinder reinforced something I have always believed: the best side pr
 Because I was actively using it, every small annoyance became a feature improvement. Performance optimizations mattered. Clean state management mattered. Good UX decisions mattered.
 
 It also reminded me that not every project needs to be positioned as "AI powered." Sometimes solid automation and thoughtful engineering are more than enough.
+
+The biggest lesson for me was to validate assumptions early and build observability from day one. When you are the only engineer, product manager, and designer, feedback loops matter more than perfect architecture.
+
+If I were starting again, I would invest earlier in analytics and behavior tracking to guide prioritization sooner, and I would time-box experimentation more intentionally to validate product decisions faster before committing deeper engineering effort.
 
 ## What's Next
 
