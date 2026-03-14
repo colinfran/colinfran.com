@@ -12,6 +12,7 @@ type SocialLinkProps = {
 
 export const SocialLink: FC<SocialLinkProps> = ({ icon, href, title }) => {
   const Icon = Icons[icon]
+  const openInNewTab = title !== "blog" && title !== "email"
   return (
     <Button size="icon" variant="outline" asChild>
       <Link
@@ -19,7 +20,7 @@ export const SocialLink: FC<SocialLinkProps> = ({ icon, href, title }) => {
         className="group flex items-center space-x-2"
         href={href}
         rel="noopener noreferrer"
-        target="_blank"
+        target={openInNewTab ? "_blank" : "_self"}
       >
         <Icon aria-labelledby={`${title} Link`} />
       </Link>
