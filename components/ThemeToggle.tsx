@@ -24,16 +24,16 @@ const ThemeToggle: FC = () => {
         tabIndex={0}
         onClick={() => setTheme(trueTheme === "dark" ? "light" : "dark")}
       >
-        <div className="relative flex size-full items-center justify-center">
+        <div className="relative flex items-center justify-center">
           <SunIcon
-            size={16}
-            className={`absolute ${trueTheme === "dark" ? "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0 [transition:all_0.5s]" : "-left-full top-full translate-x-0 translate-y-0 -rotate-[100deg] [transition:all_0.8s]"}`}
+            className={`absolute ${trueTheme === "dark" ? "left-2/4 top-2/4 -translate-x-[48%] -translate-y-[46%] rotate-0 [transition:all_0.5s]" : "-left-full top-full translate-x-0 translate-y-0 -rotate-[100deg] [transition:all_0.8s]"}`}
             color="#fff"
+            size={16}
           />
           <MoonIcon
-            size={16}
-            className={`absolute ${trueTheme === "light" ? "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0 [transition:all_0.5s]" : "-right-full top-full translate-x-0 translate-y-0 -rotate-[100deg] [transition:all_0.8s]"}`}
+            className={`absolute ${trueTheme === "light" ? "right-2/4 top-2/4 -translate-y-[48%] translate-x-1/2 rotate-0 [transition:all_0.5s]" : "-right-full top-full translate-x-0 translate-y-0 -rotate-[100deg] [transition:all_0.8s]"}`}
             color="#000"
+            size={16}
           />
         </div>
       </button>
