@@ -19,7 +19,7 @@ export const SocialLink: FC<SocialLinkProps> = ({ icon, href, title }) => {
       rel="noopener noreferrer"
       target="_blank"
     >
-      <Icon className="h-5 w-5" aria-hidden="true" />
+      <Icon aria-hidden="true" className="h-5 w-5" />
       <span className="text-sm font-medium">{title}</span>
     </Link>
   )

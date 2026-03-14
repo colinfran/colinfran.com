@@ -47,7 +47,7 @@ export const Project: FC<ProjectPropType> = ({ project, index, indexOpen, handle
       className={cn(
         "group cursor-pointer rounded-lg border bg-card p-5 transition-all duration-200",
         "hover:border-foreground/20 hover:bg-accent/50",
-        open && "border-foreground/20 bg-accent/50"
+        open && "border-foreground/20 bg-accent/50",
       )}
       ref={element}
       tabIndex={0}
@@ -58,21 +58,23 @@ export const Project: FC<ProjectPropType> = ({ project, index, indexOpen, handle
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <h3 className="mb-1.5 font-semibold text-foreground">{title}</h3>
-          <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2">{description}</p>
+          <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2">
+            {description}
+          </p>
         </div>
-        <ChevronDown 
+        <ChevronDown
           className={cn(
             "h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200",
-            open && "rotate-180"
-          )} 
+            open && "rotate-180",
+          )}
         />
       </div>
 
       {/* Expanded Content */}
-      <div 
+      <div
         className={cn(
           "grid transition-all duration-200 ease-in-out",
-          open ? "mt-5 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          open ? "mt-5 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
         )}
       >
         <div className="overflow-hidden">
@@ -89,10 +91,10 @@ export const Project: FC<ProjectPropType> = ({ project, index, indexOpen, handle
           {/* Tags */}
           <div className="mb-5 flex flex-wrap gap-1.5">
             {tags.map((item: string) => (
-              <Badge 
-                key={item} 
-                variant="secondary"
+              <Badge
                 className="bg-secondary/80 text-xs font-normal text-muted-foreground"
+                key={item}
+                variant="secondary"
               >
                 {item}
               </Badge>
@@ -103,9 +105,9 @@ export const Project: FC<ProjectPropType> = ({ project, index, indexOpen, handle
           <div className="flex flex-wrap gap-3">
             {links.map(({ text, url, target }) => (
               <Link
-                key={url}
                 className="inline-flex items-center gap-1.5 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-80"
                 href={url}
+                key={url}
                 prefetch={target === "self"}
                 rel="noopener noreferrer"
                 target={target || "_blank"}

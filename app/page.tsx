@@ -22,7 +22,7 @@ const Page: FC = async () => {
           Colin Franceschini
         </h1>
         <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-          Full Stack Software Engineer building dynamic applications with React, React Native, 
+          Full Stack Software Engineer building dynamic applications with React, React Native,
           Next.js, and TypeScript. Focused on design, user experience, and accessibility.
         </p>
         <p className="text-lg leading-relaxed text-muted-foreground">
@@ -36,20 +36,21 @@ const Page: FC = async () => {
           <Briefcase className="mt-0.5 h-5 w-5 shrink-0" />
           <p className="leading-relaxed">
             Currently at{" "}
-            <Link 
-              className="font-medium text-foreground underline decoration-muted-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground" 
+            <Link
+              className="font-medium text-foreground underline decoration-muted-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground"
               href="https://www.hp.com/"
             >
               HP
             </Link>
             , building{" "}
-            <Link 
-              className="font-medium text-foreground underline decoration-muted-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground" 
+            <Link
+              className="font-medium text-foreground underline decoration-muted-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground"
               href="https://www.hp.com/us-en/workstations/ai-studio.html"
             >
               Z by HP AI Studio
-            </Link>
-            {" "}&mdash; a centralized data science platform that brings data, people, and compute together.
+            </Link>{" "}
+            &mdash; a centralized data science platform that brings data, people, and compute
+            together.
           </p>
         </div>
 
@@ -62,7 +63,8 @@ const Page: FC = async () => {
           <span className="leading-relaxed">
             <span className="text-muted-foreground">Current Location:</span>{" "}
             <span className="font-medium text-foreground group-hover:underline underline-offset-4">
-              {location}{!isWindows ? ` ${getCountryIcon(location)}` : ""}
+              {location}
+              {!isWindows ? ` ${getCountryIcon(location)}` : ""}
             </span>
           </span>
         </Link>
@@ -83,17 +85,17 @@ const Page: FC = async () => {
           <SocialLink href={siteConfig.links.x} icon="X" title="X" />
           <SocialLink href={siteConfig.links.email} icon="Email" title="Email" />
           <Link
+            className="group flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             href="/resume"
             prefetch
-            className="group flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Resume
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
           <Link
+            className="group flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             href="/blog"
             prefetch
-            className="group flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Blog
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

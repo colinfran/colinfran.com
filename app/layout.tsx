@@ -86,7 +86,11 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      lang="en"
+      suppressHydrationWarning
+    >
       <body className="relative flex min-h-screen flex-col font-sans antialiased">
         <NextTopLoader color="#36568a" showSpinner={false} zIndex={100} />
         <ThemeProvider
