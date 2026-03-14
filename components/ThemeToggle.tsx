@@ -10,6 +10,8 @@ const ThemeToggle: FC = () => {
   const [trueTheme, setTrueTheme] = useState<undefined | string>(undefined)
 
   useEffect(() => {
+    console.log("[v0] resolvedTheme changed:", resolvedTheme)
+    console.log("[v0] current trueTheme:", trueTheme)
     setTrueTheme(resolvedTheme)
   }, [resolvedTheme])
 
@@ -22,7 +24,11 @@ const ThemeToggle: FC = () => {
         aria-label={`Switch to ${trueTheme === "dark" ? "light" : "dark"} mode`}
         className={`${trueTheme === "dark" ? "border-white" : "border-black"} relative size-8 cursor-pointer overflow-hidden rounded-full border opacity-60 transition duration-200 ease-in-out hover:opacity-100 active:scale-95 active:opacity-100`}
         tabIndex={0}
-        onClick={() => setTheme(trueTheme === "dark" ? "light" : "dark")}
+        onClick={() => {
+          console.log("[v0] Button clicked, trueTheme:", trueTheme)
+          console.log("[v0] Setting theme to:", trueTheme === "dark" ? "light" : "dark")
+          setTheme(trueTheme === "dark" ? "light" : "dark")
+        }}
       >
         <div className="relative flex items-center justify-center">
           <SunIcon
