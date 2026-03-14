@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from "react"
-import { Github, Instagram, Linkedin, Mail, Loader2 } from "lucide-react"
+import { Github, Instagram, Linkedin, Mail, Loader2, NotebookPen } from "lucide-react"
 
 type IconProps = HTMLAttributes<SVGElement>
 
@@ -9,6 +9,7 @@ export const Icons = {
   Instagram: (props: IconProps) => <Instagram {...props} strokeWidth={1.5} />,
   Linkedin: (props: IconProps) => <Linkedin {...props} strokeWidth={1.5} />,
   Email: (props: IconProps) => <Mail {...props} strokeWidth={1.5} />,
+  Blog: (props: IconProps) => <NotebookPen {...props} strokeWidth={1.5} />,
   X: (props: IconProps) => (
     <svg
       {...props}

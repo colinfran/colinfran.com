@@ -26,6 +26,7 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/colinfran/",
     email: "mailto:hello@colinfran.com",
     x: "https://x.com/colinfran",
+    blog: "https://colinfran.com/blog",
   },
   projects: [
     {
