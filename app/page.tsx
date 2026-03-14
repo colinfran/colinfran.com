@@ -6,6 +6,7 @@ import { Projects } from "@/components/Projects"
 import { getCountryIcon, getTodaysLocation } from "@/db/getTodaysLocation"
 import { headers } from "next/headers"
 import { FC } from "react"
+import { ArrowUpRight, Briefcase, MapPin } from "lucide-react"
 
 const Page: FC = async () => {
   const location = await getTodaysLocation()
@@ -14,74 +15,102 @@ const Page: FC = async () => {
   const isWindows = userAgent.includes("Windows")
 
   return (
-    <div className="container mx-auto px-8 mb-10 flex flex-col space-y-6 divide-y">
-      <div className="space-y-2 pb-6 pt-6">
-        <h1 className="mb-8 scroll-m-20 text-4xl font-extrabold tracking-tight">
-          Hello, I&apos;m Colin Franceschini!
+    <div className="container mx-auto max-w-2xl px-6 pb-20 pt-12 md:px-8 md:pt-16">
+      {/* Hero Section */}
+      <section className="mb-16">
+        <h1 className="mb-6 text-4xl font-semibold tracking-tight text-foreground md:text-5xl text-balance">
+          Colin Franceschini
         </h1>
-        <p className="text-muted-foreground">
-          {`I am a Full Stack Software Engineer and like to focus on building dynamic applications
-          using a combination of React.js, React Native, Express.js, Next.js, and TypeScript.
-          Experienced in developing Web, iOS, and Android mobile apps with a keen eye for design,
-          user experience, and accessibility. Based in San Francisco, I have a passion for both
-          coding and technology, as well as for fitness and weightlifting. Check out the links below
-          or take a look at my `}
-          <Link className="underline" href="/resume" prefetch>
-            resume
-          </Link>
-          .
+        <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
+          Full Stack Software Engineer building dynamic applications with React, React Native, 
+          Next.js, and TypeScript. Focused on design, user experience, and accessibility.
         </p>
-        <p className="py-2 text-muted-foreground">
-          {"Sometimes I like to write down whats on my mind. Check out my blog posts "}
-          <Link className="underline" href="/blog" prefetch>
-            here
-          </Link>
-          {"."}
+        <p className="text-lg leading-relaxed text-muted-foreground">
+          Based in San Francisco. Passionate about coding and fitness.
         </p>
-        <p className="flex flex-row py-2 text-muted-foreground">
-          <span className="flex min-w-[28px] self-center">{"💼"}</span>
-          <span>
-            {"Currently @ "}
-            <Link className="underline" href="https://www.hp.com/">
+      </section>
+
+      {/* Status Section */}
+      <section className="mb-16 space-y-4">
+        <div className="flex items-start gap-3 text-muted-foreground">
+          <Briefcase className="mt-0.5 h-5 w-5 shrink-0" />
+          <p className="leading-relaxed">
+            Currently at{" "}
+            <Link 
+              className="font-medium text-foreground underline decoration-muted-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground" 
+              href="https://www.hp.com/"
+            >
               HP
             </Link>
-            {",  building the "}
-            <Link className="underline" href="https://www.hp.com/us-en/workstations/ai-studio.html">
+            , building{" "}
+            <Link 
+              className="font-medium text-foreground underline decoration-muted-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground" 
+              href="https://www.hp.com/us-en/workstations/ai-studio.html"
+            >
               Z by HP AI Studio
             </Link>
-            {
-              " product — a centralized data science platform that brings data, people, and compute together."
-            }
-          </span>
-        </p>
-        <div className="py-2">
-          <Link
-            className="group flex flex-row py-2 text-muted-foreground"
-            href="/blog/tracking-location-with-iphone-shortcut"
-            prefetch
-          >
-            <span className="min-w-[28px]">{"📍"}</span>
-            <span className="mr-2">{"Current Location: "}</span>
-            <span className="group-hover:underline">{`${location}${!isWindows ? ` ${getCountryIcon(location)}` : ""}`}</span>
-          </Link>
+            {" "}&mdash; a centralized data science platform that brings data, people, and compute together.
+          </p>
         </div>
-      </div>
-      <div className="space-y-2 pb-6">
-        <h2 className="font-bold sm:text-lg">Links</h2>
-        <div className="flex flex-row gap-5">
-          <SocialLink href={siteConfig.links.github} icon="Github" title="Github" />
+
+        <Link
+          className="group flex items-start gap-3 text-muted-foreground transition-colors hover:text-foreground"
+          href="/blog/tracking-location-with-iphone-shortcut"
+          prefetch
+        >
+          <MapPin className="mt-0.5 h-5 w-5 shrink-0" />
+          <span className="leading-relaxed">
+            <span className="text-muted-foreground">Current Location:</span>{" "}
+            <span className="font-medium text-foreground group-hover:underline underline-offset-4">
+              {location}{!isWindows ? ` ${getCountryIcon(location)}` : ""}
+            </span>
+          </span>
+        </Link>
+      </section>
+
+      {/* Links Section */}
+      <section className="mb-16">
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
+            Connect
+          </h2>
+          <div className="h-px flex-1 bg-border ml-4" />
+        </div>
+        <div className="flex flex-wrap items-center gap-6">
+          <SocialLink href={siteConfig.links.github} icon="Github" title="GitHub" />
           <SocialLink href={siteConfig.links.linkedin} icon="Linkedin" title="LinkedIn" />
           <SocialLink href={siteConfig.links.instagram} icon="Instagram" title="Instagram" />
-          <SocialLink href={siteConfig.links.x} icon="X" title="X (Twitter)" />
+          <SocialLink href={siteConfig.links.x} icon="X" title="X" />
           <SocialLink href={siteConfig.links.email} icon="Email" title="Email" />
+          <Link
+            href="/resume"
+            prefetch
+            className="group flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Resume
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
+          <Link
+            href="/blog"
+            prefetch
+            className="group flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Blog
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
         </div>
-      </div>
-      <div className="space-y-2 pt-6">
-        <h2 className="font-bold sm:text-lg">Projects</h2>
-        <div className="flex flex-col">
-          <Projects />
+      </section>
+
+      {/* Projects Section */}
+      <section>
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
+            Projects
+          </h2>
+          <div className="h-px flex-1 bg-border ml-4" />
         </div>
-      </div>
+        <Projects />
+      </section>
     </div>
   )
 }

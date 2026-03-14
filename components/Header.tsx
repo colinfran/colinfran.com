@@ -4,21 +4,19 @@ import Link from "next/link"
 import ThemeToggle from "./ThemeToggle"
 
 const Header: FC = async () => (
-  <header className="container mx-auto px-8">
-    <div className="flex items-center justify-between border-b py-4">
-      <Link href="/">
+  <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
+    <div className="container mx-auto flex max-w-2xl items-center justify-between px-6 py-4 md:px-8">
+      <Link href="/" className="transition-opacity hover:opacity-70">
         <Image
           alt="Logo"
           className="header-logo"
-          height={48}
+          height={36}
           src="/icons/favicon-96x96.png"
-          width={48}
+          width={36}
           priority
         />
       </Link>
-      <div className="space-x-4">
-        <ThemeToggle />
-      </div>
+      <ThemeToggle />
     </div>
   </header>
 )

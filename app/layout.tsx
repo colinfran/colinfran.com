@@ -6,6 +6,10 @@ import { Analytics } from "@vercel/analytics/react"
 import { Metadata } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import NextTopLoader from "nextjs-toploader"
+import { Inter, JetBrains_Mono } from "next/font/google"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" })
 
 const gaId = process.env.NEXT_PUBLIC_MEASUREMENT_ID!
 
@@ -82,8 +86,8 @@ type RootLayoutProps = {
 
 const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="relative flex min-h-screen flex-col gap-4">
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <body className="relative flex min-h-screen flex-col font-sans antialiased">
         <NextTopLoader color="#36568a" showSpinner={false} zIndex={100} />
         <ThemeProvider
           attribute="class"

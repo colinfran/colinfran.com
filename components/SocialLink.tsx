@@ -2,7 +2,6 @@
 import React, { FC } from "react"
 import Link from "next/link"
 import { Icons } from "./Icons"
-import { Button } from "./ui/button"
 
 type SocialLinkProps = {
   icon: keyof typeof Icons
@@ -13,16 +12,15 @@ type SocialLinkProps = {
 export const SocialLink: FC<SocialLinkProps> = ({ icon, href, title }) => {
   const Icon = Icons[icon]
   return (
-    <Button size="icon" variant="outline" asChild>
-      <Link
-        aria-label={`${title} Link`}
-        className="group flex items-center space-x-2"
-        href={href}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <Icon aria-labelledby={`${title} Link`} />
-      </Link>
-    </Button>
+    <Link
+      aria-label={`${title} Link`}
+      className="group flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
+      href={href}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <Icon className="h-5 w-5" aria-hidden="true" />
+      <span className="text-sm font-medium">{title}</span>
+    </Link>
   )
 }
