@@ -32,7 +32,7 @@ const ThemeToggle: FC = () => {
           />
           <MoonIcon
             size={16}
-            className={`absolute ${trueTheme === "light" ? "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0 [transition:all_0.5s]" : "-left-full top-full translate-x-0 translate-y-0 -rotate-[100deg] [transition:all_0.8s]"}`}
+            className={`absolute ${trueTheme === "light" ? "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-0 [transition:all_0.5s]" : "-right-full top-full translate-x-0 translate-y-0 -rotate-[100deg] [transition:all_0.8s]"}`}
             color="#000"
           />
         </div>
