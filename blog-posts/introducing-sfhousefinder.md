@@ -23,7 +23,7 @@ But I also wanted to learn more about web scraping, data normalization, and buil
 
 ### Scraping Architecture: Raspberry Pi, Proxies, and Cron
 
-The backbone of SFHouseFinder is a set of custom scrapers, all written in TypeScript. These run on a Raspberry Pi 3B that sits on a shelf in my apartment, quietly doing its thing 24/7. I chose the Pi because it’s cheap, low-power, and—let’s be honest—fun to tinker with. It’s surprisingly reliable for this kind of job, and if it crashes, I can just reboot it from my phone.
+The backbone of SFHouseFinder is a set of custom scrapers, all written in TypeScript. These run on a Raspberry Pi 3B that sits on a shelf in my apartment, quietly doing its thing 24/7. I chose the Pi because it’s cheap, low-power, and—let’s be honest—fun to tinker with. It’s surprisingly reliable for this kind of job, and if it crashes, it just auto reboots itself.
 
 To avoid getting blocked by Craigslist, Apartments.com, and Zillow, I use Evomi for residential proxies. This means every request looks like it’s coming from a real person in a real house, not a datacenter. The scrapers rotate proxies for each run, and I built in exponential backoff and retry logic to gracefully handle rate limits and temporary bans. If a proxy gets blocked, the scraper logs the event and moves on, so the pipeline never fully stalls.
 
