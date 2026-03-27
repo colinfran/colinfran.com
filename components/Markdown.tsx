@@ -11,9 +11,28 @@ const Markdown: FC<Props> = ({ content }) => {
   return (
     <ReactMarkdown
       components={{
-        h2: ({ ...props }) => <h2 className="my-4 text-4xl font-semibold" {...props} />,
+        h2: ({ ...props }) => <h2 className="mt-10 mb-4 text-4xl font-semibold" {...props} />,
 
-        h3: ({ ...props }) => <h3 className="my-4 text-3xl font-semibold" {...props} />,
+        h3: ({ ...props }) => <h3 className="mt-8 mb-4 text-3xl font-semibold" {...props} />,
+
+        p: ({ ...props }) => <p className="my-4 leading-8" {...props} />,
+
+        ul: ({ ...props }) => (
+          <ul className="my-4 ml-6 list-disc space-y-2 marker:text-foreground" {...props} />
+        ),
+
+        ol: ({ ...props }) => (
+          <ol className="my-4 ml-6 list-decimal space-y-2 marker:text-foreground" {...props} />
+        ),
+
+        li: ({ ...props }) => <li className="pl-1 leading-8" {...props} />,
+
+        a: ({ ...props }) => (
+          <a
+            className="underline underline-offset-4 transition-opacity hover:opacity-80"
+            {...props}
+          />
+        ),
 
         img: ({ ...props }) => (
           <img alt="" className="m-auto my-4 max-w-full md:max-w-[600px]" {...props} /> // eslint-disable-line @next/next/no-img-element
