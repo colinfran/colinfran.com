@@ -35,9 +35,7 @@ Once the raw data is scraped, it flows through a normalization pipeline. Address
 
 Deduplication is a constant battle. I use a combination of address, price, and fuzzy string matching on descriptions to catch duplicates. If two listings have the same address and similar prices, but slightly different descriptions, they’re flagged for review. I also check for expired or deleted posts by re-checking the original links on each run—if a listing is gone, it’s marked as inactive but kept in the database for reference.
 
-Validation is layered: some checks run on the Pi (like basic field presence and link health), while deeper validation (like image availability or source-specific quirks) can be triggered manually from the dashboard. This helps keep the dataset clean without being too aggressive and accidentally deleting good leads.
-
-All data is stored in MongoDB, which is a good fit for the semi-structured nature of rental listings. I back up the database weekly to avoid losing anything if the Pi’s SD card dies (which has happened before).
+Validation is layered: some checks run on the Pi (like basic field presence and link health), while deeper validation (like image availability or source-specific quirks) can be triggered manually from the dashboard. This helps keep the dataset clean without being too aggressive and accidentally deleting good leads. All data is stored in MongoDB, which is a good fit for the semi-structured nature of rental listings..
 
 ### Dashboard: UX, Filtering, and Workflow
 
