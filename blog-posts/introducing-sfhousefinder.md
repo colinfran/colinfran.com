@@ -3,7 +3,7 @@ id: "introducing-sfhousefinder"
 title: "SFHouseFinder: How I Automated the Bay Area Rental Hunt"
 author: "Colin Franceschini"
 date: "2026-03-26T09:00:00.000Z"
-imageUrl: "https://i.ibb.co/b5wJQKMD/sfhousefinder.jpg"
+imageUrl: "https://i.ibb.co/dJp6MVs8/sfhousefinder.jpg"
 ---
 
 If you’ve ever tried to rent an apartment in San Francisco, you know the pain: dozens of tabs, the same listings reposted everywhere, and the constant anxiety that you’re missing something. I got tired of the grind. So I built SFHouseFinder—a tool that does the searching, filtering, and organizing for me, so I can focus on actually finding a place, not just hunting for one.
