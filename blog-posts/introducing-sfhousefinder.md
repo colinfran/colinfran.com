@@ -16,7 +16,7 @@ I wanted a tool that would:
 - Let me quickly mark what I’ve seen, what’s interesting, and what’s not
 - Run automatically, so I don’t have to babysit it
 
-But I also wanted to learn more about web scraping, data normalization, and building a dashboard that’s actually pleasant to use. And, honestly, I wanted to help my brother and friends who were also stuck in the rental search loop.
+But I also wanted to learn more about web scraping, data normalization, and building a dashboard that’s actually pleasant to use. And, honestly, I wanted to help my friends who were also stuck in the rental search loop.
 
 ### How It Works
 
