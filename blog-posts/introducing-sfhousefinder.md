@@ -6,7 +6,7 @@ date: "2026-03-26T09:00:00.000Z"
 imageUrl: "https://i.ibb.co/dJp6MVs8/sfhousefinder.jpg"
 ---
 
-If you’ve ever tried to rent an apartment in San Francisco, you know the pain: dozens of tabs, the same listings reposted everywhere, and the constant anxiety that you’re missing something. I got tired of the grind. So I built SFHouseFinder—a tool that does the searching, filtering, and organizing for me, so I can focus on actually finding a place, not just hunting for one.
+If you’ve ever tried to rent an apartment or house in San Francisco, you know the pain: dozens of tabs, the same listings reposted everywhere, and the constant anxiety that you’re missing something. I got tired of the grind. So I built SFHouseFinder—a tool that does the searching, filtering, and organizing for me, so I can focus on actually finding a place, not just hunting for one.
 
 ### Why I Built It
 
@@ -23,7 +23,7 @@ But I also wanted to learn more about web scraping, data normalization, and buil
 
 ### Scraping Architecture: Raspberry Pi, Proxies, and Cron
 
-The backbone of SFHouseFinder is a set of custom scrapers, all written in TypeScript. These run on a Raspberry Pi 3B that sits on a shelf in my apartment, quietly doing its thing 24/7. I chose the Pi because it’s cheap, low-power, and—let’s be honest—fun to tinker with. It’s surprisingly reliable for this kind of job, and if it crashes, it just auto reboots itself.
+The backbone of SFHouseFinder is a set of custom scrapers, all written in TypeScript. These run on a Raspberry Pi 3B that sits on a shelf in my house, quietly doing its thing 24/7. I chose the Pi because it’s cheap, low-power, and—let’s be honest—fun to tinker with. It’s surprisingly reliable for this kind of job, and if it crashes, it just auto reboots itself.
 
 To avoid getting blocked by Craigslist, Apartments.com, and Zillow, I use Evomi for residential proxies. This means every request looks like it’s coming from a real person in a real house, not a datacenter. The scrapers rotate proxies for each run, and I built in exponential backoff and retry logic to gracefully handle rate limits and temporary bans. If a proxy gets blocked, the scraper logs the event and moves on, so the pipeline never fully stalls.
 
