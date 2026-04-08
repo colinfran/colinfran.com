@@ -68,7 +68,7 @@ const Page: FC = async () => {
       </div>
       <div className="space-y-2 pb-6">
         <h2 className="font-bold sm:text-lg">Links</h2>
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-wrap gap-5 sm:flex-nowrap">
           <SocialLink href={siteConfig.links.github} icon="Github" title="Github" />
           <SocialLink href={siteConfig.links.linkedin} icon="Linkedin" title="LinkedIn" />
           <SocialLink href={siteConfig.links.instagram} icon="Instagram" title="Instagram" />
