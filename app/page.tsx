@@ -72,6 +72,7 @@ const Page: FC = async () => {
           <SocialLink href={siteConfig.links.github} icon="Github" title="Github" />
           <SocialLink href={siteConfig.links.linkedin} icon="Linkedin" title="LinkedIn" />
           <SocialLink href={siteConfig.links.instagram} icon="Instagram" title="Instagram" />
+          <SocialLink href={siteConfig.links.tiktok} icon="TikTok" title="TikTok" />
           <SocialLink href={siteConfig.links.x} icon="X" title="X (Twitter)" />
           <SocialLink href={siteConfig.links.email} icon="Email" title="Email" />
           <SocialLink href={siteConfig.links.blog} icon="Blog" title="Blog" />
