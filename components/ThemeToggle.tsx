@@ -28,13 +28,13 @@ const ThemeToggle: FC = () => {
       <span className="absolute inset-0 flex items-center justify-center">
         <SunIcon
           className={`absolute transition-all duration-500 ease-out ${
-            isDark ? "translate-y-0 rotate-0 opacity-100" : "-translate-y-8 rotate-90 opacity-0"
+            isDark ? "translate-x-0 rotate-0 opacity-100" : "-translate-x-8 rotate-90 opacity-0"
           }`}
           size={16}
         />
         <MoonIcon
           className={`absolute transition-all duration-500 ease-out ${
-            isDark ? "translate-y-8 -rotate-90 opacity-0" : "translate-y-0 rotate-0 opacity-100"
+            isDark ? "translate-x-8 -rotate-90 opacity-0" : "translate-x-0 rotate-0 opacity-100"
           }`}
           size={16}
         />
