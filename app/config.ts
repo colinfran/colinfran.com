@@ -1,6 +1,5 @@
 import calculatorMockupLight from "../assets/images/calculator-mockup-light.webp"
 import calculatorMockupDark from "../assets/images/calculator-mockup-dark.webp"
-import wallpaperqrMockup from "../assets/images/wallpaperqr-mockup.webp"
 import kwalletMockup from "../assets/images/kwallet-mockup-light.webp"
 import kwalletMockupDark from "../assets/images/kwallet-mockup-dark.webp"
 import linkChompDark from "../assets/images/linkchop-dark.webp"
@@ -193,6 +192,10 @@ export const siteConfig = {
         "A simple url shortener with free and premium features. Built with Next.js, NextAuth, Tailwind, shadcn/ui, PostgreSQL, and Stripe.",
       links: [
         {
+          url: "https://github.com/colinfran/linkchop/",
+          text: "GitHub",
+        },
+        {
           url: "https://linkchop.com/",
           text: "Website",
         },
@@ -219,6 +222,10 @@ export const siteConfig = {
         {
           url: "https://github.com/colinfran/kwallet",
           text: "GitHub",
+        },
+        {
+          url: "https://colinfran.github.io/kwallet/",
+          text: "Website",
         },
       ],
       tags: ["React Native", "TypeScript", "Node.js", "Express.js", "Expo"],
@@ -258,24 +265,24 @@ export const siteConfig = {
     //   tags: ["React.js", "Node.js", "Express.js"],
     //   imageSrc: nhdashboardMockup,
     // },
-    {
-      id: "wallpaperqr",
-      title: "WallpaperQR",
-      description:
-        "WallpaperQR takes the effort out of people having to enter in your information into someone's phone when you are networking. A simplistic wallpaper generator that is easy to use. Built with React Native.",
-      links: [
-        {
-          url: "https://colinfran.github.io/wallpaperqr/",
-          text: "Website",
-        },
-        {
-          url: "https://apps.apple.com/us/app/wallpaperqr/id1558057109",
-          text: "App Store",
-        },
-      ],
-      tags: ["React Native", "Expo"],
-      imageSrc: wallpaperqrMockup,
-    },
+    // {
+    //   id: "wallpaperqr",
+    //   title: "WallpaperQR",
+    //   description:
+    //     "WallpaperQR takes the effort out of people having to enter in your information into someone's phone when you are networking. A simplistic wallpaper generator that is easy to use. Built with React Native.",
+    //   links: [
+    //     {
+    //       url: "https://colinfran.github.io/wallpaperqr/",
+    //       text: "Website",
+    //     },
+    //     {
+    //       url: "https://apps.apple.com/us/app/wallpaperqr/id1558057109",
+    //       text: "App Store",
+    //     },
+    //   ],
+    //   tags: ["React Native", "Expo"],
+    //   imageSrc: wallpaperqrMockup,
+    // },
     {
       id: "calculator-for-minimalists",
       title: "Calculator for Minimalists",
@@ -283,8 +290,8 @@ export const siteConfig = {
         "A basic, minimalistic calculator. Nothing special. Just a plain calculator. Sometimes you just need something simple. Built with React Native.",
       links: [
         {
-          url: "https://colinfran.github.io/calculator-for-minimalists/",
-          text: "Website",
+          url: "https://github.com/colinfran/calculator-for-minimalists",
+          text: "GitHub",
         },
         {
           url: "https://apps.apple.com/us/app/calculator-for-minimalists/id1560501633",

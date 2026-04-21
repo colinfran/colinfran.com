@@ -6,36 +6,40 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 const ThemeToggle: FC = () => {
   const { setTheme, resolvedTheme } = useTheme()
-
-  const [trueTheme, setTrueTheme] = useState<undefined | string>(undefined)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setTrueTheme(resolvedTheme)
-  }, [resolvedTheme])
+    setMounted(true)
+  }, [])
 
-  if (trueTheme === undefined) {
+  if (!mounted) {
     return <Skeleton className="size-[32px] rounded-full" />
   }
+
+  const isDark = resolvedTheme === "dark"
+
   return (
-    <div>
-      <button
-        aria-label={`Switch to ${trueTheme === "dark" ? "light" : "dark"} mode`}
-        className={`${trueTheme === "dark" ? "border-white" : "border-black"} relative size-8 cursor-pointer overflow-hidden rounded-full border opacity-60 transition duration-200 ease-in-out hover:opacity-100 active:scale-95 active:opacity-100`}
-        tabIndex={0}
-        onClick={() => setTheme(trueTheme === "dark" ? "light" : "dark")}
-      >
-        <div className={"relative flex items-center justify-center"}>
-          <SunIcon
-            className={`absolute ${trueTheme === "dark" ? "left-2/4 top-2/4 -translate-x-[48%] -translate-y-[46%] rotate-0 [transition:all_0.5s]" : "-left-full top-full translate-x-0 translate-y-0 -rotate-[100deg] [transition:all_0.8s]"}`}
-            color="#fff"
-          />
-          <MoonIcon
-            className={`absolute ${trueTheme === "light" ? "right-2/4 top-2/4 -translate-y-[48%] translate-x-1/2 rotate-0 [transition:all_0.5s]" : "-right-full top-full translate-x-0 translate-y-0 -rotate-[100deg] [transition:all_0.8s]"}`}
-            color="#000"
-          />
-        </div>
-      </button>
-    </div>
+    <button
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      className="relative size-8 cursor-pointer overflow-hidden rounded-full border border-current opacity-60 transition-opacity duration-200 ease-in-out hover:opacity-100 active:scale-95 active:opacity-100"
+      tabIndex={0}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+    >
+      <span className="absolute inset-0 flex items-center justify-center">
+        <SunIcon
+          className={`absolute transition-all duration-500 ease-out ${
+            isDark ? "translate-y-0 rotate-0 opacity-100" : "-translate-y-8 rotate-90 opacity-0"
+          }`}
+          size={16}
+        />
+        <MoonIcon
+          className={`absolute transition-all duration-500 ease-out ${
+            isDark ? "translate-y-8 -rotate-90 opacity-0" : "translate-y-0 rotate-0 opacity-100"
+          }`}
+          size={16}
+        />
+      </span>
+    </button>
   )
 }
 

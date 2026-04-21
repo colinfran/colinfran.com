@@ -1,7 +1,6 @@
 "use client"
-import React, { FC, useState } from "react"
-import { v4 } from "uuid"
-import { Project } from "./Project"
+import React, { FC } from "react"
+import { ProjectCard } from "./ProjectCard"
 import { StaticImageData } from "next/image"
 import { siteConfig } from "../app/config"
 
@@ -12,6 +11,7 @@ type LinksProps = {
 }
 
 export type ProjectProps = {
+  id?: string
   title: string
   description: string
   links: LinksProps[]
@@ -21,26 +21,12 @@ export type ProjectProps = {
 }
 
 export const Projects: FC = () => {
-  const [indexOpen, setIndexOpen] = useState<undefined | number>(undefined)
   const { projects } = siteConfig
-  const handleProjectClick = (index: number): void => {
-    if (index === indexOpen) {
-      setIndexOpen(undefined) // Collapse the currently open project if clicked again
-    } else {
-      setIndexOpen(index) // Expand the clicked project
-    }
-  }
 
   return (
-    <div className="flex flex-col space-y-4">
-      {projects.map((project: ProjectProps, index: number) => (
-        <Project
-          handleProjectClick={handleProjectClick}
-          index={index}
-          indexOpen={indexOpen}
-          key={v4()}
-          project={project}
-        />
+    <div className="grid gap-4">
+      {projects.map((project: ProjectProps) => (
+        <ProjectCard key={project.id || project.title} project={project} />
       ))}
     </div>
   )
