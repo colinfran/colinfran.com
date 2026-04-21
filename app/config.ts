@@ -298,7 +298,7 @@ export const siteConfig = {
           text: "App Store",
         },
       ],
-      tags: ["React Native", "Expo"],
+      tags: ["React Native", "Expo", "React.js"],
       imageSrc: calculatorMockupLight,
       imageSrcDark: calculatorMockupDark,
     },
