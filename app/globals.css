@@ -56,9 +56,14 @@
     border-color: hsl(var(--border));
   }
 
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
   body {
     color: hsl(var(--foreground));
     background-color: hsl(var(--background));
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   :root {
@@ -158,6 +163,7 @@ body {
 }
 nav, footer {
   background-color: hsl(var(--background));
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Animations */
