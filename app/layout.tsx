@@ -85,12 +85,7 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
     <html lang="en" suppressHydrationWarning>
       <body className="relative flex min-h-screen flex-col gap-4">
         <NextTopLoader color="#36568a" showSpinner={false} zIndex={100} />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          disableTransitionOnChange
-          enableSystem
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main>
             <Header />
             <div className="flex-1">{children}</div>
