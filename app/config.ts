@@ -1,6 +1,5 @@
 import calculatorMockupLight from "../assets/images/calculator-mockup-light.webp"
 import calculatorMockupDark from "../assets/images/calculator-mockup-dark.webp"
-import nhdashboardMockup from "../assets/images/nhdashboard-mockup.webp"
 import wallpaperqrMockup from "../assets/images/wallpaperqr-mockup.webp"
 import kwalletMockup from "../assets/images/kwallet-mockup-light.webp"
 import kwalletMockupDark from "../assets/images/kwallet-mockup-dark.webp"
@@ -8,6 +7,7 @@ import linkChompDark from "../assets/images/linkchop-dark.webp"
 import linkChompLight from "../assets/images/linkchop-light.webp"
 import franfoodDark from "../assets/images/franfood-dark.webp"
 import franfoodLight from "../assets/images/franfood-light.webp"
+import gitArtLight from "../assets/images/git-art-light.webp"
 import gitArtDark from "../assets/images/git-art-dark.webp"
 import myLocationDark from "../assets/images/mylocation-dark.webp"
 import myLocationLight from "../assets/images/mylocation-light.webp"
@@ -165,7 +165,7 @@ export const siteConfig = {
         "Dall-E",
         "NextAuth",
       ],
-      imageSrc: gitArtDark,
+      imageSrc: gitArtLight,
       imageSrcDark: gitArtDark,
     },
     {
@@ -240,24 +240,24 @@ export const siteConfig = {
     //   imageSrc: lrqLight,
     //   imageSrcDark: lrqDark,
     // },
-    {
-      id: "nhdashboard",
-      title: "NHDashboard",
-      description:
-        "NHDashboard is a web app dashboard that displays information about your cryptocurrency mining rigs using NiceHash. Built with Express.js and React.js",
-      links: [
-        {
-          url: "https://colinfran.github.io/nh-dashboard/",
-          text: "Demo",
-        },
-        {
-          url: "https://github.com/colinfran/nh-dashboard",
-          text: "GitHub",
-        },
-      ],
-      tags: ["React.js", "Node.js", "Express.js"],
-      imageSrc: nhdashboardMockup,
-    },
+    // {
+    //   id: "nhdashboard",
+    //   title: "NHDashboard",
+    //   description:
+    //     "NHDashboard is a web app dashboard that displays information about your cryptocurrency mining rigs using NiceHash. Built with Express.js and React.js",
+    //   links: [
+    //     {
+    //       url: "https://colinfran.github.io/nh-dashboard/",
+    //       text: "Demo",
+    //     },
+    //     {
+    //       url: "https://github.com/colinfran/nh-dashboard",
+    //       text: "GitHub",
+    //     },
+    //   ],
+    //   tags: ["React.js", "Node.js", "Express.js"],
+    //   imageSrc: nhdashboardMockup,
+    // },
     {
       id: "wallpaperqr",
       title: "WallpaperQR",
