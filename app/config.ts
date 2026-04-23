@@ -30,6 +30,38 @@ export const siteConfig = {
   },
   projects: [
     {
+      id: "sfhousefinder",
+      title: "SFHouseFinder",
+      description:
+        "A rental listing aggregator for the Bay Area that scrapes Craigslist, Apartments.com, and Zillow, deduplicates listings, and presents them in a unified dashboard for easy filtering and tracking.",
+      links: [
+        {
+          url: "https://github.com/colinfran/sfhousefinder",
+          text: "GitHub",
+        },
+        {
+          url: "https://sfhousefinder.vercel.app",
+          text: "Website",
+        },
+      ],
+      tags: [
+        "Next.js",
+        "React.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "MongoDB",
+        "Raspberry Pi",
+        "Web Scraping",
+        "Proxies",
+        "Cron",
+        "Node.js",
+      ],
+      imageSrc: jobfinderLight,
+      imageSrcDark: jobfinderDark,
+    },
+
+    {
       id: "easy-copy",
       title: "EasyCopy",
       description:
