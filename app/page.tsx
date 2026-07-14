@@ -36,16 +36,10 @@ const Page: FC = async () => {
           </span>
           <span>
             {"Currently @ "}
-            <Link className="underline" href="https://www.hp.com/">
-              HP
+            <Link className="underline" href="https://www.fanatics.com/">
+              Fanatics
             </Link>
-            {",  building the "}
-            <Link className="underline" href="https://www.hp.com/us-en/workstations/ai-studio.html">
-              Z by HP AI Studio
-            </Link>
-            {
-              " product — a centralized data science platform that brings data, people, and compute together."
-            }
+            {",  building pricing and promotions features for the ecommerce platform."}
           </span>
         </p>
         <div className="py-2">
