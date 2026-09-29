@@ -44,7 +44,7 @@ const Markdown: FC<Props> = ({ content }) => {
             // @ts-ignore
             <SyntaxHighlighter
               {...rest}
-              children={String(children).replace(/\n$/, "")} // eslint-disable-line react/no-children-prop
+              children={String(children).replace(/\n$/, "")}
               language={match[1]}
               PreTag="div"
               style={darcula}
