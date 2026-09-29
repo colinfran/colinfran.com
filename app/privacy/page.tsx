@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC } from "react"
 
-const PrivacyPolicyPage:FC = () => {
+const PrivacyPolicyPage: FC = () => {
   return (
     <main className="mx-auto max-w-3xl px-6 py-12">
       <div className="prose prose-neutral dark:prose-invert max-w-none">
@@ -13,8 +13,8 @@ const PrivacyPolicyPage:FC = () => {
         <h2>Overview</h2>
 
         <p>
-          colinfran.com is a personal website operated by Colin Franceschini.
-          I respect your privacy and do not collect, store, or sell personal
+          colinfran.com is a personal website operated by Colin Franceschini. I
+          respect your privacy and do not collect, store, or sell personal
           information about visitors to this website.
         </p>
 
@@ -52,8 +52,8 @@ const PrivacyPolicyPage:FC = () => {
         <h2>Data Sharing</h2>
 
         <p>
-          I do not sell, rent, or share visitor personal information with
-          third parties.
+          I do not sell, rent, or share visitor personal information with third
+          parties.
         </p>
 
         <h2>Children's Privacy</h2>
@@ -82,7 +82,7 @@ const PrivacyPolicyPage:FC = () => {
         </p>
       </div>
     </main>
-  );
+  )
 }
 
-export default PrivacyPolicyPage;
+export default PrivacyPolicyPage
