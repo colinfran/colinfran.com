@@ -106,7 +106,7 @@ const PrivacyPolicyPage: FC = () => {
                 className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
                 href="mailto:privacy@colinfran.com"
               >
-                privacy@colinfran.com
+                hello@colinfran.com
               </a>
               .
             </p>
