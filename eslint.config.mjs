@@ -9,27 +9,24 @@ import unusedImportsPlugin from "eslint-plugin-unused-imports"
 import nextPlugin from "@next/eslint-plugin-next"
 import tsParser from "@typescript-eslint/parser"
 
-import { FlatCompat } from "@eslint/eslintrc"
-
-const compat = new FlatCompat({
-  // import.meta.dirname is available after Node.js v20.11.0
-  baseDirectory: import.meta.dirname,
-})
-
 export default [
-  // Apply Next.js core-web-vitals rules via FlatCompat
-   ...compat.config({
-    extends: ['next/core-web-vitals'],
-  }),
-
   // Global ignores
   {
-    ignores: ["node_modules/**", ".next/**", "dist/**", "./components/ui/**", "eslint.config.mjs", "postcss.config.mjs", "tailwind.config.mjs" ],
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "dist/**",
+      "./components/ui/**",
+      "eslint.config.mjs",
+      "postcss.config.mjs",
+      "tailwind.config.mjs",
+    ],
   },
 
   // TypeScript + React + Next.js rules
   {
     files: ["**/*.{ts,tsx}"],
+
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -43,7 +40,6 @@ export default [
       },
     },
 
-    // ✅ Plugins must be objects, not strings
     plugins: {
       react: reactPlugin,
       "react-hooks": reactHooksPlugin,
@@ -53,37 +49,63 @@ export default [
       tailwindcss: tailwindcssPlugin,
       "unused-imports": unusedImportsPlugin,
       "@typescript-eslint": tsPlugin,
-      next: nextPlugin,
+      "@next/next": nextPlugin,
     },
 
     rules: {
+      // Next.js
       "@next/next/no-img-element": "warn",
+
+      // Unused imports
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "unused-imports/no-unused-imports": "error",
       "unused-imports/no-unused-vars": [
         "warn",
-        { vars: "all", varsIgnorePattern: "^_", args: "after-used", argsIgnorePattern: "^_" },
+        {
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
+          argsIgnorePattern: "^_",
+        },
       ],
+
+      // Prettier
       "prettier/prettier": ["error", { endOfLine: "auto" }],
-      "jsx-a11y/role-supports-aria-props": 0,
+
+      // Accessibility
+      "jsx-a11y/role-supports-aria-props": "off",
+
+      // Style
       quotes: ["error", "double"],
+
+      // Variables
       "no-use-before-define": "off",
       "@typescript-eslint/no-use-before-define": ["error"],
-      "react/function-component-definition": [
-        2,
-        { namedComponents: "arrow-function", unnamedComponents: "arrow-function" },
-      ],
-      "react/jsx-filename-extension": ["warn", { extensions: [".tsx"] }],
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": ["error"],
-      "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }],
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "import/prefer-default-export": "off",
+
+      // Functions
+      "@typescript-eslint/explicit-function-return-type": [
+        "error",
+        { allowExpressions: true },
+      ],
+
+      // React
+      "react/function-component-definition": [
+        "error",
+        {
+          namedComponents: "arrow-function",
+          unnamedComponents: "arrow-function",
+        },
+      ],
+      "react/jsx-filename-extension": [
+        "warn",
+        { extensions: [".tsx"] },
+      ],
       "react/prop-types": "off",
       "react/jsx-sort-props": [
-        2,
+        "error",
         {
           callbacksLast: true,
           shorthandFirst: false,
@@ -92,6 +114,13 @@ export default [
           noSortAlphabetically: false,
         },
       ],
+
+      // React Hooks
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+
+      // Imports
+      "import/prefer-default-export": "off",
     },
   },
 ]
