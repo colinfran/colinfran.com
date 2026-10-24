@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { Metadata } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import NextTopLoader from "nextjs-toploader"
-
+import { FranceschiniAnalytics } from "@colinfran/analytics"
 const gaId = process.env.NEXT_PUBLIC_MEASUREMENT_ID!
 
 export const metadata: Metadata = {
@@ -92,6 +92,7 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
           </main>
         </ThemeProvider>
         <Analytics />
+        <FranceschiniAnalytics websiteId="web_tnOlgF0LTteB6hQUEJ1M" />
       </body>
       <GoogleAnalytics gaId={gaId} />
     </html>
