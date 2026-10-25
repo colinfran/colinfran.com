@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@colinfran/analytics':
+        specifier: ^0.1.2
+        version: 0.1.2(react-dom@19.1.2(react@19.1.2))(react@19.1.2)
       '@neondatabase/serverless':
         specifier: ^1.0.1
         version: 1.1.0
@@ -284,6 +287,15 @@ packages:
   '@babel/types@7.29.8':
     resolution: {integrity: sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg==}
     engines: {node: '>=6.9.0'}
+
+  '@colinfran/analytics@0.1.2':
+    resolution: {integrity: sha512-+SQpbhkyLOlUVyp61LLC9OUO2GpP+OSIUGp5w6NsEnmP8nFrgcCxFLO+v1MQGGFVwvicHBCrCu2EIu/RA7XOaA==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
 
   '@corex/deepmerge@4.0.43':
     resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
@@ -3785,6 +3797,12 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
+
+  '@colinfran/analytics@0.1.2(react-dom@19.1.2(react@19.1.2))(react@19.1.2)':
+    dependencies:
+      react: 19.1.2
+    optionalDependencies:
+      react-dom: 19.1.2(react@19.1.2)
 
   '@corex/deepmerge@4.0.43': {}
 
