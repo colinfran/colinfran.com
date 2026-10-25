@@ -113,7 +113,7 @@ export const siteConfig = {
       id: "stockmarketbot",
       title: "stockmarketbot",
       description:
-        "A fully autonomous stock-market bot that turns cutting-edge AI reasoning into real (paper) trades - every single week, without any human intervention.",
+        "A fully autonomous day-trading bot that uses Grok to research the market live on the web and X, then trades a $10,000 paper account every market day with no human intervention.",
       links: [
         {
           url: "https://stockmarketbot.app",
