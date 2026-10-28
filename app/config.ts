@@ -110,18 +110,18 @@ export const siteConfig = {
       imageSrcDark: jobfinderDark,
     },
     {
-      id: "stockmarketbot",
-      title: "stockmarketbot",
+      id: "marketbots",
+      title: "MarketBots",
       description:
-        "A fully autonomous day-trading bot that uses Grok to research the market live on the web and X, then trades a $10,000 paper account every market day with no human intervention.",
+        "Two autonomous paper-trading bots, crypto and US stocks, run by AI models on my own GPUs. Code checks every order; every trade is public.",
       links: [
         {
-          url: "https://stockmarketbot.app",
+          url: "https://marketbots.vercel.app",
           text: "Website",
           target: "_self",
         },
         {
-          url: "https://github.com/colinfran/stockmarketbot",
+          url: "https://github.com/colinfran/marketbots",
           text: "GitHub",
           target: "_blank",
         },
