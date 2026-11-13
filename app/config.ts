@@ -30,6 +30,36 @@ export const siteConfig = {
   },
   projects: [
     {
+      id: "marketbots",
+      title: "MarketBots",
+      description:
+        "Two autonomous paper-trading bots, crypto and US stocks, run by AI models on my own GPUs. Code checks every order; every trade is public.",
+      links: [
+        {
+          url: "https://marketbots.vercel.app",
+          text: "Website",
+          target: "_self",
+        },
+        {
+          url: "https://github.com/colinfran/marketbots",
+          text: "GitHub",
+          target: "_blank",
+        },
+      ],
+      tags: [
+        "Next.js",
+        "Tailwind CSS",
+        "React.js",
+        "TypeScript",
+        "shadcn/ui",
+        "MongoDB",
+        "Grok",
+        "Alpaca",
+      ],
+      imageSrc: stockmarketbotLight,
+      imageSrcDark: stockmarketbotDark,
+    },
+    {
       id: "sfhousefinder",
       title: "SFHouseFinder",
       description:
@@ -108,36 +138,6 @@ export const siteConfig = {
       ],
       imageSrc: jobfinderLight,
       imageSrcDark: jobfinderDark,
-    },
-    {
-      id: "marketbots",
-      title: "MarketBots",
-      description:
-        "Two autonomous paper-trading bots, crypto and US stocks, run by AI models on my own GPUs. Code checks every order; every trade is public.",
-      links: [
-        {
-          url: "https://marketbots.vercel.app",
-          text: "Website",
-          target: "_self",
-        },
-        {
-          url: "https://github.com/colinfran/marketbots",
-          text: "GitHub",
-          target: "_blank",
-        },
-      ],
-      tags: [
-        "Next.js",
-        "Tailwind CSS",
-        "React.js",
-        "TypeScript",
-        "shadcn/ui",
-        "MongoDB",
-        "Grok",
-        "Alpaca",
-      ],
-      imageSrc: stockmarketbotLight,
-      imageSrcDark: stockmarketbotDark,
     },
     {
       id: "my-location-analysis",
