@@ -27,7 +27,7 @@ const Page: FC = async () => {
                   <CardHeader>
                     <ImageWithSkeleton
                       alt={title}
-                      className="w-full rounded-t-lg object-cover"
+                      className="aspect-[3/2] w-full rounded-t-lg object-cover"
                       height={0}
                       src={imageUrl}
                       width={0}

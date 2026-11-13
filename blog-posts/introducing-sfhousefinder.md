@@ -2,7 +2,7 @@
 id: "introducing-sfhousefinder"
 title: "SFHouseFinder: How I Automated the Bay Area Rental Hunt"
 author: "Colin Franceschini"
-date: "2026-03-26T09:00:00.000Z"
+date: "2026-06-26T09:00:00.000Z"
 imageUrl: "https://i.ibb.co/dJp6MVs8/sfhousefinder.jpg"
 ---
 
