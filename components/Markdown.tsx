@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import ReactMarkdown, { ExtraProps } from "react-markdown"
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import Embed from "@/components/Embed"
 
 type Props = {
   content: string
@@ -52,20 +53,7 @@ const Markdown: FC<Props> = ({ content }) => {
         pre: ({ node, children, ...props }) => {
           const embed = getEmbed(node)
           if (!embed) return <pre {...props}>{children}</pre>
-
-          // The height follows the marketbots topology embed's layout. Below 594px wide it
-          // shows a tall 380×704 diagram (max 440px wide), and above that a wide 960×570 one.
-          // The extra 34px of width and 96px of height are its border, padding and header.
-          return (
-            <div className="@container my-6 w-full">
-              <iframe
-                className="h-[calc(min(100cqw_-_34px,440px)_*_704_/_380_+_96px)] w-full rounded-xl @min-[594px]:h-[calc((100cqw_-_34px)_*_570_/_960_+_96px)]"
-                loading="lazy"
-                src={embed.src}
-                title={embed.title}
-              />
-            </div>
-          )
+          return <Embed src={embed.src} title={embed.title} />
         },
         code(props) {
           const { children, className, node, ...rest } = props // eslint-disable-line unused-imports/no-unused-vars
