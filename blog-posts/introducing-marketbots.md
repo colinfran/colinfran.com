@@ -101,8 +101,6 @@ Everything runs on that one machine now. Over the past few weeks I moved the dat
 
 The next steps are giving the agent even more history to work with, tightening the scorecards that measure whether any of this actually beats just holding BTC or SPY, and letting the agent earn more responsibility as it proves itself.
 
-[TODO: a short paragraph on results so far, e.g. each bot's return since November 6 vs. holding BTC / SPY.]
-
 If you want to watch them work, both dashboards are public:
 
 - **CryptoMarketBot:** [https://cryptomarketbot.app](https://cryptomarketbot.app)
